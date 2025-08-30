@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { Menu, University, Globe } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -27,10 +27,10 @@ export function Header() {
   const [isMenuOpen, setMenuOpen] = useState(false);
 
   const changeLanguage = (lang: string) => {
-    const googleTranslateElement = document.querySelector('#google_translate_element select');
-    if (googleTranslateElement) {
-      (googleTranslateElement as HTMLSelectElement).value = lang;
-      googleTranslateElement.dispatchEvent(new Event('change'));
+    const googleTranslateSelect = document.querySelector('#google_translate_element select') as HTMLSelectElement;
+    if (googleTranslateSelect) {
+      googleTranslateSelect.value = lang;
+      googleTranslateSelect.dispatchEvent(new Event('change'));
     }
   };
 
@@ -77,6 +77,9 @@ export function Header() {
                 </Button>
               </SheetTrigger>
               <SheetContent side="right">
+                 <SheetHeader>
+                  <SheetTitle className="sr-only">Navigation Menu</SheetTitle>
+                </SheetHeader>
                 <div className="grid gap-6 p-6">
                   <Link href="/" className="flex items-center gap-2 notranslate" onClick={() => setMenuOpen(false)}>
                     <University className="h-8 w-8 text-primary" />
