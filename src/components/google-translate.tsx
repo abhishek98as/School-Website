@@ -6,7 +6,7 @@ declare global {
     namespace google {
         namespace translate {
             class TranslateElement {
-                constructor(options: {pageLanguage: string, includedLanguages: string, layout: any}, elementId: string);
+                constructor(options: {pageLanguage: string, includedLanguages: string, layout: any, autoDisplay: boolean}, elementId: string);
                 static InlineLayout: {
                     SIMPLE: any;
                 };
@@ -14,41 +14,29 @@ declare global {
         }
     }
     function googleTranslateElementInit(): void;
-    function changeLanguage(lang: string): void;
 }
 
-
 export function GoogleTranslate() {
-
   useEffect(() => {
-    const addScript = () => {
-      const script = document.createElement('script');
-      script.type = 'text/javascript';
-      script.src = '//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit';
-      script.async = true;
-      document.body.appendChild(script);
-    };
-
-    if (!(window as any).google || !(window as any).google.translate) {
-      addScript();
-    }
-
+    // Make the init function globally available
     (window as any).googleTranslateElementInit = () => {
-        new google.translate.TranslateElement({pageLanguage: 'en', includedLanguages: 'en,hi', layout: google.translate.TranslateElement.InlineLayout.SIMPLE}, 'google_translate_element');
+      new (window as any).google.translate.TranslateElement(
+        { pageLanguage: 'en', includedLanguages: 'en,hi', layout: (window as any).google.translate.TranslateElement.InlineLayout.SIMPLE, autoDisplay: false },
+        'google_translate_element'
+      );
     };
-    
-    (window as any).changeLanguage = (lang: string) => {
-        const a = document.querySelector<HTMLSelectElement>("#google_translate_element select");
-        if (a) {
-          a.value = lang;
-          const e = document.createEvent('HTMLEvents');
-          e.initEvent('change', true, true);
-          a.dispatchEvent(e);
-        }
-    }
+
+    // Load the Google Translate script
+    const addScript = document.createElement('script');
+    addScript.setAttribute('src', '//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit');
+    document.body.appendChild(addScript);
+
+    // Clean up the script and global function on component unmount
+    return () => {
+      document.body.removeChild(addScript);
+      delete (window as any).googleTranslateElementInit;
+    };
   }, []);
 
-  return (
-    <div id="google_translate_element" style={{ display: 'none' }}></div>
-  );
+  return <div id="google_translate_element" style={{ display: 'none' }}></div>;
 }
