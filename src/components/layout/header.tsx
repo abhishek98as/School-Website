@@ -21,6 +21,7 @@ const navLinks = [
   { href: "/student-life", label: "Student Life" },
   { href: "/library", label: "Library" },
   { href: "/campus", label: "Campus" },
+  { href: "/virtual-tour", label: "Virtual Tour" },
 ];
 
 export function Header() {
