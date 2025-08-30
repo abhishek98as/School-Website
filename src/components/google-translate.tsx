@@ -21,7 +21,7 @@ export function GoogleTranslate() {
     // Make the init function globally available
     (window as any).googleTranslateElementInit = () => {
       new (window as any).google.translate.TranslateElement(
-        { pageLanguage: 'en', includedLanguages: 'en,hi', layout: (window as any).google.translate.TranslateElement.InlineLayout.SIMPLE, autoDisplay: false },
+        { pageLanguage: 'hi', includedLanguages: 'en,hi', layout: (window as any).google.translate.TranslateElement.InlineLayout.SIMPLE, autoDisplay: false },
         'google_translate_element'
       );
     };

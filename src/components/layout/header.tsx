@@ -38,7 +38,7 @@ export function Header() {
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-card shadow-sm">
       <div className="container mx-auto flex h-16 items-center justify-between px-4 md:px-6">
-        <Link href="/" className="flex items-center gap-2">
+        <Link href="/" className="flex items-center gap-2 notranslate">
           <University className="h-8 w-8 text-primary" />
           <span className="font-bold text-lg hidden sm:inline">GALGOTIAS COLLEGE</span>
            <span className="font-bold text-lg sm:hidden">GCET</span>
@@ -48,7 +48,7 @@ export function Header() {
             <Link
               key={link.href}
               href={link.href}
-              className="transition-colors hover:text-primary"
+              className="transition-colors hover:text-primary notranslate"
             >
               {link.label}
             </Link>
@@ -78,7 +78,7 @@ export function Header() {
               </SheetTrigger>
               <SheetContent side="right">
                 <div className="grid gap-6 p-6">
-                  <Link href="/" className="flex items-center gap-2" onClick={() => setMenuOpen(false)}>
+                  <Link href="/" className="flex items-center gap-2 notranslate" onClick={() => setMenuOpen(false)}>
                     <University className="h-8 w-8 text-primary" />
                     <span className="font-bold">GALGOTIAS COLLEGE</span>
                   </Link>
@@ -88,7 +88,7 @@ export function Header() {
                         key={link.href}
                         href={link.href}
                         onClick={() => setMenuOpen(false)}
-                        className="text-lg font-medium transition-colors hover:text-primary"
+                        className="text-lg font-medium transition-colors hover:text-primary notranslate"
                       >
                         {link.label}
                       </Link>
