@@ -23,10 +23,19 @@ const navLinks = [
   { href: "/campus", label: "Campus" },
 ];
 
-declare function changeLanguage(lang: string): void;
-
 export function Header() {
   const [isMenuOpen, setMenuOpen] = useState(false);
+
+  const changeLanguage = (lang: string) => {
+    const googleTranslateElement = document.getElementById('google_translate_element');
+    if (googleTranslateElement) {
+      const languageSelect = googleTranslateElement.querySelector('select');
+      if (languageSelect) {
+        languageSelect.value = lang;
+        languageSelect.dispatchEvent(new Event('change'));
+      }
+    }
+  };
 
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-card shadow-sm">
