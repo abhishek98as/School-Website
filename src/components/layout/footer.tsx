@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Facebook, Twitter, Instagram, Linkedin, University } from "lucide-react";
+import { University } from "lucide-react";
 import { Separator } from "@/components/ui/separator";
 
 const quickLinks = [
@@ -13,18 +13,11 @@ const quickLinks = [
   { href: "/virtual-tour", label: "Virtual Tour" },
 ];
 
-const socialLinks = [
-  { href: "#", icon: <Facebook className="h-5 w-5" /> },
-  { href: "#", icon: <Twitter className="h-5 w-5" /> },
-  { href: "#", icon: <Instagram className="h-5 w-5" /> },
-  { href: "#", icon: <Linkedin className="h-5 w-5" /> },
-];
-
 export function Footer() {
   return (
     <footer className="bg-gray-900 text-gray-300">
       <div className="container mx-auto px-4 md:px-6 py-12">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
           <div className="space-y-4">
             <Link href="/" className="flex items-center gap-2 notranslate">
               <University className="h-8 w-8 text-primary" />
@@ -53,16 +46,6 @@ export function Footer() {
               <p>Phone: <a href="tel:+911204370000" className="hover:text-primary transition-colors notranslate">(+91) 120-4370000</a></p>
               <p>Email: <a href="mailto:info@galgotiacollege.edu" className="hover:text-primary transition-colors break-all notranslate">info@galgotiacollege.edu</a></p>
             </address>
-          </div>
-          <div>
-            <h3 className="font-semibold text-white mb-4">Connect With Us</h3>
-            <div className="flex space-x-4">
-              {socialLinks.map((social, index) => (
-                <Link key={index} href={social.href} className="text-gray-400 hover:text-primary transition-colors notranslate">
-                  {social.icon}
-                </Link>
-              ))}
-            </div>
           </div>
         </div>
       </div>
