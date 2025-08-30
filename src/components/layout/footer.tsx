@@ -5,6 +5,7 @@ import { Separator } from "@/components/ui/separator";
 const quickLinks = [
   { href: "/academics", label: "Academics" },
   { href: "/admission", "label": "Admission" },
+  { href: "/faculty", "label": "Our Faculty" },
   { href: "/infrastructure", label: "Infrastructure" },
   { href: "/student-life", label: "Student Life" },
   { href: "/library", label: "Library" },

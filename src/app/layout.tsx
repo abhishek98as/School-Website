@@ -29,6 +29,31 @@ export default function RootLayout({
         <main>{children}</main>
         <Footer />
         <Toaster />
+        <div id="google_translate_element" style={{ display: 'none' }}></div>
+        <script
+          type="text/javascript"
+          src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"
+          async
+        ></script>
+        <script
+          type="text/javascript"
+          dangerouslySetInnerHTML={{
+            __html: `
+              function googleTranslateElementInit() {
+                new google.translate.TranslateElement({pageLanguage: 'en', includedLanguages: 'en,hi', layout: google.translate.TranslateElement.InlineLayout.SIMPLE}, 'google_translate_element');
+              }
+              function changeLanguage(lang) {
+                var a = document.querySelector("#google_translate_element select");
+                if (a) {
+                  a.value = lang;
+                  var e = document.createEvent('HTMLEvents');
+                  e.initEvent('change', true, true);
+                  a.dispatchEvent(e);
+                }
+              }
+            `,
+          }}
+        />
       </body>
     </html>
   );
