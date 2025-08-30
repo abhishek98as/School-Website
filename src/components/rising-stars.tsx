@@ -25,8 +25,8 @@ export function RisingStars() {
   return (
     <section className="py-12 lg:py-24">
       <div className="container mx-auto px-4 md:px-6">
-        <div className="flex justify-between items-center mb-8">
-          <div className="text-left">
+        <div className="flex flex-col sm:flex-row justify-between items-center mb-8 gap-4">
+          <div className="text-center sm:text-left">
             <h2 className="text-3xl md:text-4xl font-bold">
               Our <span className="text-primary">Rising Stars</span>
             </h2>
@@ -34,7 +34,7 @@ export function RisingStars() {
               Meet the brilliant minds shaping the future.
             </p>
           </div>
-          <Button asChild variant="outline">
+          <Button asChild variant="outline" className="flex-shrink-0">
             <Link href="/rising-stars">
               View All
             </Link>
@@ -49,7 +49,7 @@ export function RisingStars() {
         >
           <CarouselContent>
             {stars.map((star, index) => (
-              <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/4">
+              <CarouselItem key={index} className="basis-full sm:basis-1/2 md:basis-1/3 lg:basis-1/4">
                 <div className="p-1">
                   <Card className="overflow-hidden group">
                     <CardContent className="p-0 relative">
@@ -58,7 +58,7 @@ export function RisingStars() {
                         alt={`Photo of ${star.name}`}
                         width={400}
                         height={500}
-                        className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                        className="w-full h-auto object-cover aspect-[4/5] transition-transform duration-300 group-hover:scale-105"
                         data-ai-hint={star.hint}
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>

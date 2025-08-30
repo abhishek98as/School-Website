@@ -27,24 +27,23 @@ export function Header() {
   const [isMenuOpen, setMenuOpen] = useState(false);
 
   const changeLanguage = (lang: string) => {
-    const googleTranslateElement = document.getElementById('google_translate_element');
+    const googleTranslateElement = document.querySelector('#google_translate_element select');
     if (googleTranslateElement) {
-      const languageSelect = googleTranslateElement.querySelector('select');
-      if (languageSelect) {
-        languageSelect.value = lang;
-        languageSelect.dispatchEvent(new Event('change'));
-      }
+      (googleTranslateElement as HTMLSelectElement).value = lang;
+      googleTranslateElement.dispatchEvent(new Event('change'));
     }
   };
+
 
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-card shadow-sm">
       <div className="container mx-auto flex h-16 items-center justify-between px-4 md:px-6">
         <Link href="/" className="flex items-center gap-2">
           <University className="h-8 w-8 text-primary" />
-          <span className="font-bold text-lg">GALGOTIAS COLLEGE</span>
+          <span className="font-bold text-lg hidden sm:inline">GALGOTIAS COLLEGE</span>
+           <span className="font-bold text-lg sm:hidden">GCET</span>
         </Link>
-        <nav className="hidden md:flex items-center gap-6 text-sm font-medium">
+        <nav className="hidden lg:flex items-center gap-6 text-sm font-medium">
           {navLinks.map((link) => (
             <Link
               key={link.href}
@@ -69,7 +68,7 @@ export function Header() {
             </DropdownMenuContent>
           </DropdownMenu>
 
-          <div className="md:hidden">
+          <div className="lg:hidden">
             <Sheet open={isMenuOpen} onOpenChange={setMenuOpen}>
               <SheetTrigger asChild>
                 <Button variant="outline" size="icon">

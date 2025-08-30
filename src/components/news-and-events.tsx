@@ -42,7 +42,7 @@ export function NewsAndEvents() {
             Stay updated with the latest happenings at our college.
           </p>
         </div>
-        <div className="grid lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {items.map((item, index) => (
             <Card key={index} className="flex flex-col overflow-hidden shadow-lg hover:shadow-xl transition-shadow">
               <div className="relative">

@@ -45,7 +45,7 @@ export default function AdmissionPage() {
     <div className="bg-background">
       <section className="relative py-20 md:py-32 bg-primary/10">
         <div className="container mx-auto px-4 md:px-6 text-center">
-          <h1 className="text-4xl md:text-6xl font-bold">
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold">
             Admissions <span className="text-primary">2025-26</span>
           </h1>
           <p className="mt-4 text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto">
@@ -56,9 +56,9 @@ export default function AdmissionPage() {
 
       <section className="py-12 lg:py-24">
         <div className="container mx-auto px-4 md:px-6">
-          <div className="grid lg:grid-cols-2 gap-12">
-            <div>
-              <Card className="mb-8">
+          <div className="grid md:grid-cols-1 lg:grid-cols-2 gap-12">
+            <div className="flex flex-col gap-8">
+              <Card>
                 <CardHeader>
                   <CardTitle>Age Criteria</CardTitle>
                   <CardDescription>Minimum age for admission as on 31st March.</CardDescription>
@@ -109,8 +109,8 @@ export default function AdmissionPage() {
               </Card>
             </div>
             
-            <div>
-              <Card className="mb-8">
+            <div className="flex flex-col gap-8">
+              <Card>
                 <CardHeader>
                   <CardTitle>Documents Required</CardTitle>
                 </CardHeader>
@@ -130,14 +130,16 @@ export default function AdmissionPage() {
                   <CardDescription>Fill out the form below to make an admission enquiry.</CardDescription>
                 </CardHeader>
                 <CardContent>
-                   <div className="aspect-w-16 aspect-h-9">
+                   <div className="aspect-w-16 aspect-h-9 min-h-[500px]">
                      <iframe 
                         src="https://docs.google.com/forms/d/e/1FAIpQLSfwLVi5E2tO-Vp1J_iJg_3J-3z_Rz-tX6yQ9z3zX3zX3zX3zX/viewform?embedded=true" 
                         width="100%" 
-                        height="500" 
+                        height="100%" 
                         frameBorder="0" 
                         marginHeight={0} 
-                        marginWidth={0}>
+                        marginWidth={0}
+                        className="w-full h-full"
+                        >
                         Loading…
                     </iframe>
                   </div>

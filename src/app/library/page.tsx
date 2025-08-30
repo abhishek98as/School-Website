@@ -25,18 +25,18 @@ export default function LibraryPage() {
 
   return (
     <div className="bg-background">
-      <section className="relative h-[50vh] flex items-center justify-center">
+      <section className="relative h-[40vh] md:h-[50vh] flex items-center justify-center">
         <Image 
           src="https://picsum.photos/1920/1080?random=80" 
           alt="Library Interior" 
-          layout="fill" 
+          fill
           objectFit="cover" 
           className="z-0"
           data-ai-hint="library interior"
         />
         <div className="absolute inset-0 bg-black/60 z-10"></div>
         <div className="relative z-20 text-center text-white px-4">
-          <h1 className="text-4xl md:text-6xl font-bold">
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold">
             The Knowledge <span className="text-primary">Center</span>
           </h1>
           <p className="mt-4 text-lg md:text-xl max-w-3xl mx-auto">
@@ -47,12 +47,14 @@ export default function LibraryPage() {
 
       <section className="py-12 lg:py-24">
         <div className="container mx-auto px-4 md:px-6">
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 text-center mb-16">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 text-center mb-16">
             {stats.map((stat, index) => (
               <Card key={index} className="pt-6 shadow-lg">
-                <div className="flex justify-center mb-4">{stat.icon}</div>
+                <CardHeader className="p-0">
+                  <div className="flex justify-center mb-4">{stat.icon}</div>
+                </CardHeader>
                 <CardContent>
-                  <p className="text-4xl font-bold text-primary">{stat.value}</p>
+                  <p className="text-3xl md:text-4xl font-bold text-primary">{stat.value}</p>
                   <p className="text-md text-muted-foreground mt-2">{stat.label}</p>
                 </CardContent>
               </Card>
@@ -61,10 +63,10 @@ export default function LibraryPage() {
 
           <Card className="shadow-xl">
             <CardHeader className="text-center">
-              <CardTitle className="text-3xl">Search Our Catalog</CardTitle>
+              <CardTitle className="text-2xl md:text-3xl">Search Our Catalog</CardTitle>
             </CardHeader>
-            <CardContent className="flex flex-col items-center gap-4">
-              <p className="max-w-xl text-center text-muted-foreground">
+            <CardContent className="flex flex-col items-center gap-4 text-center">
+              <p className="max-w-xl text-muted-foreground">
                 Access our online public access catalog (OPAC) to search for books, journals, and other materials available in the library.
               </p>
               <Button asChild size="lg">

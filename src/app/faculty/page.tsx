@@ -52,7 +52,7 @@ export default function FacultyPage() {
     <div className="bg-background">
       <section className="relative py-20 md:py-32 bg-primary/10">
         <div className="container mx-auto px-4 md:px-6 text-center">
-          <h1 className="text-4xl md:text-6xl font-bold">
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold">
             Our Esteemed <span className="text-primary">Faculty</span>
           </h1>
           <p className="mt-4 text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto">
@@ -63,18 +63,19 @@ export default function FacultyPage() {
 
       <section className="py-12 lg:py-24">
         <div className="container mx-auto px-4 md:px-6">
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
             {faculty.map((member, index) => (
               <Card key={index} className="text-center overflow-hidden shadow-lg hover:shadow-xl transition-shadow transform hover:-translate-y-1">
                 <CardHeader className="p-0">
-                   <Image
-                    src={member.image.src}
-                    alt={`Photo of ${member.name}`}
-                    width={400}
-                    height={400}
-                    className="w-full h-auto object-cover"
-                    data-ai-hint={member.image.hint}
-                  />
+                  <div className="aspect-w-1 aspect-h-1">
+                    <Image
+                      src={member.image.src}
+                      alt={`Photo of ${member.name}`}
+                      fill
+                      className="object-cover"
+                      data-ai-hint={member.image.hint}
+                    />
+                  </div>
                 </CardHeader>
                 <CardContent className="p-6">
                   <CardTitle className="text-2xl">{member.name}</CardTitle>
@@ -82,7 +83,7 @@ export default function FacultyPage() {
                   <div className="mt-4 space-y-2 text-sm text-muted-foreground">
                     <div className="flex items-center justify-center gap-2">
                         <Mail className="h-4 w-4" />
-                        <a href={`mailto:${member.email}`} className="hover:text-primary">{member.email}</a>
+                        <a href={`mailto:${member.email}`} className="hover:text-primary break-all">{member.email}</a>
                     </div>
                      <div className="flex items-center justify-center gap-2">
                         <Phone className="h-4 w-4" />

@@ -23,7 +23,7 @@ export function Footer() {
   return (
     <footer className="bg-gray-900 text-gray-300">
       <div className="container mx-auto px-4 md:px-6 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
           <div className="space-y-4">
             <Link href="/" className="flex items-center gap-2">
               <University className="h-8 w-8 text-primary" />
@@ -50,7 +50,7 @@ export function Footer() {
             <address className="not-italic space-y-2 text-sm">
               <p>1, Knowledge Park, Phase-II, Greater Noida, Uttar Pradesh 201306</p>
               <p>Phone: <a href="tel:+911204370000" className="hover:text-primary transition-colors">(+91) 120-4370000</a></p>
-              <p>Email: <a href="mailto:info@galgotiacollege.edu" className="hover:text-primary transition-colors">info@galgotiacollege.edu</a></p>
+              <p>Email: <a href="mailto:info@galgotiacollege.edu" className="hover:text-primary transition-colors break-all">info@galgotiacollege.edu</a></p>
             </address>
           </div>
           <div>
@@ -67,7 +67,7 @@ export function Footer() {
       </div>
       <Separator className="bg-gray-700" />
       <div className="container mx-auto px-4 md:px-6 py-4">
-        <div className="flex flex-col md:flex-row justify-between items-center text-sm text-gray-500">
+        <div className="flex flex-col md:flex-row justify-between items-center text-sm text-gray-500 text-center md:text-left">
           <p>© Copyright 2024, all rights reserved with GALGOTIA COLLEGE</p>
           <Link href="/privacy-policy" className="hover:text-primary transition-colors mt-2 md:mt-0">
             Privacy Policy

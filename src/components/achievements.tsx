@@ -31,10 +31,10 @@ export function Achievements() {
             Celebrating the milestones and successes of our students and faculty.
           </p>
         </div>
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {videos.map((video) => (
             <Card key={video.id} className="overflow-hidden shadow-lg hover:shadow-xl transition-shadow group">
-              <div className="relative w-full" style={{ paddingTop: '56.25%' }}>
+              <div className="relative w-full aspect-video">
                 <iframe
                   src={`https://www.youtube.com/embed/${video.id}`}
                   title={video.title}

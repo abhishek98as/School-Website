@@ -35,7 +35,7 @@ export default function StudentLifePage() {
       <section className="relative py-20 md:py-32 bg-cover bg-center" style={{ backgroundImage: "url('https://picsum.photos/1920/1080?random=70')" }}>
         <div className="absolute inset-0 bg-black/60"></div>
         <div className="container relative mx-auto px-4 md:px-6 text-center text-white">
-          <h1 className="text-4xl md:text-6xl font-bold">
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold">
             Vibrant <span className="text-primary">Student Life</span>
           </h1>
           <p className="mt-4 text-lg md:text-xl max-w-3xl mx-auto">
@@ -48,14 +48,14 @@ export default function StudentLifePage() {
         <div className="container mx-auto px-4 md:px-6">
           <div className="grid md:grid-cols-2 gap-8 items-stretch">
             {activities.map((activity, index) => (
-              <Card key={index} className="flex flex-col md:flex-row items-center overflow-hidden shadow-lg hover:shadow-xl transition-shadow">
-                <div className="relative w-full md:w-1/3 h-48 md:h-full">
-                  <Image src={activity.image.src} alt={activity.name} layout="fill" objectFit="cover" data-ai-hint={activity.image.hint} />
+              <Card key={index} className="flex flex-col sm:flex-row items-center overflow-hidden shadow-lg hover:shadow-xl transition-shadow">
+                <div className="relative w-full sm:w-1/3 h-48 sm:h-full">
+                  <Image src={activity.image.src} alt={activity.name} fill objectFit="cover" data-ai-hint={activity.image.hint} />
                 </div>
-                <CardContent className="p-6 w-full md:w-2/3">
+                <CardContent className="p-6 w-full sm:w-2/3">
                   <div className="flex items-center gap-4 mb-3">
                     {activity.icon}
-                    <h3 className="text-2xl font-bold">{activity.name}</h3>
+                    <h3 className="text-xl md:text-2xl font-bold">{activity.name}</h3>
                   </div>
                   <p className="text-muted-foreground">{activity.description}</p>
                 </CardContent>
