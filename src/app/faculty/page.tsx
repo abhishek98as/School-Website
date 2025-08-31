@@ -21,7 +21,7 @@ const FacultyCard = ({ faculty }: { faculty: any }) => {
     <div
       className={cn(
         'card max-w-sm mx-auto overflow-hidden relative z-10 bg-card flex flex-col rounded-lg shadow-lg transition-all duration-300 ease-in-out',
-        activeSection === 'about' && 'h-[480px]',
+        activeSection === 'about' && 'h-[550px]',
         activeSection === 'experience' && 'h-[550px]'
       )}
     >
@@ -40,12 +40,12 @@ const FacultyCard = ({ faculty }: { faculty: any }) => {
             'card-avatar object-cover object-center absolute left-1/2 shadow-lg rounded-full transition-all duration-300 ease-in-out',
             isActive
               ? 'w-[50px] h-[50px] bottom-2.5 left-5 transform-none'
-              : 'w-32 h-32 bottom-0 transform -translate-x-1/2 translate-y-[-64px]'
+              : 'w-40 h-40 bottom-0 transform -translate-x-1/2 translate-y-[-80px]'
           )}
           src={faculty.image.src}
           alt={`Photo of ${faculty.name}`}
-          width={128}
-          height={128}
+          width={160}
+          height={160}
           data-ai-hint={faculty.image.hint}
         />
         <h1
@@ -66,8 +66,8 @@ const FacultyCard = ({ faculty }: { faculty: any }) => {
             activeSection === 'about' ? 'block animate-fadeIn' : 'hidden'
           )}
         >
-          <div className="card-subtitle font-bold text-sm mb-1 text-card-foreground">ABOUT</div>
-          <p className="card-jobtitle text-xs text-muted-foreground uppercase tracking-wider mb-2">
+          <div className="card-subtitle font-bold text-sm mb-2 text-card-foreground">ABOUT</div>
+           <p className="card-jobtitle text-sm text-muted-foreground uppercase tracking-wider mb-2 font-semibold">
             {faculty.title}
           </p>
           <p className="card-desc text-sm text-muted-foreground leading-relaxed">
@@ -252,5 +252,3 @@ export default function FacultyPage() {
     </div>
   );
 }
-
-    
