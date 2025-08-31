@@ -1,6 +1,8 @@
+
 "use client";
 
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { Menu, University, Globe } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
@@ -12,6 +14,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { useState } from "react";
 import { ThemeToggle } from "../theme-toggle";
+import { cn } from "@/lib/utils";
 
 const navLinks = [
   { href: "/", label: "Home" },
@@ -27,6 +30,7 @@ const navLinks = [
 
 export function Header() {
   const [isMenuOpen, setMenuOpen] = useState(false);
+  const pathname = usePathname();
 
   const changeLanguage = (lang: string) => {
     const googleTranslateSelect = document.querySelector('#google_translate_element select') as HTMLSelectElement;
@@ -35,7 +39,6 @@ export function Header() {
       googleTranslateSelect.dispatchEvent(new Event('change'));
     }
   };
-
 
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-card shadow-sm">
@@ -50,9 +53,15 @@ export function Header() {
             <Link
               key={link.href}
               href={link.href}
-              className="transition-colors hover:text-primary notranslate"
+              className={cn(
+                "transition-colors hover:text-primary notranslate relative",
+                pathname === link.href && "text-primary font-semibold"
+              )}
             >
               {link.label}
+              {pathname === link.href && (
+                 <span className="absolute bottom-[-4px] left-0 w-full h-0.5 bg-primary"></span>
+              )}
             </Link>
           ))}
         </nav>
@@ -94,7 +103,10 @@ export function Header() {
                         key={link.href}
                         href={link.href}
                         onClick={() => setMenuOpen(false)}
-                        className="text-lg font-medium transition-colors hover:text-primary notranslate"
+                        className={cn(
+                          "text-lg font-medium transition-colors hover:text-primary notranslate",
+                          pathname === link.href && "text-primary font-bold"
+                        )}
                       >
                         {link.label}
                       </Link>
