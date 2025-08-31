@@ -21,15 +21,14 @@ const FacultyCard = ({ faculty }: { faculty: any }) => {
     <div
       className={cn(
         'card max-w-sm mx-auto overflow-hidden relative z-10 bg-card flex flex-col rounded-lg shadow-lg transition-all duration-300 ease-in-out',
-        activeSection === 'about' && 'h-[450px]',
-        activeSection === 'experience' && 'h-[550px]',
-        activeSection === 'contact' && 'h-[450px]'
+        activeSection === 'about' && 'h-[480px]',
+        activeSection === 'experience' && 'h-[550px]'
       )}
     >
       <div
         className={cn(
           'card-header relative flex shrink-0 w-full transition-all duration-300 ease-in-out',
-          isActive ? 'h-20' : 'h-52'
+          isActive ? 'h-20' : 'h-56'
         )}
       >
         <div
@@ -41,12 +40,12 @@ const FacultyCard = ({ faculty }: { faculty: any }) => {
             'card-avatar object-cover object-center absolute left-1/2 shadow-lg rounded-full transition-all duration-300 ease-in-out',
             isActive
               ? 'w-[50px] h-[50px] bottom-2.5 left-5 transform-none'
-              : 'w-24 h-24 bottom-0 transform -translate-x-1/2 translate-y-[-64px]'
+              : 'w-32 h-32 bottom-0 transform -translate-x-1/2 translate-y-[-64px]'
           )}
           src={faculty.image.src}
           alt={`Photo of ${faculty.name}`}
-          width={100}
-          height={100}
+          width={128}
+          height={128}
           data-ai-hint={faculty.image.hint}
         />
         <h1
@@ -59,16 +58,6 @@ const FacultyCard = ({ faculty }: { faculty: any }) => {
         >
           {faculty.name}
         </h1>
-        <h2
-          className={cn(
-            'card-jobtitle absolute whitespace-nowrap font-medium text-white/80 uppercase tracking-widest transition-all duration-300 ease-in-out',
-            isActive
-              ? 'bottom-4 left-[86px] text-[10px] letter-spacing-[1px] transform-none'
-              : 'bottom-0 left-1/2 text-xs transform -translate-x-1/2 -translate-y-[7px]'
-          )}
-        >
-          {faculty.title}
-        </h2>
       </div>
       <div className="card-main relative flex-1 flex flex-col pt-2.5">
         <div
@@ -77,10 +66,23 @@ const FacultyCard = ({ faculty }: { faculty: any }) => {
             activeSection === 'about' ? 'block animate-fadeIn' : 'hidden'
           )}
         >
-          <div className="card-subtitle font-bold text-sm mb-2 text-card-foreground">ABOUT</div>
+          <div className="card-subtitle font-bold text-sm mb-1 text-card-foreground">ABOUT</div>
+          <p className="card-jobtitle text-xs text-muted-foreground uppercase tracking-wider mb-2">
+            {faculty.title}
+          </p>
           <p className="card-desc text-sm text-muted-foreground leading-relaxed">
             {faculty.about}
           </p>
+          <div className="mt-5 space-y-4">
+             <div className="card-contact flex items-center text-sm text-muted-foreground">
+                <Mail className="shrink-0 w-7 h-7 mr-3 pr-3 border-r border-border" />
+                 <a href={`mailto:${faculty.email}`} className="hover:text-primary break-all">{faculty.email}</a>
+             </div>
+             <div className="card-contact flex items-center text-sm text-muted-foreground">
+                <Phone className="shrink-0 w-7 h-7 mr-3 pr-3 border-r border-border" />
+                <a href={`tel:${faculty.phone.replace(/\s/g, '')}`} className="hover:text-primary">{faculty.phone}</a>
+             </div>
+          </div>
         </div>
 
         <div
@@ -100,29 +102,6 @@ const FacultyCard = ({ faculty }: { faculty: any }) => {
                 </div>
              ))}
            </div>
-        </div>
-
-        <div
-          className={cn(
-            'card-section p-5',
-            activeSection === 'contact' ? 'block animate-fadeIn' : 'hidden'
-          )}
-        >
-          <div className="card-subtitle font-bold text-sm mb-2 text-card-foreground">CONTACT</div>
-          <div className="mt-5 space-y-4">
-             <div className="card-contact flex items-center text-sm text-muted-foreground">
-                <Mail className="shrink-0 w-7 h-7 mr-3 pr-3 border-r border-border" />
-                 <a href={`mailto:${faculty.email}`} className="hover:text-primary break-all">{faculty.email}</a>
-             </div>
-             <div className="card-contact flex items-center text-sm text-muted-foreground">
-                <Phone className="shrink-0 w-7 h-7 mr-3 pr-3 border-r border-border" />
-                <a href={`tel:${faculty.phone.replace(/\s/g, '')}`} className="hover:text-primary">{faculty.phone}</a>
-             </div>
-             <div className="card-contact flex items-center text-sm text-muted-foreground">
-                 <MapPin className="shrink-0 w-7 h-7 mr-3 pr-3 border-r border-border" />
-                 <span>Greater Noida, UP, India</span>
-             </div>
-          </div>
         </div>
         
         <div className="card-buttons flex bg-card mt-auto sticky bottom-0 left-0">
@@ -158,15 +137,6 @@ const FacultyCard = ({ faculty }: { faculty: any }) => {
             )}
           >
             EXPERIENCE
-          </button>
-          <button
-            onClick={() => handleSectionChange('contact')}
-            className={cn(
-              'flex-1 text-sm py-4 px-1.5 cursor-pointer text-muted-foreground transition-all duration-300 font-medium border-b-2 border-transparent focus:outline-none',
-              activeSection === 'contact' && 'text-primary font-semibold border-primary bg-primary/10'
-            )}
-          >
-            CONTACT
           </button>
         </div>
       </div>
@@ -282,3 +252,5 @@ export default function FacultyPage() {
     </div>
   );
 }
+
+    
