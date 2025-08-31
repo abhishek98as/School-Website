@@ -3,7 +3,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Menu, University, Globe } from "lucide-react";
+import { Menu, University } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
 import {
@@ -69,9 +69,8 @@ export function Header() {
           <ThemeToggle />
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
-              <Button variant="outline" size="icon">
-                <Globe className="h-5 w-5" />
-                <span className="sr-only">Translate</span>
+              <Button variant="outline" size="sm" className="font-bold">
+                <span className="notranslate text-xs">हिन्दी | EN</span>
               </Button>
             </DropdownMenuTrigger>
             <DropdownMenuContent>
