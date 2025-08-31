@@ -42,12 +42,15 @@ export function WelcomePopup() {
   const [api, setApi] = React.useState<CarouselApi>();
   const [current, setCurrent] = React.useState(0);
   const [count, setCount] = React.useState(0);
+  const [isHovered, setIsHovered] = React.useState(false);
 
   React.useEffect(() => {
     // Open the popup on component mount
     setOpen(true);
-
-    if (!api) return;
+  }, []);
+  
+  React.useEffect(() => {
+    if (!api || isHovered) return;
 
     const interval = setInterval(() => {
         if (api.canScrollNext()) {
@@ -58,7 +61,7 @@ export function WelcomePopup() {
     }, 2000);
 
     return () => clearInterval(interval);
-  }, [api]);
+  }, [api, isHovered]);
 
   React.useEffect(() => {
     if (!api) return;
@@ -73,7 +76,11 @@ export function WelcomePopup() {
 
   return (
     <Dialog open={open} onOpenChange={setOpen}>
-      <DialogContent className="max-w-5xl p-0 border-0">
+      <DialogContent 
+        className="max-w-5xl p-0 border-0"
+        onMouseEnter={() => setIsHovered(true)}
+        onMouseLeave={() => setIsHovered(false)}
+      >
         <DialogHeader className="sr-only">
           <DialogTitle>Welcome to Galgamtrics College</DialogTitle>
         </DialogHeader>

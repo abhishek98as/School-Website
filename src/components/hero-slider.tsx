@@ -63,9 +63,10 @@ export function HeroSlider() {
   ];
 
   const [api, setApi] = React.useState<CarouselApi>();
+  const [isHovered, setIsHovered] = React.useState(false);
 
   React.useEffect(() => {
-    if (!api) return;
+    if (!api || isHovered) return;
 
     const interval = setInterval(() => {
       if (api.canScrollNext()) {
@@ -73,13 +74,17 @@ export function HeroSlider() {
       } else {
         api.scrollTo(0);
       }
-    }, 5000); 
+    }, 2000); 
 
     return () => clearInterval(interval);
-  }, [api]);
+  }, [api, isHovered]);
 
   return (
-    <section className="w-full relative">
+    <section 
+      className="w-full relative"
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+    >
       <Carousel setApi={setApi} className="w-full" opts={{ loop: true }}>
         <CarouselContent>
           {slides.map((slide, index) => (
