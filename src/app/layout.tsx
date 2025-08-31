@@ -5,6 +5,7 @@ import { Footer } from '@/components/layout/footer';
 import { Toaster } from '@/components/ui/toaster';
 import { GoogleTranslate } from '@/components/google-translate';
 import { WhatsappBubble } from '@/components/whatsapp-bubble';
+import { ThemeProvider } from '@/components/theme-provider';
 
 export const metadata: Metadata = {
   title: 'Galgametrics College Hub',
@@ -27,12 +28,19 @@ export default function RootLayout({
         />
       </head>
       <body className="font-body antialiased">
-        <Header />
-        <main>{children}</main>
-        <Footer />
-        <Toaster />
-        <GoogleTranslate />
-        <WhatsappBubble phoneNumber="+917068482741" />
+         <ThemeProvider
+            attribute="class"
+            defaultTheme="system"
+            enableSystem
+            disableTransitionOnChange
+          >
+          <Header />
+          <main>{children}</main>
+          <Footer />
+          <Toaster />
+          <GoogleTranslate />
+          <WhatsappBubble phoneNumber="+917068482741" />
+        </ThemeProvider>
       </body>
     </html>
   );
