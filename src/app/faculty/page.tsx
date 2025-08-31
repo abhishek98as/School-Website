@@ -22,7 +22,7 @@ const FacultyCard = ({ faculty }: { faculty: any }) => {
         'card max-w-sm mx-auto overflow-hidden relative z-10 bg-card flex flex-col rounded-lg shadow-lg transition-all duration-300 ease-in-out',
         activeSection === 'about' && 'h-[450px]',
         activeSection === 'experience' && 'h-[550px]',
-        activeSection === 'contact' && 'h-[430px]'
+        activeSection === 'contact' && 'h-[450px]'
       )}
     >
       <div
@@ -46,12 +46,13 @@ const FacultyCard = ({ faculty }: { faculty: any }) => {
           alt={`Photo of ${faculty.name}`}
           width={100}
           height={100}
+          data-ai-hint={faculty.image.hint}
         />
         <h1
           className={cn(
             'card-fullname absolute font-bold text-white whitespace-nowrap transition-all duration-300 ease-in-out',
             isActive
-              ? 'bottom-[26px] left-[86px] text-lg transform-none'
+              ? 'bottom-[34px] left-[86px] text-lg transform-none'
               : 'bottom-0 left-1/2 text-2xl transform -translate-x-1/2 -translate-y-2.5'
           )}
         >
