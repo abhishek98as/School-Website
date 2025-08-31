@@ -1,3 +1,4 @@
+
 "use client";
 
 import * as React from "react";
@@ -46,7 +47,11 @@ export function WelcomePopup() {
 
   React.useEffect(() => {
     // Open the popup on component mount
-    setOpen(true);
+    const hasSeenPopup = sessionStorage.getItem("welcomePopupSeen");
+    if (!hasSeenPopup) {
+      setOpen(true);
+      sessionStorage.setItem("welcomePopupSeen", "true");
+    }
   }, []);
   
   React.useEffect(() => {
@@ -77,16 +82,16 @@ export function WelcomePopup() {
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogContent 
-        className="max-w-5xl p-0 border-0"
+        className="max-w-[95vw] sm:max-w-2xl md:max-w-4xl lg:max-w-5xl p-0 border-0 rounded-lg overflow-hidden"
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
       >
         <DialogHeader className="sr-only">
-          <DialogTitle>Welcome to Galgamtrics College</DialogTitle>
+          <DialogTitle>Welcome to Galgametrics College</DialogTitle>
         </DialogHeader>
         <DialogClose asChild>
-          <button className="absolute top-4 right-4 z-20 rounded-full p-2 bg-black/50 text-white hover:bg-black/70 transition-colors">
-            <X className="h-6 w-6" />
+          <button className="absolute top-2 right-2 md:top-4 md:right-4 z-20 rounded-full p-2 bg-black/50 text-white hover:bg-black/70 transition-colors">
+            <X className="h-5 w-5 md:h-6 md:w-6" />
             <span className="sr-only">Close</span>
           </button>
         </DialogClose>
@@ -94,7 +99,7 @@ export function WelcomePopup() {
           <CarouselContent>
             {/* Slide 1: Admissions Open */}
             <CarouselItem>
-              <div className="relative h-[80vh] w-full flex items-center justify-center p-4" style={{ perspective: '1000px' }}>
+              <div className="relative h-[90svh] md:h-[80vh] w-full flex items-center justify-center p-4" style={{ perspective: '1000px' }}>
                 <Image
                   src="https://picsum.photos/1200/800?random=110"
                   alt="Students studying"
@@ -104,20 +109,20 @@ export function WelcomePopup() {
                 />
                 <div className="absolute inset-0 bg-black/50" />
                 <div 
-                  className="relative text-center text-white p-8 bg-black/40 rounded-xl shadow-2xl backdrop-blur-sm transform-gpu transition-transform hover:scale-105"
+                  className="relative text-center text-white p-6 md:p-8 bg-black/40 rounded-xl shadow-2xl backdrop-blur-sm transform-gpu transition-transform hover:scale-105"
                   style={{ transform: 'rotateY(-10deg) rotateX(5deg)', transformStyle: 'preserve-3d' }}
                 >
-                    <School className="h-16 w-16 mx-auto text-primary mb-4" />
-                    <h2 className="text-4xl md:text-6xl font-bold tracking-tighter drop-shadow-lg">Admissions Open</h2>
-                    <p className="text-lg md:text-2xl mt-2 text-primary-foreground/90 drop-shadow-md">2025-2026</p>
-                    <p className="mt-4 max-w-sm mx-auto text-primary-foreground/80">Join our vibrant community and start your journey towards excellence.</p>
+                    <School className="h-12 w-12 md:h-16 md:w-16 mx-auto text-primary mb-4" />
+                    <h2 className="text-3xl md:text-5xl lg:text-6xl font-bold tracking-tighter drop-shadow-lg">Admissions Open</h2>
+                    <p className="text-base md:text-xl lg:text-2xl mt-2 text-primary-foreground/90 drop-shadow-md">2025-2026</p>
+                    <p className="mt-4 max-w-xs md:max-w-sm mx-auto text-sm md:text-base text-primary-foreground/80">Join our vibrant community and start your journey towards excellence.</p>
                 </div>
               </div>
             </CarouselItem>
             
             {/* Slide 2: Fee Structure */}
             <CarouselItem>
-                 <div className="relative h-[80vh] w-full flex flex-col items-center justify-center p-6 md:p-10">
+                 <div className="relative h-[90svh] md:h-[80vh] w-full flex flex-col items-center justify-center p-4 md:p-10">
                     <Image
                         src="https://picsum.photos/1200/800?random=111"
                         alt="Students in a classroom"
@@ -126,24 +131,24 @@ export function WelcomePopup() {
                         className="object-cover"
                     />
                     <div className="absolute inset-0 bg-black/60" />
-                    <div className="relative z-10 flex flex-col items-center text-center w-full max-w-2xl">
-                        <div className="flex items-center gap-4 mb-6 text-primary">
-                            <IndianRupee className="h-12 w-12" />
-                            <h2 className="text-4xl md:text-5xl font-bold text-white drop-shadow-lg">Fee Structure</h2>
+                    <div className="relative z-10 flex flex-col items-center text-center w-full max-w-sm md:max-w-2xl">
+                        <div className="flex items-center gap-4 mb-4 md:mb-6 text-primary">
+                            <IndianRupee className="h-10 w-10 md:h-12 md:w-12" />
+                            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white drop-shadow-lg">Fee Structure</h2>
                         </div>
                         <Card className="w-full bg-white/90 backdrop-blur-sm shadow-2xl border-0">
                             <CardContent className="p-0">
-                                <ScrollArea className="h-96">
+                                <ScrollArea className="h-[60svh] md:h-96">
                                 <Table>
                                 <TableHeader>
                                     <TableRow>
-                                    <TableHead className="text-left font-bold text-lg text-primary">Class</TableHead>
-                                    <TableHead className="text-right font-bold text-lg text-primary">Annual Fee</TableHead>
+                                    <TableHead className="text-left font-bold text-base md:text-lg text-primary">Class</TableHead>
+                                    <TableHead className="text-right font-bold text-base md:text-lg text-primary">Annual Fee</TableHead>
                                     </TableRow>
                                 </TableHeader>
                                 <TableBody>
                                     {feeStructure.map((item) => (
-                                    <TableRow key={item.class} className="text-base">
+                                    <TableRow key={item.class} className="text-sm md:text-base">
                                         <TableCell className="font-medium text-gray-800">{item.class}</TableCell>
                                         <TableCell className="text-right font-semibold text-gray-900">{item.fee}</TableCell>
                                     </TableRow>
@@ -159,7 +164,7 @@ export function WelcomePopup() {
 
             {/* Slide 3: Music Event */}
             <CarouselItem>
-              <div className="relative h-[80vh] w-full text-white">
+              <div className="relative h-[90svh] md:h-[80vh] w-full text-white">
                 <Image
                   src="https://picsum.photos/1200/800?random=112"
                   alt="Music Event"
@@ -168,12 +173,12 @@ export function WelcomePopup() {
                   className="object-cover"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
-                <div className="absolute inset-0 flex flex-col items-center justify-center text-center p-6">
-                   <div className="bg-black/30 backdrop-blur-sm p-8 rounded-xl shadow-2xl">
-                    <Music className="h-16 w-16 mx-auto text-primary mb-4 animate-pulse" />
-                    <h2 className="text-4xl md:text-6xl font-bold tracking-tighter drop-shadow-lg">RHYTHM NIGHT</h2>
-                    <p className="text-lg md:text-xl mt-2 text-primary-foreground/90">An evening of unforgettable melodies.</p>
-                    <div className="mt-6 font-semibold text-lg bg-primary/80 text-primary-foreground py-2 px-6 rounded-full inline-block">
+                <div className="absolute inset-0 flex flex-col items-center justify-center text-center p-4 md:p-6">
+                   <div className="bg-black/30 backdrop-blur-sm p-6 md:p-8 rounded-xl shadow-2xl">
+                    <Music className="h-12 w-12 md:h-16 md:w-16 mx-auto text-primary mb-4 animate-pulse" />
+                    <h2 className="text-3xl md:text-5xl lg:text-6xl font-bold tracking-tighter drop-shadow-lg">RHYTHM NIGHT</h2>
+                    <p className="text-base md:text-lg lg:text-xl mt-2 text-primary-foreground/90">An evening of unforgettable melodies.</p>
+                    <div className="mt-6 font-semibold text-sm md:text-lg bg-primary/80 text-primary-foreground py-2 px-4 md:px-6 rounded-full inline-block">
                         October 28th, 2024 | 7:00 PM Onwards
                     </div>
                    </div>
@@ -181,8 +186,8 @@ export function WelcomePopup() {
               </div>
             </CarouselItem>
           </CarouselContent>
-          <CarouselPrevious className="absolute left-4 top-1/2 -translate-y-1/2 z-10" />
-          <CarouselNext className="absolute right-4 top-1/2 -translate-y-1/2 z-10" />
+          <CarouselPrevious className="absolute left-2 md:left-4 top-1/2 -translate-y-1/2 z-10" />
+          <CarouselNext className="absolute right-2 md:right-4 top-1/2 -translate-y-1/2 z-10" />
           <div className="absolute bottom-4 left-1/2 -translate-x-1/2 text-sm text-white bg-black/50 px-3 py-1 rounded-full">
             {current} / {count}
           </div>
