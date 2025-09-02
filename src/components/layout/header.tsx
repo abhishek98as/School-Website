@@ -12,6 +12,12 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion"
 import { useState } from "react";
 import { ThemeToggle } from "../theme-toggle";
 import { cn } from "@/lib/utils";
@@ -100,7 +106,7 @@ export function Header() {
           <ThemeToggle />
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
-              <Button variant="outline" size="sm" className="font-bold transition-colors hover:bg-accent hover:text-accent-foreground">
+              <Button variant="outline" size="sm" className="font-bold transition-all hover:scale-110 hover:text-accent-foreground hover:bg-accent">
                 <span className="notranslate text-xs">हिन्दी | EN</span>
               </Button>
             </DropdownMenuTrigger>
@@ -125,7 +131,7 @@ export function Header() {
                   <span className="sr-only">Toggle navigation menu</span>
                 </Button>
               </SheetTrigger>
-              <SheetContent side="right">
+              <SheetContent side="right" className="w-full max-w-sm">
                  <SheetHeader>
                   <SheetTitle className="sr-only">Navigation Menu</SheetTitle>
                 </SheetHeader>
@@ -134,45 +140,51 @@ export function Header() {
                     <University className="h-8 w-8 text-primary" />
                     <span className="font-bold">GALGOTIAS COLLEGE</span>
                   </Link>
-                  <nav className="grid gap-4">
-                    {navLinks.map((link) => (
-                       link.subLinks ? (
-                        <div key={link.href}>
-                           <span className="text-lg font-medium text-muted-foreground">{link.label}</span>
-                           <div className="grid gap-2 pl-4 mt-2">
-                            {link.subLinks.map(subLink => (
-                                <Link
-                                    key={subLink.href}
-                                    href={subLink.href}
-                                    onClick={() => setMenuOpen(false)}
-                                    className={cn(
-                                        "text-base font-medium transition-colors hover:text-primary notranslate",
-                                        pathname === subLink.href && "text-primary font-bold"
-                                    )}
-                                >
-                                    {subLink.label}
-                                </Link>
-                            ))}
-                           </div>
-                        </div>
-                      ) : (
-                      <Link
-                        key={link.href}
-                        href={link.href}
-                        onClick={() => setMenuOpen(false)}
-                        className={cn(
-                          "text-lg font-medium transition-colors hover:text-primary notranslate",
-                          pathname === link.href && "text-primary font-bold"
-                        )}
-                      >
-                        {link.label}
-                      </Link>
-                      )
-                    ))}
+                  <nav className="grid gap-2">
+                     <Accordion type="single" collapsible className="w-full">
+                        {navLinks.map((link) => (
+                        link.subLinks ? (
+                            <AccordionItem value={link.href} key={link.href} className="border-b-0">
+                                <AccordionTrigger className="text-lg font-medium hover:no-underline hover:text-primary transition-colors py-2">
+                                    {link.label}
+                                </AccordionTrigger>
+                                <AccordionContent className="pb-0">
+                                <div className="grid gap-2 pl-7 mt-1">
+                                    {link.subLinks.map(subLink => (
+                                        <Link
+                                            key={subLink.href}
+                                            href={subLink.href}
+                                            onClick={() => setMenuOpen(false)}
+                                            className={cn(
+                                                "text-base font-medium transition-colors hover:text-primary notranslate",
+                                                pathname === subLink.href && "text-primary font-bold"
+                                            )}
+                                        >
+                                            {subLink.label}
+                                        </Link>
+                                    ))}
+                                </div>
+                                </AccordionContent>
+                            </AccordionItem>
+                        ) : (
+                        <Link
+                            key={link.href}
+                            href={link.href}
+                            onClick={() => setMenuOpen(false)}
+                            className={cn(
+                            "text-lg font-medium transition-colors hover:text-primary notranslate flex items-center py-2",
+                            pathname === link.href && "text-primary font-bold"
+                            )}
+                        >
+                            {link.label}
+                        </Link>
+                        )
+                        ))}
+                     </Accordion>
                      <Link
                       href="/login"
                       onClick={() => setMenuOpen(false)}
-                      className="text-lg font-medium transition-colors hover:text-primary flex items-center"
+                      className="text-lg font-medium transition-colors hover:text-primary flex items-center pt-4"
                     >
                       <LogIn className="mr-2 h-5 w-5" />
                       Login
