@@ -25,11 +25,11 @@ export function WhatsappBubble({ phoneNumber }: { phoneNumber: string }) {
     <div className="fixed bottom-4 right-4 md:bottom-6 md:right-6 z-50">
       <Button
         asChild
-        className="rounded-full h-14 w-auto px-4 md:h-16 md:px-6 shadow-lg bg-[#25D366] hover:bg-[#128C7E] text-white flex items-center gap-2 md:gap-3 transition-all duration-300 transform hover:scale-105"
+        className="rounded-full h-14 w-14 md:h-16 md:w-auto md:px-6 shadow-lg bg-[#25D366] hover:bg-[#128C7E] text-white flex items-center gap-2 md:gap-3 transition-all duration-300 transform hover:scale-105 animate-float hover:animate-none"
       >
         <Link href={whatsappLink} target="_blank" rel="noopener noreferrer">
           <WhatsAppIcon />
-          <span className="text-base md:text-lg font-semibold">Get Query</span>
+          <span className="hidden md:inline text-base md:text-lg font-semibold">Get Query</span>
         </Link>
       </Button>
     </div>
