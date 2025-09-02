@@ -1,12 +1,11 @@
-
 {
   "global": {
-    "whatsappNumber": "+917985154505"
+    "whatsappNumber": "+917068482741"
   },
   "branding": {
-    "logoUrl": "https://picsum.photos/seed/logo/160/40",
-    "faviconUrl": "https://picsum.photos/seed/favicon/32/32",
-    "logoText": "GALGOTIAS COLLEGE"
+    "logoUrl": "https://picsum.photos/160/40",
+    "faviconUrl": "https://picsum.photos/32/32",
+    "logoText": "PMS"
   },
   "about": {
     "ourAspiration": {
@@ -737,8 +736,8 @@
     "subtitle": "A sprawling 19-acre campus designed to provide a holistic educational experience.",
     "features": [
       {
-        "name": "Green & Serene",
-        "description": "A lush, eco-friendly campus that provides a tranquil environment for learning.",
+        "name": "Lush Greenery",
+        "description": "A serene environment surrounded by nature, promoting well-being and focus.",
         "icon": "Trees",
         "image": {
           "src": "https://picsum.photos/600/400?random=91",
@@ -746,8 +745,8 @@
         }
       },
       {
-        "name": "Cafeteria & Dining",
-        "description": "Hygienic and diverse food options to cater to all tastes.",
+        "name": "Modern Cafeteria",
+        "description": "Offering a variety of nutritious and delicious meals and snacks.",
         "icon": "Utensils",
         "image": {
           "src": "https://picsum.photos/600/400?random=92",
@@ -756,16 +755,16 @@
       },
       {
         "name": "Transport Facility",
-        "description": "Safe and reliable transport services connecting various parts of the city.",
+        "description": "Safe and reliable bus services connecting various parts of the city.",
         "icon": "Bus",
         "image": {
           "src": "https://picsum.photos/600/400?random=93",
-          "hint": "college bus"
+          "hint": "school bus"
         }
       },
       {
-        "name": "Secure Environment",
-        "description": "24/7 security and surveillance to ensure a safe campus for all.",
+        "name": "Secure Campus",
+        "description": "24/7 security surveillance to ensure a safe learning environment.",
         "icon": "ShieldCheck",
         "image": {
           "src": "https://picsum.photos/600/400?random=94",
@@ -775,41 +774,49 @@
     ]
   },
   "virtualTourPage": {
-    "title": "360° Virtual Tour",
-    "subtitle": "Explore our campus from anywhere in the world. Click and drag to look around.",
+    "title": "Virtual Tour",
+    "subtitle": "Explore our campus from anywhere in the world. Click on a location to begin your tour.",
     "views": [
       {
-        "title": "Main Campus Entrance",
-        "id": "streetview",
+        "id": "1",
+        "title": "Main Campus Building",
         "icon": "Building",
-        "embedUrl": "https://www.google.com/maps/embed?pb=!4v1628624953931!6m8!1m7!1sCAoSLEFGMVFpcE5qVlZuVnBKM2pYVEx3X1F3S0Y2dG9wWWhwNExwWmpFNEp2V2st!2m2!1d28.5355161!2d77.3910265!3f326.5!4f0!5f0.7820865899450742"
+        "embedUrl": "https://www.google.com/maps/embed?pb=!4v1617265939882!6m8!1m7!1sCAoSLEFGMVFpcE5YcTdfYlZEX2wzX1lYc3dfX0tDX2lfU3N3Z05pX2lFX01fSWs!2m2!1d28.614305!2d77.372559!3f324.99!4f0!5f0.78"
       },
       {
+        "id": "2",
         "title": "Central Library",
-        "id": "library",
         "icon": "Library",
-        "embedUrl": "https://www.google.com/maps/embed?pb=!4v1721303102143!6m8!1m7!1sCAoSLEFGMVFpcE5MS1I2dFJMMkxuZDA2Z0RCejQzY0lRNTNOeGdXNk1xZkY0UjZ3!2m2!1d28.4244243!2d77.0267499!3f314.15!4f0!5f0.7820865899450742"
+        "embedUrl": "https://www.google.com/maps/embed?pb=!4v1617266184589!6m8!1m7!1sCAoSLEFGMVFpcE5RQ2hfLVNXMUhxM1BsaWxraVotb2dPY3NfN3d0QldIdWN3Xzhn!2m2!1d28.614624!2d77.37265!3f0!4f0!5f0.78"
       },
       {
-        "title": "Engineering Labs",
-        "id": "labs",
+        "id": "3",
+        "title": "Science Labs",
         "icon": "Microscope",
-        "embedUrl": "https://www.google.com/maps/embed?pb=!4v1721303195229!6m8!1m7!1sCAoSLEFGMVFpcE9xLWlQX0d6bVl6U3dGRVdQSmF3ZE5uS1hIN1FmeTdpUmx1X1VI!2m2!1d28.6139391!2d77.2090212!3f324.78!4f-1.55!5f0.7820865899450742"
+        "embedUrl": "https://www.google.com/maps/embed?pb=!4v1617266347924!6m8!1m7!1sCAoSLEFGMVFpcE5kSlB6bVFRRk5xd1IyUXpfeWNRLXRwV0hfZ21sMmVYd0hxLW9S!2m2!1d28.61448!2d77.37286!3f0!4f0!5f0.78"
       },
       {
-        "title": "Art & Design Studio",
-        "id": "studio",
+        "id": "4",
+        "title": "Design Studio",
         "icon": "SwatchBook",
-        "embedUrl": "https://www.google.com/maps/embed?pb=!4v1721303254215!6m8!1m7!1sCAoSLEFGMVFpcE94eDR2X2FNZ2VVS09vX0dxX2NfQ3VHeEZHRWY3Zmc3R4enMtdy!2m2!1d28.5355161!2d77.3910265!3f278.31!4f-12.8!5f0.7820865899450742"
+        "embedUrl": "https://www.google.com/maps/embed?pb=!4v1617266456396!6m8!1m7!1sCAoSLEFGMVFpcE1DSlVHM3dZcVZ3X2JzWFNzTjZfX1ZlMnhGclVqUmVhNlBvUVpr!2m2!1d28.614565!2d77.37233!3f0!4f0!5f0.78"
       }
     ]
   },
   "footer": {
-    "collegeName": " PMS SCHOOL",
-    "slogan": "Nurturing Minds, Shaping Futures",
+    "collegeName": "PMS",
+    "slogan": "Fostering Excellence and Innovation",
     "quickLinks": {
       "title": "Quick Links",
       "links": [
+        {
+          "href": "/",
+          "label": "Home"
+        },
+        {
+          "href": "/about/about-us",
+          "label": "About Us"
+        },
         {
           "href": "/academics",
           "label": "Academics"
@@ -820,36 +827,20 @@
         },
         {
           "href": "/faculty",
-          "label": "Our Faculty"
+          "label": "Faculty"
         },
         {
-          "href": "/infrastructure",
-          "label": "Infrastructure"
-        },
-        {
-          "href": "/student-life",
-          "label": "Student Life"
-        },
-        {
-          "href": "/library",
-          "label": "Library"
-        },
-        {
-          "href": "/campus",
-          "label": "Campus"
-        },
-        {
-          "href": "/virtual-tour",
-          "label": "Virtual Tour"
+          "href": "/contact-us",
+          "label": "Contact Us"
         }
       ]
     },
     "reachUs": {
       "title": "Reach Us",
-      "address": "Police Modern School , 39 BN PAC Mirzapur,231001",
-      "phone": "+917985154505",
-      "email": "pms39bnmirzapur@gmail.com"
+      "address": "1 Knowledge Park, Greater Noida, UP, India",
+      "phone": "+91 120 451 3800",
+      "email": "info@galgotiacollege.edu"
     },
-    "copyright": "© Copyright 2025, All rights reserved with PMS School MZP"
+    "copyright": "© 2024 PMS. All Rights Reserved."
   }
 }
