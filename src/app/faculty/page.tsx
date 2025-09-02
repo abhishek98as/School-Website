@@ -32,8 +32,8 @@ const FacultyCard = ({ faculty }: { faculty: any }) => {
         )}
       >
         <div
-          className="card-cover w-full h-full absolute top-0 left-0 bg-cover bg-center filter blur-xl scale-125 transition-all duration-500 ease-in-out"
-          style={{ backgroundImage: `url(${faculty.image.src})` }}
+          className="card-cover w-full h-full absolute left-0 bg-cover bg-center filter blur-xl scale-125 transition-all duration-500 ease-in-out"
+          style={{ backgroundImage: `url(${faculty.image.src})`, top: '0' }}
         />
         <Image
           className={cn(
