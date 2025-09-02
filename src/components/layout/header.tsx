@@ -100,7 +100,7 @@ export function Header() {
           <ThemeToggle />
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
-              <Button variant="outline" size="sm" className="font-bold">
+              <Button variant="outline" size="sm" className="font-bold transition-colors hover:bg-accent hover:text-accent-foreground">
                 <span className="notranslate text-xs">हिन्दी | EN</span>
               </Button>
             </DropdownMenuTrigger>
@@ -110,7 +110,7 @@ export function Header() {
             </DropdownMenuContent>
           </DropdownMenu>
 
-           <Button asChild variant="secondary" className="hidden lg:flex group transition-all duration-300 ease-in-out">
+           <Button asChild variant="secondary" className="hidden lg:flex group transition-all duration-300 ease-in-out hover:shadow-lg hover:scale-105">
             <Link href="/login">
               <LogIn className="mr-2 h-5 w-5 transition-transform duration-300 group-hover:translate-x-1" />
               Login
