@@ -24,9 +24,11 @@ export interface IContent {
   home: {
     heroSlider: {
       slides: {
-        src: string;
-        alt: string;
-        hint: string;
+        image: {
+          src: string;
+          alt: string;
+          hint: string;
+        };
         title: string;
         subtitle: string;
         cta: {
@@ -78,8 +80,10 @@ export interface IContent {
       stars: {
         name: string;
         achievement: string;
-        src: string;
-        hint: string;
+        image: {
+          src: string;
+          hint: string;
+        };
       }[];
     };
     newsAndEvents: {
@@ -244,3 +248,5 @@ export interface IContent {
     copyright: string;
   };
 }
+
+    

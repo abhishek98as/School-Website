@@ -37,9 +37,11 @@
     "heroSlider": {
       "slides": [
         {
-          "src": "https://picsum.photos/1920/1080?random=1",
-          "alt": "University Campus",
-          "hint": "university campus",
+          "image": {
+            "src": "https://picsum.photos/1920/1080?random=1",
+            "alt": "University Campus",
+            "hint": "university campus"
+          },
           "title": "Excellence in Education",
           "subtitle": "Discover a place where knowledge meets innovation.",
           "cta": {
@@ -48,9 +50,11 @@
           }
         },
         {
-          "src": "https://picsum.photos/1920/1080?random=2",
-          "alt": "Students in a classroom",
-          "hint": "students classroom",
+          "image": {
+            "src": "https://picsum.photos/1920/1080?random=2",
+            "alt": "Students in a classroom",
+            "hint": "students classroom"
+          },
           "title": "Vibrant Campus Life",
           "subtitle": "Join a community of learners and leaders.",
           "cta": {
@@ -59,9 +63,11 @@
           }
         },
         {
-          "src": "https://picsum.photos/1920/1080?random=3",
-          "alt": "University Library",
-          "hint": "university library",
+          "image": {
+            "src": "https://picsum.photos/1920/1080?random=3",
+            "alt": "University Library",
+            "hint": "university library"
+          },
           "title": "State-of-the-Art Facilities",
           "subtitle": "Learn in an environment built for success.",
           "cta": {
@@ -70,9 +76,11 @@
           }
         },
         {
-          "src": "https://picsum.photos/1920/1080?random=4",
-          "alt": "Graduation ceremony",
-          "hint": "graduation ceremony",
+          "image": {
+            "src": "https://picsum.photos/1920/1080?random=4",
+            "alt": "Graduation ceremony",
+            "hint": "graduation ceremony"
+          },
           "title": "Your Future Starts Here",
           "subtitle": "Begin your journey towards a successful career.",
           "cta": {
@@ -171,38 +179,50 @@
         {
           "name": "Priya Sharma",
           "achievement": "Winner, National Robotics Olympiad",
-          "src": "https://picsum.photos/400/500?random=31",
-          "hint": "student portrait"
+          "image": {
+            "src": "https://picsum.photos/400/500?random=31",
+            "hint": "student portrait"
+          }
         },
         {
           "name": "Rahul Verma",
           "achievement": "Published Research in IEEE",
-          "src": "https://picsum.photos/400/500?random=32",
-          "hint": "student portrait"
+          "image": {
+            "src": "https://picsum.photos/400/500?random=32",
+            "hint": "student portrait"
+          }
         },
         {
           "name": "Anjali Mehta",
           "achievement": "Top Rank in University Exams",
-          "src": "https://picsum.photos/400/500?random=33",
-          "hint": "student portrait"
+          "image": {
+            "src": "https://picsum.photos/400/500?random=33",
+            "hint": "student portrait"
+          }
         },
         {
           "name": "Sameer Khan",
           "achievement": "Best Athlete of the Year",
-          "src": "https://picsum.photos/400/500?random=34",
-          "hint": "student portrait"
+          "image": {
+            "src": "https://picsum.photos/400/500?random=34",
+            "hint": "student portrait"
+          }
         },
         {
           "name": "Neha Gupta",
           "achievement": "Founded a Successful Startup",
-          "src": "https://picsum.photos/400/500?random=35",
-          "hint": "student portrait"
+          "image": {
+            "src": "https://picsum.photos/400/500?random=35",
+            "hint": "student portrait"
+          }
         },
         {
           "name": "Vikram Singh",
           "achievement": "International Chess Champion",
-          "src": "https://picsum.photos/400/500?random=36",
-          "hint": "student portrait"
+          "image": {
+            "src": "https://picsum.photos/400/500?random=36",
+            "hint": "student portrait"
+          }
         }
       ]
     },
@@ -585,3 +605,5 @@
     "copyright": "© Copyright 2024, all rights reserved with GALGOTIA COLLEGE"
   }
 }
+
+    

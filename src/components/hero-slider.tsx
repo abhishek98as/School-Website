@@ -50,12 +50,12 @@ export function HeroSlider({ content }: HeroSliderProps) {
             <CarouselItem key={index}>
               <div className="relative h-[60vh] md:h-[80vh] lg:h-[95vh] w-full">
                 <Image
-                  src={slide.src}
-                  alt={slide.alt}
+                  src={slide.image.src}
+                  alt={slide.image.alt}
                   fill
                   style={{ objectFit: "cover" }}
                   priority={index === 0}
-                  data-ai-hint={slide.hint}
+                  data-ai-hint={slide.image.hint}
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/30 to-transparent" />
                 <div className="absolute inset-0 flex flex-col items-center justify-center text-center text-white p-4">
@@ -83,3 +83,5 @@ export function HeroSlider({ content }: HeroSliderProps) {
     </section>
   );
 }
+
+    

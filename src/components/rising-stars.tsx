@@ -51,12 +51,12 @@ export function RisingStars({ content }: RisingStarsProps) {
                   <Card className="overflow-hidden group">
                     <CardContent className="p-0 relative">
                       <Image
-                        src={star.src}
+                        src={star.image.src}
                         alt={`Photo of ${star.name}`}
                         width={400}
                         height={500}
                         className="w-full h-auto object-cover aspect-[4/5] transition-transform duration-300 group-hover:scale-105"
-                        data-ai-hint={star.hint}
+                        data-ai-hint={star.image.hint}
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
                       <div className="absolute bottom-0 left-0 p-4">
@@ -76,3 +76,5 @@ export function RisingStars({ content }: RisingStarsProps) {
     </section>
   );
 }
+
+    

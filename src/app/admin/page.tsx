@@ -228,6 +228,10 @@ export default function AdminPage() {
                                     <Input value={slide.title} onChange={(e) => handleInputChange(`home.heroSlider.slides.${index}.title`, e.target.value)} />
                                     <Label>Subtitle</Label>
                                     <Input value={slide.subtitle} onChange={(e) => handleInputChange(`home.heroSlider.slides.${index}.subtitle`, e.target.value)} />
+                                    <Label>Image URL</Label>
+                                    <Input value={slide.image.src} onChange={(e) => handleInputChange(`home.heroSlider.slides.${index}.image.src`, e.target.value)} />
+                                    <Label>Image Alt Text</Label>
+                                    <Input value={slide.image.alt} onChange={(e) => handleInputChange(`home.heroSlider.slides.${index}.image.alt`, e.target.value)} />
                                 </div>
                             ))}
                         </CardContent>
@@ -248,6 +252,15 @@ export default function AdminPage() {
                      <Card>
                         <CardHeader><CardTitle>Highlights Section</CardTitle></CardHeader>
                         <CardContent className="space-y-4">
+                           {content.home.highlights.sliderImages.map((image, index) => (
+                               <div key={index} className="p-2 border rounded-md">
+                                   <h3 className="font-semibold">Highlight Image {index + 1}</h3>
+                                   <Label>Image URL</Label>
+                                   <Input value={image.src} onChange={(e) => handleInputChange(`home.highlights.sliderImages.${index}.src`, e.target.value)} />
+                                   <Label>Image Alt Text</Label>
+                                   <Input value={image.alt} onChange={(e) => handleInputChange(`home.highlights.sliderImages.${index}.alt`, e.target.value)} />
+                               </div>
+                           ))}
                            {content.home.highlights.stats.map((stat, index) => (
                                <div key={index} className="p-2 border rounded-md">
                                    <Label>Stat {index+1} Label</Label>
@@ -261,15 +274,54 @@ export default function AdminPage() {
 
                      <Card>
                         <CardHeader><CardTitle>Virtual Tour Section</CardTitle></CardHeader>
-                        <CardContent>
+                        <CardContent className="space-y-2">
                             <Label>Title</Label>
                             <Input value={content.home.virtualTour.title} onChange={(e) => handleInputChange('home.virtualTour.title', e.target.value)} />
                             <Label>Description</Label>
                             <Textarea value={content.home.virtualTour.description} onChange={(e) => handleInputChange('home.virtualTour.description', e.target.value)} />
                             <Label>Button Text</Label>
                             <Input value={content.home.virtualTour.cta.text} onChange={(e) => handleInputChange('home.virtualTour.cta.text', e.target.value)} />
+                            <Label>Image URL</Label>
+                            <Input value={content.home.virtualTour.image.src} onChange={(e) => handleInputChange('home.virtualTour.image.src', e.target.value)} />
+                             <Label>Image Alt Text</Label>
+                            <Input value={content.home.virtualTour.image.alt} onChange={(e) => handleInputChange('home.virtualTour.image.alt', e.target.value)} />
                         </CardContent>
                     </Card>
+
+                     <Card>
+                        <CardHeader><CardTitle>Rising Stars Section</CardTitle></CardHeader>
+                        <CardContent className="space-y-4">
+                            {content.home.risingStars.stars.map((star, index) => (
+                                <div key={index} className="p-4 border rounded-md space-y-2">
+                                    <h3 className="font-semibold">Star {index + 1}</h3>
+                                    <Label>Name</Label>
+                                    <Input value={star.name} onChange={(e) => handleInputChange(`home.risingStars.stars.${index}.name`, e.target.value)} />
+                                    <Label>Achievement</Label>
+                                    <Input value={star.achievement} onChange={(e) => handleInputChange(`home.risingStars.stars.${index}.achievement`, e.target.value)} />
+                                    <Label>Image URL</Label>
+                                    <Input value={star.image.src} onChange={(e) => handleInputChange(`home.risingStars.stars.${index}.image.src`, e.target.value)} />
+                                </div>
+                            ))}
+                        </CardContent>
+                    </Card>
+
+                     <Card>
+                        <CardHeader><CardTitle>News and Events Section</CardTitle></CardHeader>
+                        <CardContent className="space-y-4">
+                            {content.home.newsAndEvents.items.map((item, index) => (
+                                <div key={index} className="p-4 border rounded-md space-y-2">
+                                    <h3 className="font-semibold">Item {index + 1}</h3>
+                                    <Label>Title</Label>
+                                    <Input value={item.title} onChange={(e) => handleInputChange(`home.newsAndEvents.items.${index}.title`, e.target.value)} />
+                                    <Label>Description</Label>
+                                    <Textarea value={item.description} onChange={(e) => handleInputChange(`home.newsAndEvents.items.${index}.description`, e.target.value)} />
+                                    <Label>Image URL</Label>
+                                    <Input value={item.image.src} onChange={(e) => handleInputChange(`home.newsAndEvents.items.${index}.image.src`, e.target.value)} />
+                                </div>
+                            ))}
+                        </CardContent>
+                    </Card>
+
                 </div>
             </AccordionContent>
           </AccordionItem>
@@ -291,6 +343,8 @@ export default function AdminPage() {
                         <Input value={program.title} onChange={(e) => handleInputChange(`academics.programs.${index}.title`, e.target.value)} />
                         <Label>Description</Label>
                         <Textarea value={program.description} onChange={(e) => handleInputChange(`academics.programs.${index}.description`, e.target.value)} />
+                        <Label>Image URL</Label>
+                        <Input value={program.image.src} onChange={(e) => handleInputChange(`academics.programs.${index}.image.src`, e.target.value)} />
                     </div>
                   ))}
                 </CardContent>
@@ -364,6 +418,8 @@ export default function AdminPage() {
                            <Input value={member.phone} onChange={(e) => handleInputChange(`faculty.members.${memberIndex}.phone`, e.target.value)} />
                            <Label>About</Label>
                            <Textarea value={member.about} onChange={(e) => handleInputChange(`faculty.members.${memberIndex}.about`, e.target.value)} rows={4}/>
+                            <Label>Image URL</Label>
+                           <Input value={member.image.src} onChange={(e) => handleInputChange(`faculty.members.${memberIndex}.image.src`, e.target.value)} />
                            
                            <h4 className="font-semibold pt-2">Experience</h4>
                            {member.experience.map((exp, expIndex) => (
@@ -404,6 +460,8 @@ export default function AdminPage() {
                             <Input value={facility.name} onChange={(e) => handleInputChange(`infrastructure.facilities.${index}.name`, e.target.value)} />
                             <Label>Description</Label>
                             <Textarea value={facility.description} onChange={(e) => handleInputChange(`infrastructure.facilities.${index}.description`, e.target.value)} />
+                             <Label>Image URL</Label>
+                            <Input value={facility.image.src} onChange={(e) => handleInputChange(`infrastructure.facilities.${index}.image.src`, e.target.value)} />
                         </div>
                      ))}
                   </CardContent>
@@ -421,6 +479,9 @@ export default function AdminPage() {
                     <Input value={content.studentLife.title} onChange={(e) => handleInputChange('studentLife.title', e.target.value)} />
                     <Label>Subtitle</Label>
                     <Textarea value={content.studentLife.subtitle} onChange={(e) => handleInputChange('studentLife.subtitle', e.target.value)} />
+                    <Label>Hero Image URL</Label>
+                    <Input value={content.studentLife.hero.image.src} onChange={(e) => handleInputChange('studentLife.hero.image.src', e.target.value)} />
+
                      {content.studentLife.activities.map((activity, index) => (
                         <div key={index} className="p-4 border rounded-md space-y-2">
                             <h3 className="font-semibold">Activity {index + 1}</h3>
@@ -428,6 +489,8 @@ export default function AdminPage() {
                             <Input value={activity.name} onChange={(e) => handleInputChange(`studentLife.activities.${index}.name`, e.target.value)} />
                             <Label>Description</Label>
                             <Textarea value={activity.description} onChange={(e) => handleInputChange(`studentLife.activities.${index}.description`, e.target.value)} />
+                            <Label>Image URL</Label>
+                            <Input value={activity.image.src} onChange={(e) => handleInputChange(`studentLife.activities.${index}.image.src`, e.target.value)} />
                         </div>
                      ))}
                   </CardContent>
@@ -445,6 +508,11 @@ export default function AdminPage() {
                     <Input value={content.library.title} onChange={(e) => handleInputChange('library.title', e.target.value)} />
                     <Label>Subtitle</Label>
                     <Textarea value={content.library.subtitle} onChange={(e) => handleInputChange('library.subtitle', e.target.value)} />
+                    <Label>Hero Image URL</Label>
+                    <Input value={content.library.hero.image.src} onChange={(e) => handleInputChange('library.hero.image.src', e.target.value)} />
+                    <Label>Hero Image Alt Text</Label>
+                    <Input value={content.library.hero.image.alt} onChange={(e) => handleInputChange('library.hero.image.alt', e.target.value)} />
+
                      {content.library.stats.map((stat, index) => (
                         <div key={index} className="p-2 border rounded-md">
                            <Label>Stat {index+1} Label</Label>
@@ -484,6 +552,8 @@ export default function AdminPage() {
                             <Input value={feature.name} onChange={(e) => handleInputChange(`campus.features.${index}.name`, e.target.value)} />
                             <Label>Description</Label>
                             <Textarea value={feature.description} onChange={(e) => handleInputChange(`campus.features.${index}.description`, e.target.value)} />
+                            <Label>Image URL</Label>
+                            <Input value={feature.image.src} onChange={(e) => handleInputChange(`campus.features.${index}.image.src`, e.target.value)} />
                         </div>
                      ))}
                   </CardContent>
@@ -543,3 +613,5 @@ export default function AdminPage() {
     </div>
   );
 }
+
+    
