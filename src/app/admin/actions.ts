@@ -1,8 +1,17 @@
 
 'use server';
 
-import { saveContent as saveContentToFile, IContent } from '@/lib/content';
+import { IContent } from '@/lib/content';
 import { revalidatePath } from 'next/cache';
+import fs from 'fs/promises';
+import path from 'path';
+
+const contentPath = path.join(process.cwd(), 'src/lib/content.json');
+
+async function saveContentToFile(content: IContent): Promise<void> {
+  await fs.writeFile(contentPath, JSON.stringify(content, null, 2), 'utf8');
+}
+
 
 export async function saveContent(content: IContent) {
   try {

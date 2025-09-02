@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { University } from "lucide-react";
 import { Separator } from "@/components/ui/separator";
-import { IContent, getContent } from "@/lib/content";
+import { getContent } from "@/lib/content-loader";
 
 export async function Footer() {
   const content = await getContent();

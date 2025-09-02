@@ -3,7 +3,8 @@
 
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { getContent, saveContent, IContent } from '@/lib/content';
+import type { IContent } from '@/lib/content';
+import { saveContent } from '@/app/admin/actions';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
@@ -30,26 +31,41 @@ export default function AdminPage() {
     if (isAdmin !== 'true') {
       router.push('/login');
     } else {
-      getContent()
-        .then((data) => {
+      const fetchContent = async () => {
+        try {
+          const response = await fetch('/api/content');
+          if (!response.ok) {
+            throw new Error('Failed to fetch content');
+          }
+          const data = await response.json();
           setContent(data);
+        } catch (error) {
+           toast({ variant: 'destructive', title: 'Error', description: 'Failed to load content.' });
+        } finally {
           setIsLoading(false);
-        })
-        .catch(() => {
-          toast({ variant: 'destructive', title: 'Error', description: 'Failed to load content.' });
-          setIsLoading(false);
-        });
+        }
+      };
+      
+      fetchContent();
     }
   }, [router, toast]);
 
   const handleInputChange = (path: string, value: any) => {
     if (!content) return;
     
+    // Create a deep copy to avoid direct state mutation
+    const newContent = JSON.parse(JSON.stringify(content));
+    let current: any = newContent;
+    
     const keys = path.split('.');
-    let current: any = content;
     
     for (let i = 0; i < keys.length - 1; i++) {
         const key = keys[i];
+        if (!current[key]) {
+            // If a key doesn't exist, create it. This is useful for nested objects.
+            const nextKey = keys[i+1];
+            current[key] = isNaN(parseInt(nextKey, 10)) ? {} : [];
+        }
         if (Array.isArray(current)) {
             current = current[parseInt(key)];
         } else {
@@ -64,17 +80,21 @@ export default function AdminPage() {
         current[lastKey] = value;
     }
 
-    setContent({ ...content });
+    setContent(newContent);
   };
   
   const handleSave = async () => {
     if (!content) return;
     try {
-      await saveContent(content);
-      toast({
-        title: 'Success',
-        description: 'Content saved successfully!',
-      });
+      const result = await saveContent(content);
+      if (result.success) {
+        toast({
+          title: 'Success',
+          description: 'Content saved successfully!',
+        });
+      } else {
+        throw new Error(result.error);
+      }
     } catch (error) {
       toast({
         variant: 'destructive',
@@ -101,6 +121,7 @@ export default function AdminPage() {
           </div>
       </header>
       <main className="container mx-auto px-4 md:px-6 py-8">
+        <ScrollArea className="h-[calc(100vh-10rem)]">
         <Card>
             <CardHeader>
                 <CardTitle>Global Settings</CardTitle>
@@ -209,6 +230,7 @@ export default function AdminPage() {
             </AccordionContent>
           </AccordionItem>
         </Accordion>
+        </ScrollArea>
       </main>
     </div>
   );

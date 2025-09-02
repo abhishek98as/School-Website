@@ -7,7 +7,7 @@ import { GoogleTranslate } from '@/components/google-translate';
 import { WhatsappBubble } from '@/components/whatsapp-bubble';
 import { ThemeProvider } from '@/components/theme-provider';
 import Script from 'next/script';
-import { getContent } from '@/lib/content';
+import { getContent } from '@/lib/content-loader';
 
 export const metadata: Metadata = {
   title: 'Galgametrics College Hub',

@@ -1,5 +1,3 @@
-import fs from 'fs/promises';
-import path from 'path';
 
 export interface IContent {
   global: {
@@ -82,15 +80,22 @@ export interface IContent {
       }[];
     };
   };
-}
-
-const contentPath = path.join(process.cwd(), 'src/lib/content.json');
-
-export async function getContent(): Promise<IContent> {
-  const fileContent = await fs.readFile(contentPath, 'utf8');
-  return JSON.parse(fileContent);
-}
-
-export async function saveContent(content: IContent): Promise<void> {
-  await fs.writeFile(contentPath, JSON.stringify(content, null, 2), 'utf8');
+  footer: {
+    collegeName: string;
+    slogan: string;
+    quickLinks: {
+      title: string;
+      links: {
+        href: string;
+        label: string;
+      }[];
+    };
+    reachUs: {
+      title: string;
+      address: string;
+      phone: string;
+      email: string;
+    };
+    copyright: string;
+  };
 }

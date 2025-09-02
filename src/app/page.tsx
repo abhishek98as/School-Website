@@ -6,7 +6,7 @@ import { Achievements } from '@/components/achievements';
 import { RisingStars } from '@/components/rising-stars';
 import { NewsAndEvents } from '@/components/news-and-events';
 import { WelcomePopup } from '@/components/welcome-popup';
-import { getContent } from '@/lib/content';
+import { getContent } from '@/lib/content-loader';
 
 export default async function Home() {
   const content = await getContent();
