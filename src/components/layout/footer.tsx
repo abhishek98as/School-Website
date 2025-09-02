@@ -1,19 +1,12 @@
 import Link from "next/link";
 import { University } from "lucide-react";
 import { Separator } from "@/components/ui/separator";
+import { IContent, getContent } from "@/lib/content";
 
-const quickLinks = [
-  { href: "/academics", label: "Academics" },
-  { href: "/admission", "label": "Admission" },
-  { href: "/faculty", "label": "Our Faculty" },
-  { href: "/infrastructure", label: "Infrastructure" },
-  { href: "/student-life", label: "Student Life" },
-  { href: "/library", label: "Library" },
-  { href: "/campus", label: "Campus" },
-  { href: "/virtual-tour", label: "Virtual Tour" },
-];
+export async function Footer() {
+  const content = await getContent();
+  const footerContent = content.footer;
 
-export function Footer() {
   return (
     <footer className="bg-gray-900 text-gray-300">
       <div className="container mx-auto px-4 md:px-6 py-12">
@@ -21,16 +14,16 @@ export function Footer() {
           <div className="space-y-4">
             <Link href="/" className="flex items-center gap-2 notranslate">
               <University className="h-8 w-8 text-primary" />
-              <span className="font-bold text-lg text-white">GALGOTIAS COLLEGE</span>
+              <span className="font-bold text-lg text-white">{footerContent.collegeName}</span>
             </Link>
             <p className="text-sm">
-              Fostering excellence, innovation, and a passion for learning since 2004.
+              {footerContent.slogan}
             </p>
           </div>
           <div>
-            <h3 className="font-semibold text-white mb-4">Quick Links</h3>
+            <h3 className="font-semibold text-white mb-4">{footerContent.quickLinks.title}</h3>
             <ul className="space-y-2">
-              {quickLinks.map((link) => (
+              {footerContent.quickLinks.links.map((link) => (
                 <li key={link.href}>
                   <Link href={link.href} className="hover:text-primary transition-colors text-sm notranslate">
                     {link.label}
@@ -40,11 +33,11 @@ export function Footer() {
             </ul>
           </div>
           <div>
-            <h3 className="font-semibold text-white mb-4">Reach Us</h3>
+            <h3 className="font-semibold text-white mb-4">{footerContent.reachUs.title}</h3>
             <address className="not-italic space-y-2 text-sm">
-              <p>1, Knowledge Park, Phase-II, Greater Noida, Uttar Pradesh 201306</p>
-              <p>Phone: <a href="tel:+911204370000" className="hover:text-primary transition-colors notranslate">(+91) 120-4370000</a></p>
-              <p>Email: <a href="mailto:info@galgotiacollege.edu" className="hover:text-primary transition-colors break-all notranslate">info@galgotiacollege.edu</a></p>
+              <p>{footerContent.reachUs.address}</p>
+              <p>Phone: <a href={`tel:${footerContent.reachUs.phone.replace(/\D/g, '')}`} className="hover:text-primary transition-colors notranslate">{footerContent.reachUs.phone}</a></p>
+              <p>Email: <a href={`mailto:${footerContent.reachUs.email}`} className="hover:text-primary transition-colors break-all notranslate">{footerContent.reachUs.email}</a></p>
             </address>
           </div>
         </div>
@@ -52,7 +45,7 @@ export function Footer() {
       <Separator className="bg-gray-700" />
       <div className="container mx-auto px-4 md:px-6 py-4">
         <div className="flex flex-col md:flex-row justify-between items-center text-sm text-gray-500 text-center md:text-left">
-          <p>© Copyright 2024, all rights reserved with GALGOTIA COLLEGE</p>
+          <p>{footerContent.copyright}</p>
           <Link href="/privacy-policy" className="hover:text-primary transition-colors mt-2 md:mt-0 notranslate">
             Privacy Policy
           </Link>

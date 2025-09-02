@@ -3,7 +3,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Menu, University } from "lucide-react";
+import { Menu, University, LogIn } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
 import {
@@ -110,6 +110,14 @@ export function Header() {
                         {link.label}
                       </Link>
                     ))}
+                     <Link
+                      href="/login"
+                      onClick={() => setMenuOpen(false)}
+                      className="text-lg font-medium transition-colors hover:text-primary flex items-center"
+                    >
+                      <LogIn className="mr-2 h-5 w-5" />
+                      Login
+                    </Link>
                   </nav>
                 </div>
               </SheetContent>

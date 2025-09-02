@@ -1,0 +1,242 @@
+
+{
+  "global": {
+    "whatsappNumber": "+917068482741"
+  },
+  "home": {
+    "heroSlider": {
+      "slides": [
+        {
+          "src": "https://picsum.photos/1920/1080?random=1",
+          "alt": "University Campus",
+          "hint": "university campus",
+          "title": "Excellence in Education",
+          "subtitle": "Discover a place where knowledge meets innovation.",
+          "cta": {
+            "text": "Explore Programs",
+            "href": "/academics"
+          }
+        },
+        {
+          "src": "https://picsum.photos/1920/1080?random=2",
+          "alt": "Students in a classroom",
+          "hint": "students classroom",
+          "title": "Vibrant Campus Life",
+          "subtitle": "Join a community of learners and leaders.",
+          "cta": {
+            "text": "Student Life",
+            "href": "/student-life"
+          }
+        },
+        {
+          "src": "https://picsum.photos/1920/1080?random=3",
+          "alt": "University Library",
+          "hint": "university library",
+          "title": "State-of-the-Art Facilities",
+          "subtitle": "Learn in an environment built for success.",
+          "cta": {
+            "text": "View Infrastructure",
+            "href": "/infrastructure"
+          }
+        },
+        {
+          "src": "https://picsum.photos/1920/1080?random=4",
+          "alt": "Graduation ceremony",
+          "hint": "graduation ceremony",
+          "title": "Your Future Starts Here",
+          "subtitle": "Begin your journey towards a successful career.",
+          "cta": {
+            "text": "Apply Now",
+            "href": "/admission"
+          }
+        }
+      ]
+    },
+    "scrollingText": {
+      "announcements": [
+        "Admissions for 2024-25 are now open!",
+        "Annual Tech Fest 'Innovate 2024' starts next week.",
+        "Results for semester exams have been declared.",
+        "Guest lecture by Dr. Anya Sharma on AI ethics this Friday."
+      ]
+    },
+    "highlights": {
+      "sliderImages": [
+        {
+          "src": "https://picsum.photos/600/400?random=10",
+          "alt": "Students collaborating",
+          "hint": "students collaborating"
+        },
+        {
+          "src": "https://picsum.photos/600/400?random=11",
+          "alt": "Modern laboratory",
+          "hint": "science laboratory"
+        },
+        {
+          "src": "https://picsum.photos/600/400?random=12",
+          "alt": "Sports facility",
+          "hint": "sports facility"
+        }
+      ],
+      "stats": [
+        {
+          "value": "5k+",
+          "label": "Brilliant Students"
+        },
+        {
+          "value": "300+",
+          "label": "Awards Won"
+        },
+        {
+          "value": "20+",
+          "label": "Years of Excellence"
+        },
+        {
+          "value": "19",
+          "label": "Acres Campus"
+        }
+      ]
+    },
+    "virtualTour": {
+      "image": {
+        "src": "https://picsum.photos/800/600?random=20",
+        "alt": "360 view of campus",
+        "hint": "college campus"
+      },
+      "title": "Explore Our Campus",
+      "description": "Take a virtual tour and experience our state-of-the-art infrastructure, vibrant student life, and the serene environment of our sprawling 19-acre campus. See for yourself why we are one of the top choices for higher education.",
+      "cta": {
+        "text": "View 360° Tour"
+      }
+    },
+    "achievements": {
+      "title": "Our <span class=\"text-primary\">Achievements</span>",
+      "description": "Celebrating the milestones and successes of our students and faculty.",
+      "videos": [
+        {
+          "id": "dQw4w9WgXcQ",
+          "title": "Annual Cultural Fest Highlights"
+        },
+        {
+          "id": "3JZ_D3pSS4U",
+          "title": "Tech Symposium 2023 Recap"
+        },
+        {
+          "id": "C0DPdy98e4c",
+          "title": "Convocation Ceremony Moments"
+        },
+        {
+          "id": "L_LUpnjgPso",
+          "title": "Student Project Showcase"
+        }
+      ]
+    },
+    "risingStars": {
+      "title": "Our <span class=\"text-primary\">Rising Stars</span>",
+      "description": "Meet the brilliant minds shaping the future.",
+      "cta": {
+        "text": "View All"
+      },
+      "stars": [
+        {
+          "name": "Priya Sharma",
+          "achievement": "Winner, National Robotics Olympiad",
+          "src": "https://picsum.photos/400/500?random=31",
+          "hint": "student portrait"
+        },
+        {
+          "name": "Rahul Verma",
+          "achievement": "Published Research in IEEE",
+          "src": "https://picsum.photos/400/500?random=32",
+          "hint": "student portrait"
+        },
+        {
+          "name": "Anjali Mehta",
+          "achievement": "Top Rank in University Exams",
+          "src": "https://picsum.photos/400/500?random=33",
+          "hint": "student portrait"
+        },
+        {
+          "name": "Sameer Khan",
+          "achievement": "Best Athlete of the Year",
+          "src": "https://picsum.photos/400/500?random=34",
+          "hint": "student portrait"
+        },
+        {
+          "name": "Neha Gupta",
+          "achievement": "Founded a Successful Startup",
+          "src": "https://picsum.photos/400/500?random=35",
+          "hint": "student portrait"
+        },
+        {
+          "name": "Vikram Singh",
+          "achievement": "International Chess Champion",
+          "src": "https://picsum.photos/400/500?random=36",
+          "hint": "student portrait"
+        }
+      ]
+    },
+    "newsAndEvents": {
+      "title": "News &amp; <span class=\"text-primary\">Events</span>",
+      "description": "Stay updated with the latest happenings at our college.",
+      "items": [
+        {
+          "type": "Event",
+          "title": "Annual Convocation Ceremony 2024",
+          "date": "25th December 2024",
+          "location": "Main Auditorium",
+          "description": "Join us in celebrating the achievements of our graduating class.",
+          "image": {
+            "src": "https://picsum.photos/600/400?random=41",
+            "hint": "convocation ceremony"
+          }
+        },
+        {
+          "type": "News",
+          "title": "GCET secures top spot in National Innovation Rankings",
+          "date": "18th November 2024",
+          "description": "Our commitment to research and development has been recognized once again.",
+          "image": {
+            "src": "https://picsum.photos/600/400?random=42",
+            "hint": "award trophy"
+          }
+        },
+        {
+          "type": "Event",
+          "title": "Inter-College Sports Meet 'Ignite '24'",
+          "date": "10th - 12th January 2025",
+          "location": "Sports Complex",
+          "description": "Witness thrilling competitions and sportsmanship.",
+          "image": {
+            "src": "https://picsum.photos/600/400?random=43",
+            "hint": "sports competition"
+          }
+        }
+      ]
+    }
+  },
+  "footer": {
+    "collegeName": "GALGOTIAS COLLEGE",
+    "slogan": "Fostering excellence, innovation, and a passion for learning since 2004.",
+    "quickLinks": {
+      "title": "Quick Links",
+      "links": [
+        { "href": "/academics", "label": "Academics" },
+        { "href": "/admission", "label": "Admission" },
+        { "href": "/faculty", "label": "Our Faculty" },
+        { "href": "/infrastructure", "label": "Infrastructure" },
+        { "href": "/student-life", "label": "Student Life" },
+        { "href": "/library", "label": "Library" },
+        { "href": "/campus", "label": "Campus" },
+        { "href": "/virtual-tour", "label": "Virtual Tour" }
+      ]
+    },
+    "reachUs": {
+      "title": "Reach Us",
+      "address": "1, Knowledge Park, Phase-II, Greater Noida, Uttar Pradesh 201306",
+      "phone": "(+91) 120-4370000",
+      "email": "info@galgotiacollege.edu"
+    },
+    "copyright": "© Copyright 2024, all rights reserved with GALGOTIA COLLEGE"
+  }
+}

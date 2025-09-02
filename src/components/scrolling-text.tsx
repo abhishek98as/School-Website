@@ -1,12 +1,11 @@
-export function ScrollingText() {
-  const announcements = [
-    "Admissions for 2024-25 are now open!",
-    "Annual Tech Fest 'Innovate 2024' starts next week.",
-    "Results for semester exams have been declared.",
-    "Guest lecture by Dr. Anya Sharma on AI ethics this Friday.",
-  ];
-  
-  const fullText = announcements.join(" \u00A0 | \u00A0 ");
+import { IContent } from "@/lib/content";
+
+type ScrollingTextProps = {
+  content: IContent['home']['scrollingText']
+}
+
+export function ScrollingText({ content }: ScrollingTextProps) {
+  const fullText = content.announcements.join(" \u00A0 | \u00A0 ");
 
   return (
     <div className="bg-primary text-primary-foreground py-3 overflow-hidden relative">

@@ -6,18 +6,21 @@ import { Achievements } from '@/components/achievements';
 import { RisingStars } from '@/components/rising-stars';
 import { NewsAndEvents } from '@/components/news-and-events';
 import { WelcomePopup } from '@/components/welcome-popup';
+import { getContent } from '@/lib/content';
 
-export default function Home() {
+export default async function Home() {
+  const content = await getContent();
+  
   return (
     <>
       <WelcomePopup />
-      <HeroSlider />
-      <ScrollingText />
-      <Highlights />
-      <VirtualTour />
-      <Achievements />
-      <RisingStars />
-      <NewsAndEvents />
+      <HeroSlider content={content.home.heroSlider} />
+      <ScrollingText content={content.home.scrollingText} />
+      <Highlights content={content.home.highlights} />
+      <VirtualTour content={content.home.virtualTour} />
+      <Achievements content={content.home.achievements} />
+      <RisingStars content={content.home.risingStars} />
+      <NewsAndEvents content={content.home.newsAndEvents} />
     </>
   );
 }

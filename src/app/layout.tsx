@@ -7,6 +7,7 @@ import { GoogleTranslate } from '@/components/google-translate';
 import { WhatsappBubble } from '@/components/whatsapp-bubble';
 import { ThemeProvider } from '@/components/theme-provider';
 import Script from 'next/script';
+import { getContent } from '@/lib/content';
 
 export const metadata: Metadata = {
   title: 'Galgametrics College Hub',
@@ -37,11 +38,13 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const content = await getContent();
+
   return (
     <html lang="hi" suppressHydrationWarning>
       <head>
@@ -74,7 +77,7 @@ export default function RootLayout({
           <Footer />
           <Toaster />
           <GoogleTranslate />
-          <WhatsappBubble phoneNumber="+917068482741" />
+          <WhatsappBubble phoneNumber={content.global.whatsappNumber} />
         </ThemeProvider>
       </body>
     </html>

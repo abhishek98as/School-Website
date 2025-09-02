@@ -1,3 +1,4 @@
+
 "use client";
 
 import Image from "next/image";
@@ -11,32 +12,27 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
+import { IContent } from "@/lib/content";
 
-export function RisingStars() {
-  const stars = [
-    { name: "Priya Sharma", achievement: "Winner, National Robotics Olympiad", src: "https://picsum.photos/400/500?random=31", hint: "student portrait" },
-    { name: "Rahul Verma", achievement: "Published Research in IEEE", src: "https://picsum.photos/400/500?random=32", hint: "student portrait" },
-    { name: "Anjali Mehta", achievement: "Top Rank in University Exams", src: "https://picsum.photos/400/500?random=33", hint: "student portrait" },
-    { name: "Sameer Khan", achievement: "Best Athlete of the Year", src: "https://picsum.photos/400/500?random=34", hint: "student portrait" },
-    { name: "Neha Gupta", achievement: "Founded a Successful Startup", src: "https://picsum.photos/400/500?random=35", hint: "student portrait" },
-    { name: "Vikram Singh", achievement: "International Chess Champion", src: "https://picsum.photos/400/500?random=36", hint: "student portrait" },
-  ];
+type RisingStarsProps = {
+  content: IContent['home']['risingStars'];
+};
 
+export function RisingStars({ content }: RisingStarsProps) {
   return (
     <section className="py-12 lg:py-24">
       <div className="container mx-auto px-4 md:px-6">
         <div className="flex flex-col sm:flex-row justify-between items-center mb-8 gap-4">
           <div className="text-center sm:text-left">
-            <h2 className="text-3xl md:text-4xl font-bold">
-              Our <span className="text-primary">Rising Stars</span>
+            <h2 className="text-3xl md:text-4xl font-bold" dangerouslySetInnerHTML={{ __html: content.title }}>
             </h2>
             <p className="text-muted-foreground mt-2">
-              Meet the brilliant minds shaping the future.
+              {content.description}
             </p>
           </div>
           <Button asChild variant="outline" className="flex-shrink-0">
             <Link href="/rising-stars">
-              View All
+              {content.cta.text}
             </Link>
           </Button>
         </div>
@@ -48,7 +44,7 @@ export function RisingStars() {
           className="w-full"
         >
           <CarouselContent>
-            {stars.map((star, index) => (
+            {content.stars.map((star, index) => (
               <CarouselItem key={index} className="basis-full sm:basis-1/2 md:basis-1/3 lg:basis-1/4">
                 <div className="p-1">
                   <Card className="overflow-hidden group">

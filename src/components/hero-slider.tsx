@@ -1,3 +1,4 @@
+
 "use client";
 
 import * as React from "react";
@@ -13,55 +14,13 @@ import {
 } from "@/components/ui/carousel";
 import { Button } from "./ui/button";
 import { ArrowRight } from "lucide-react";
+import { IContent } from "@/lib/content";
 
-export function HeroSlider() {
-  const slides = [
-    { 
-      src: "https://picsum.photos/1920/1080?random=1", 
-      alt: "University Campus", 
-      hint: "university campus",
-      title: "Excellence in Education",
-      subtitle: "Discover a place where knowledge meets innovation.",
-      cta: {
-        text: "Explore Programs",
-        href: "/academics"
-      }
-    },
-    { 
-      src: "https://picsum.photos/1920/1080?random=2", 
-      alt: "Students in a classroom", 
-      hint: "students classroom",
-      title: "Vibrant Campus Life",
-      subtitle: "Join a community of learners and leaders.",
-       cta: {
-        text: "Student Life",
-        href: "/student-life"
-      }
-    },
-    { 
-      src: "https://picsum.photos/1920/1080?random=3", 
-      alt: "University Library", 
-      hint: "university library",
-       title: "State-of-the-Art Facilities",
-      subtitle: "Learn in an environment built for success.",
-       cta: {
-        text: "View Infrastructure",
-        href: "/infrastructure"
-      }
-    },
-    { 
-      src: "https://picsum.photos/1920/1080?random=4", 
-      alt: "Graduation ceremony", 
-      hint: "graduation ceremony",
-      title: "Your Future Starts Here",
-      subtitle: "Begin your journey towards a successful career.",
-       cta: {
-        text: "Apply Now",
-        href: "/admission"
-      }
-    },
-  ];
+type HeroSliderProps = {
+  content: IContent['home']['heroSlider']
+}
 
+export function HeroSlider({ content }: HeroSliderProps) {
   const [api, setApi] = React.useState<CarouselApi>();
   const [isHovered, setIsHovered] = React.useState(false);
 
@@ -87,7 +46,7 @@ export function HeroSlider() {
     >
       <Carousel setApi={setApi} className="w-full" opts={{ loop: true }}>
         <CarouselContent>
-          {slides.map((slide, index) => (
+          {content.slides.map((slide, index) => (
             <CarouselItem key={index}>
               <div className="relative h-[60vh] md:h-[80vh] lg:h-[95vh] w-full">
                 <Image
