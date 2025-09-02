@@ -3,6 +3,24 @@ export interface IContent {
   global: {
     whatsappNumber: string;
   };
+  about: {
+    ourAspiration: {
+      title: string;
+      content: string[];
+    };
+    aboutUs: {
+      title: string;
+      content: string[];
+    };
+    philosophy: {
+      title: string;
+      content: string[];
+    };
+    ourMotto: {
+      title: string;
+      content: string[];
+    };
+  };
   home: {
     heroSlider: {
       slides: {

@@ -3,7 +3,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Menu, University, LogIn } from "lucide-react";
+import { Menu, University, LogIn, ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
 import {
@@ -18,6 +18,16 @@ import { cn } from "@/lib/utils";
 
 const navLinks = [
   { href: "/", label: "Home" },
+  { 
+    href: "/about", 
+    label: "About Us",
+    subLinks: [
+      { href: "/about/our-aspiration", label: "Our Aspiration" },
+      { href: "/about/about-us", label: "About The School" },
+      { href: "/about/philosophy", label: "Philosophy" },
+      { href: "/about/our-motto", label: "Our Motto" },
+    ]
+  },
   { href: "/academics", label: "Academics" },
   { href: "/admission", label: "Admission" },
   { href: "/faculty", label: "Our Faculty" },
@@ -50,19 +60,40 @@ export function Header() {
         </Link>
         <nav className="hidden lg:flex items-center gap-6 text-sm font-medium">
           {navLinks.map((link) => (
-            <Link
-              key={link.href}
-              href={link.href}
-              className={cn(
-                "transition-colors hover:text-primary notranslate relative",
-                pathname === link.href && "text-primary font-semibold"
-              )}
-            >
-              {link.label}
-              {pathname === link.href && (
-                 <span className="absolute bottom-[-4px] left-0 w-full h-0.5 bg-primary"></span>
-              )}
-            </Link>
+            link.subLinks ? (
+              <DropdownMenu key={link.href}>
+                <DropdownMenuTrigger asChild>
+                  <Button variant="ghost" className={cn(
+                    "transition-colors hover:text-primary notranslate relative px-2",
+                    pathname.startsWith(link.href) && "text-primary font-semibold"
+                  )}>
+                    {link.label}
+                    <ChevronDown className="ml-1 h-4 w-4" />
+                  </Button>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent>
+                  {link.subLinks.map((subLink) => (
+                     <DropdownMenuItem key={subLink.href} asChild>
+                      <Link href={subLink.href}>{subLink.label}</Link>
+                    </DropdownMenuItem>
+                  ))}
+                </DropdownMenuContent>
+              </DropdownMenu>
+            ) : (
+              <Link
+                key={link.href}
+                href={link.href}
+                className={cn(
+                  "transition-colors hover:text-primary notranslate relative",
+                  pathname === link.href && "text-primary font-semibold"
+                )}
+              >
+                {link.label}
+                {pathname === link.href && (
+                   <span className="absolute bottom-[-4px] left-0 w-full h-0.5 bg-primary"></span>
+                )}
+              </Link>
+            )
           ))}
         </nav>
         <div className="flex items-center gap-2">
@@ -105,6 +136,26 @@ export function Header() {
                   </Link>
                   <nav className="grid gap-4">
                     {navLinks.map((link) => (
+                       link.subLinks ? (
+                        <div key={link.href}>
+                           <span className="text-lg font-medium text-muted-foreground">{link.label}</span>
+                           <div className="grid gap-2 pl-4 mt-2">
+                            {link.subLinks.map(subLink => (
+                                <Link
+                                    key={subLink.href}
+                                    href={subLink.href}
+                                    onClick={() => setMenuOpen(false)}
+                                    className={cn(
+                                        "text-base font-medium transition-colors hover:text-primary notranslate",
+                                        pathname === subLink.href && "text-primary font-bold"
+                                    )}
+                                >
+                                    {subLink.label}
+                                </Link>
+                            ))}
+                           </div>
+                        </div>
+                      ) : (
                       <Link
                         key={link.href}
                         href={link.href}
@@ -116,6 +167,7 @@ export function Header() {
                       >
                         {link.label}
                       </Link>
+                      )
                     ))}
                      <Link
                       href="/login"

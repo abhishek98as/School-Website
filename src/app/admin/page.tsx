@@ -150,6 +150,69 @@ export default function AdminPage() {
                 </Card>
              </AccordionContent>
           </AccordionItem>
+          
+          <AccordionItem value="item-about">
+            <AccordionTrigger className="text-xl font-semibold">About Pages</AccordionTrigger>
+            <AccordionContent>
+                <div className="space-y-6">
+                    <Card>
+                        <CardHeader><CardTitle>Our Aspiration</CardTitle></CardHeader>
+                        <CardContent className="space-y-4">
+                            <Label>Title</Label>
+                            <Input value={content.about.ourAspiration.title} onChange={(e) => handleInputChange('about.ourAspiration.title', e.target.value)} />
+                            <Label>Content</Label>
+                            <Textarea
+                                value={content.about.ourAspiration.content.join('\n\n')}
+                                onChange={(e) => handleInputChange('about.ourAspiration.content', e.target.value.split('\n\n'))}
+                                rows={5}
+                            />
+                        </CardContent>
+                    </Card>
+
+                    <Card>
+                        <CardHeader><CardTitle>About The School</CardTitle></CardHeader>
+                        <CardContent className="space-y-4">
+                            <Label>Title</Label>
+                            <Input value={content.about.aboutUs.title} onChange={(e) => handleInputChange('about.aboutUs.title', e.target.value)} />
+                            <Label>Content</Label>
+                            <Textarea
+                                value={content.about.aboutUs.content.join('\n\n')}
+                                onChange={(e) => handleInputChange('about.aboutUs.content', e.target.value.split('\n\n'))}
+                                rows={5}
+                            />
+                        </CardContent>
+                    </Card>
+
+                    <Card>
+                        <CardHeader><CardTitle>Philosophy</CardTitle></CardHeader>
+                        <CardContent className="space-y-4">
+                            <Label>Title</Label>
+                            <Input value={content.about.philosophy.title} onChange={(e) => handleInputChange('about.philosophy.title', e.target.value)} />
+                            <Label>Content</Label>
+                            <Textarea
+                                value={content.about.philosophy.content.join('\n\n')}
+                                onChange={(e) => handleInputChange('about.philosophy.content', e.target.value.split('\n\n'))}
+                                rows={5}
+                            />
+                        </CardContent>
+                    </Card>
+
+                    <Card>
+                        <CardHeader><CardTitle>Our Motto</CardTitle></CardHeader>
+                        <CardContent className="space-y-4">
+                            <Label>Title</Label>
+                            <Input value={content.about.ourMotto.title} onChange={(e) => handleInputChange('about.ourMotto.title', e.target.value)} />
+                            <Label>Content</Label>
+                            <Textarea
+                                value={content.about.ourMotto.content.join('\n\n')}
+                                onChange={(e) => handleInputChange('about.ourMotto.content', e.target.value.split('\n\n'))}
+                                rows={5}
+                            />
+                        </CardContent>
+                    </Card>
+                </div>
+            </AccordionContent>
+          </AccordionItem>
 
           <AccordionItem value="item-2">
             <AccordionTrigger className="text-xl font-semibold">Home Page</AccordionTrigger>
