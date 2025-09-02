@@ -80,6 +80,133 @@ export interface IContent {
       }[];
     };
   };
+  academics: {
+    title: string;
+    subtitle: string;
+    programs: {
+      title: string;
+      description: string;
+      icon: string;
+      image: {
+        src: string;
+        hint: string;
+      };
+    }[];
+  };
+  admission: {
+    title: string;
+    subtitle: string;
+    ageCriteria: {
+      class: string;
+      age: string;
+    }[];
+    feeStructure: {
+      class: string;
+      fee: string;
+    }[];
+    documentsRequired: string[];
+    enquiryFormUrl: string;
+  };
+  faculty: {
+    title: string;
+    subtitle: string;
+    members: {
+      name: string;
+      title: string;
+      image: {
+        src: string;
+        hint: string;
+      };
+      email: string;
+      phone: string;
+      about: string;
+      experience: {
+        year: string;
+        title: string;
+        company: string;
+        description: string;
+      }[];
+    }[];
+  };
+  infrastructure: {
+    title: string;
+    subtitle: string;
+    facilities: {
+      name: string;
+      description: string;
+      icon: string;
+      image: {
+        src: string;
+        hint: string;
+      };
+    }[];
+  };
+  studentLife: {
+    title: string;
+    subtitle: string;
+    hero: {
+      image: {
+        src: string;
+        hint: string;
+      };
+    };
+    activities: {
+      name: string;
+      description: string;
+      icon: string;
+      image: {
+        src: string;
+        hint: string;
+      };
+    }[];
+  };
+  library: {
+    title: string;
+    subtitle: string;
+    hero: {
+      image: {
+        src: string;
+        alt: string;
+        hint: string;
+      };
+    };
+    stats: {
+      icon: string;
+      value: string;
+      label: string;
+    }[];
+    catalog: {
+      title: string;
+      description: string;
+      cta: {
+        text: string;
+        href: string;
+      };
+    };
+  };
+  campus: {
+    title: string;
+    subtitle: string;
+    features: {
+      name: string;
+      description: string;
+      icon: string;
+      image: {
+        src: string;
+        hint: string;
+      };
+    }[];
+  };
+  virtualTourPage: {
+    title: string;
+    subtitle: string;
+    views: {
+      title: string;
+      id: string;
+      icon: string;
+      embedUrl: string;
+    }[];
+  };
   footer: {
     collegeName: string;
     slogan: string;

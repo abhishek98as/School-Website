@@ -61,14 +61,20 @@ export default function AdminPage() {
     
     for (let i = 0; i < keys.length - 1; i++) {
         const key = keys[i];
-        if (!current[key]) {
-            // If a key doesn't exist, create it. This is useful for nested objects.
-            const nextKey = keys[i+1];
-            current[key] = isNaN(parseInt(nextKey, 10)) ? {} : [];
-        }
-        if (Array.isArray(current)) {
-            current = current[parseInt(key)];
+        let nextKey: string | number = keys[i+1];
+        
+        // If the key is a number, we are dealing with an array
+        if (!isNaN(parseInt(key, 10))) {
+            current = current[parseInt(key, 10)];
         } else {
+             if (!current[key]) {
+                // If a key doesn't exist, create it. This is useful for nested objects.
+                if (!isNaN(parseInt(nextKey, 10))) {
+                    current[key] = [];
+                } else {
+                    current[key] = {};
+                }
+            }
             current = current[key];
         }
     }
@@ -114,39 +120,43 @@ export default function AdminPage() {
 
   return (
     <div className="min-h-screen bg-gray-100 dark:bg-gray-900">
-      <header className="bg-background shadow-sm">
+      <header className="bg-background shadow-sm sticky top-0 z-40">
           <div className="container mx-auto px-4 md:px-6 py-4 flex justify-between items-center">
              <h1 className="text-2xl font-bold">Admin Panel</h1>
              <Button onClick={handleSave}>Save Changes</Button>
           </div>
       </header>
       <main className="container mx-auto px-4 md:px-6 py-8">
-        <ScrollArea className="h-[calc(100vh-10rem)]">
-        <Card>
-            <CardHeader>
-                <CardTitle>Global Settings</CardTitle>
-            </CardHeader>
-            <CardContent>
-                 <div className="space-y-2">
-                    <Label htmlFor="whatsappNumber">WhatsApp Number</Label>
-                    <Input
-                      id="whatsappNumber"
-                      value={content.global.whatsappNumber}
-                      onChange={(e) => handleInputChange('global.whatsappNumber', e.target.value)}
-                    />
-                </div>
-            </CardContent>
-        </Card>
-
-        <Accordion type="single" collapsible className="w-full mt-8">
+        <ScrollArea className="h-[calc(100vh-10rem)] pr-4">
+        
+        <Accordion type="single" collapsible className="w-full" defaultValue="item-1">
           <AccordionItem value="item-1">
-            <AccordionTrigger className="text-xl font-semibold">Home Page Content</AccordionTrigger>
+            <AccordionTrigger className="text-xl font-semibold">Global Settings</AccordionTrigger>
+             <AccordionContent>
+                <Card>
+                    <CardHeader>
+                        <CardTitle>Global Settings</CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                         <div className="space-y-2">
+                            <Label htmlFor="whatsappNumber">WhatsApp Number</Label>
+                            <Input
+                              id="whatsappNumber"
+                              value={content.global.whatsappNumber}
+                              onChange={(e) => handleInputChange('global.whatsappNumber', e.target.value)}
+                            />
+                        </div>
+                    </CardContent>
+                </Card>
+             </AccordionContent>
+          </AccordionItem>
+
+          <AccordionItem value="item-2">
+            <AccordionTrigger className="text-xl font-semibold">Home Page</AccordionTrigger>
             <AccordionContent>
                 <div className="space-y-6">
                     <Card>
-                        <CardHeader>
-                            <CardTitle>Hero Slider</CardTitle>
-                        </CardHeader>
+                        <CardHeader><CardTitle>Hero Slider</CardTitle></CardHeader>
                         <CardContent className="space-y-4">
                             {content.home.heroSlider.slides.map((slide, index) => (
                                 <div key={index} className="p-4 border rounded-md space-y-2">
@@ -161,9 +171,7 @@ export default function AdminPage() {
                     </Card>
 
                     <Card>
-                        <CardHeader>
-                            <CardTitle>Scrolling Text</CardTitle>
-                        </CardHeader>
+                        <CardHeader><CardTitle>Scrolling Text</CardTitle></CardHeader>
                         <CardContent>
                             <Label>Announcements (comma-separated)</Label>
                             <Textarea
@@ -174,26 +182,22 @@ export default function AdminPage() {
                         </CardContent>
                     </Card>
 
-                    <Card>
-                        <CardHeader>
-                            <CardTitle>Highlights Section</CardTitle>
-                        </CardHeader>
+                     <Card>
+                        <CardHeader><CardTitle>Highlights Section</CardTitle></CardHeader>
                         <CardContent className="space-y-4">
-                            {content.home.highlights.stats.map((stat, index) => (
-                                <div key={index} className="p-2 border rounded-md">
-                                    <Label>Stat {index+1} Label</Label>
-                                    <Input value={stat.label} onChange={(e) => handleInputChange(`home.highlights.stats.${index}.label`, e.target.value)} />
-                                    <Label>Stat {index+1} Value</Label>
-                                    <Input value={stat.value} onChange={(e) => handleInputChange(`home.highlights.stats.${index}.value`, e.target.value)} />
-                                </div>
-                            ))}
-                        </CardContent>
+                           {content.home.highlights.stats.map((stat, index) => (
+                               <div key={index} className="p-2 border rounded-md">
+                                   <Label>Stat {index+1} Label</Label>
+                                   <Input value={stat.label} onChange={(e) => handleInputChange(`home.highlights.stats.${index}.label`, e.target.value)} />
+                                   <Label>Stat {index+1} Value</Label>
+                                   <Input value={stat.value} onChange={(e) => handleInputChange(`home.highlights.stats.${index}.value`, e.target.value)} />
+                               </div>
+                           ))}
+                       </CardContent>
                     </Card>
 
                      <Card>
-                        <CardHeader>
-                            <CardTitle>Virtual Tour Section</CardTitle>
-                        </CardHeader>
+                        <CardHeader><CardTitle>Virtual Tour Section</CardTitle></CardHeader>
                         <CardContent>
                             <Label>Title</Label>
                             <Input value={content.home.virtualTour.title} onChange={(e) => handleInputChange('home.virtualTour.title', e.target.value)} />
@@ -206,8 +210,249 @@ export default function AdminPage() {
                 </div>
             </AccordionContent>
           </AccordionItem>
+          
+          <AccordionItem value="item-3">
+            <AccordionTrigger className="text-xl font-semibold">Academics Page</AccordionTrigger>
+            <AccordionContent>
+              <Card>
+                <CardHeader><CardTitle>Academics Page</CardTitle></CardHeader>
+                <CardContent className="space-y-4">
+                  <Label>Title (HTML allowed)</Label>
+                  <Input value={content.academics.title} onChange={(e) => handleInputChange('academics.title', e.target.value)} />
+                  <Label>Subtitle</Label>
+                  <Textarea value={content.academics.subtitle} onChange={(e) => handleInputChange('academics.subtitle', e.target.value)} />
+                  {content.academics.programs.map((program, index) => (
+                    <div key={index} className="p-4 border rounded-md space-y-2">
+                        <h3 className="font-semibold">Program {index + 1}</h3>
+                        <Label>Title</Label>
+                        <Input value={program.title} onChange={(e) => handleInputChange(`academics.programs.${index}.title`, e.target.value)} />
+                        <Label>Description</Label>
+                        <Textarea value={program.description} onChange={(e) => handleInputChange(`academics.programs.${index}.description`, e.target.value)} />
+                    </div>
+                  ))}
+                </CardContent>
+              </Card>
+            </AccordionContent>
+          </AccordionItem>
 
-           <AccordionItem value="item-2">
+          <AccordionItem value="item-4">
+            <AccordionTrigger className="text-xl font-semibold">Admission Page</AccordionTrigger>
+            <AccordionContent>
+              <Card>
+                <CardHeader><CardTitle>Admission Page</CardTitle></CardHeader>
+                <CardContent className="space-y-4">
+                  <Label>Title (HTML allowed)</Label>
+                  <Input value={content.admission.title} onChange={(e) => handleInputChange('admission.title', e.target.value)} />
+                  <Label>Subtitle</Label>
+                  <Textarea value={content.admission.subtitle} onChange={(e) => handleInputChange('admission.subtitle', e.target.value)} />
+                  
+                  <h3 className="font-semibold pt-4">Age Criteria</h3>
+                   {content.admission.ageCriteria.map((item, index) => (
+                    <div key={index} className="flex gap-4 items-center p-2 border rounded-md">
+                        <Input className="flex-1" placeholder="Class" value={item.class} onChange={(e) => handleInputChange(`admission.ageCriteria.${index}.class`, e.target.value)} />
+                        <Input className="flex-1" placeholder="Age" value={item.age} onChange={(e) => handleInputChange(`admission.ageCriteria.${index}.age`, e.target.value)} />
+                    </div>
+                  ))}
+
+                  <h3 className="font-semibold pt-4">Fee Structure</h3>
+                   {content.admission.feeStructure.map((item, index) => (
+                    <div key={index} className="flex gap-4 items-center p-2 border rounded-md">
+                        <Input className="flex-1" placeholder="Class" value={item.class} onChange={(e) => handleInputChange(`admission.feeStructure.${index}.class`, e.target.value)} />
+                        <Input className="flex-1" placeholder="Fee" value={item.fee} onChange={(e) => handleInputChange(`admission.feeStructure.${index}.fee`, e.target.value)} />
+                    </div>
+                  ))}
+
+                  <h3 className="font-semibold pt-4">Documents Required</h3>
+                   <Textarea
+                        value={content.admission.documentsRequired.join('\n')}
+                        onChange={(e) => handleInputChange('admission.documentsRequired', e.target.value.split('\n'))}
+                        rows={5}
+                        placeholder="Enter one document requirement per line."
+                    />
+                     <h3 className="font-semibold pt-4">Enquiry Form URL</h3>
+                    <Input placeholder="Google Form Embed URL" value={content.admission.enquiryFormUrl} onChange={(e) => handleInputChange(`admission.enquiryFormUrl`, e.target.value)} />
+                </CardContent>
+              </Card>
+            </AccordionContent>
+          </AccordionItem>
+          
+          <AccordionItem value="item-5">
+            <AccordionTrigger className="text-xl font-semibold">Faculty Page</AccordionTrigger>
+            <AccordionContent>
+              <Card>
+                <CardHeader><CardTitle>Faculty Page</CardTitle></CardHeader>
+                <CardContent className="space-y-4">
+                  <Label>Title (HTML allowed)</Label>
+                  <Input value={content.faculty.title} onChange={(e) => handleInputChange('faculty.title', e.target.value)} />
+                  <Label>Subtitle</Label>
+                  <Textarea value={content.faculty.subtitle} onChange={(e) => handleInputChange('faculty.subtitle', e.target.value)} />
+                  {content.faculty.members.map((member, memberIndex) => (
+                    <Accordion key={memberIndex} type="single" collapsible className="p-4 border rounded-md space-y-2">
+                       <AccordionItem value={`faculty-${memberIndex}`}>
+                        <AccordionTrigger className="font-semibold">Faculty Member: {member.name}</AccordionTrigger>
+                        <AccordionContent className="space-y-2">
+                           <Label>Name</Label>
+                           <Input value={member.name} onChange={(e) => handleInputChange(`faculty.members.${memberIndex}.name`, e.target.value)} />
+                           <Label>Title</Label>
+                           <Input value={member.title} onChange={(e) => handleInputChange(`faculty.members.${memberIndex}.title`, e.target.value)} />
+                           <Label>Email</Label>
+                           <Input type="email" value={member.email} onChange={(e) => handleInputChange(`faculty.members.${memberIndex}.email`, e.target.value)} />
+                           <Label>Phone</Label>
+                           <Input value={member.phone} onChange={(e) => handleInputChange(`faculty.members.${memberIndex}.phone`, e.target.value)} />
+                           <Label>About</Label>
+                           <Textarea value={member.about} onChange={(e) => handleInputChange(`faculty.members.${memberIndex}.about`, e.target.value)} rows={4}/>
+                           
+                           <h4 className="font-semibold pt-2">Experience</h4>
+                           {member.experience.map((exp, expIndex) => (
+                               <div key={expIndex} className="p-2 border rounded-md space-y-1">
+                                    <Label>Year</Label>
+                                    <Input value={exp.year} onChange={(e) => handleInputChange(`faculty.members.${memberIndex}.experience.${expIndex}.year`, e.target.value)} />
+                                    <Label>Title</Label>
+                                    <Input value={exp.title} onChange={(e) => handleInputChange(`faculty.members.${memberIndex}.experience.${expIndex}.title`, e.target.value)} />
+                                    <Label>Company</Label>
+                                    <Input value={exp.company} onChange={(e) => handleInputChange(`faculty.members.${memberIndex}.experience.${expIndex}.company`, e.target.value)} />
+                                    <Label>Description</Label>
+                                    <Input value={exp.description} onChange={(e) => handleInputChange(`faculty.members.${memberIndex}.experience.${expIndex}.description`, e.target.value)} />
+                               </div>
+                           ))}
+                        </AccordionContent>
+                       </AccordionItem>
+                    </Accordion>
+                  ))}
+                </CardContent>
+              </Card>
+            </AccordionContent>
+          </AccordionItem>
+
+          <AccordionItem value="item-6">
+            <AccordionTrigger className="text-xl font-semibold">Infrastructure Page</AccordionTrigger>
+            <AccordionContent>
+                <Card>
+                  <CardHeader><CardTitle>Infrastructure Page</CardTitle></CardHeader>
+                  <CardContent className="space-y-4">
+                    <Label>Title (HTML allowed)</Label>
+                    <Input value={content.infrastructure.title} onChange={(e) => handleInputChange('infrastructure.title', e.target.value)} />
+                    <Label>Subtitle</Label>
+                    <Textarea value={content.infrastructure.subtitle} onChange={(e) => handleInputChange('infrastructure.subtitle', e.target.value)} />
+                     {content.infrastructure.facilities.map((facility, index) => (
+                        <div key={index} className="p-4 border rounded-md space-y-2">
+                            <h3 className="font-semibold">Facility {index + 1}</h3>
+                            <Label>Name</Label>
+                            <Input value={facility.name} onChange={(e) => handleInputChange(`infrastructure.facilities.${index}.name`, e.target.value)} />
+                            <Label>Description</Label>
+                            <Textarea value={facility.description} onChange={(e) => handleInputChange(`infrastructure.facilities.${index}.description`, e.target.value)} />
+                        </div>
+                     ))}
+                  </CardContent>
+                </Card>
+            </AccordionContent>
+          </AccordionItem>
+
+          <AccordionItem value="item-7">
+            <AccordionTrigger className="text-xl font-semibold">Student Life Page</AccordionTrigger>
+            <AccordionContent>
+                <Card>
+                  <CardHeader><CardTitle>Student Life Page</CardTitle></CardHeader>
+                  <CardContent className="space-y-4">
+                    <Label>Title (HTML allowed)</Label>
+                    <Input value={content.studentLife.title} onChange={(e) => handleInputChange('studentLife.title', e.target.value)} />
+                    <Label>Subtitle</Label>
+                    <Textarea value={content.studentLife.subtitle} onChange={(e) => handleInputChange('studentLife.subtitle', e.target.value)} />
+                     {content.studentLife.activities.map((activity, index) => (
+                        <div key={index} className="p-4 border rounded-md space-y-2">
+                            <h3 className="font-semibold">Activity {index + 1}</h3>
+                            <Label>Name</Label>
+                            <Input value={activity.name} onChange={(e) => handleInputChange(`studentLife.activities.${index}.name`, e.target.value)} />
+                            <Label>Description</Label>
+                            <Textarea value={activity.description} onChange={(e) => handleInputChange(`studentLife.activities.${index}.description`, e.target.value)} />
+                        </div>
+                     ))}
+                  </CardContent>
+                </Card>
+            </AccordionContent>
+          </AccordionItem>
+          
+          <AccordionItem value="item-8">
+            <AccordionTrigger className="text-xl font-semibold">Library Page</AccordionTrigger>
+            <AccordionContent>
+                <Card>
+                  <CardHeader><CardTitle>Library Page</CardTitle></CardHeader>
+                  <CardContent className="space-y-4">
+                    <Label>Title (HTML allowed)</Label>
+                    <Input value={content.library.title} onChange={(e) => handleInputChange('library.title', e.target.value)} />
+                    <Label>Subtitle</Label>
+                    <Textarea value={content.library.subtitle} onChange={(e) => handleInputChange('library.subtitle', e.target.value)} />
+                     {content.library.stats.map((stat, index) => (
+                        <div key={index} className="p-2 border rounded-md">
+                           <Label>Stat {index+1} Label</Label>
+                           <Input value={stat.label} onChange={(e) => handleInputChange(`library.stats.${index}.label`, e.target.value)} />
+                           <Label>Stat {index+1} Value</Label>
+                           <Input value={stat.value} onChange={(e) => handleInputChange(`library.stats.${index}.value`, e.target.value)} />
+                       </div>
+                     ))}
+                     <h3 className="font-semibold pt-4">Catalog Section</h3>
+                     <Label>Title</Label>
+                     <Input value={content.library.catalog.title} onChange={(e) => handleInputChange('library.catalog.title', e.target.value)} />
+                     <Label>Description</Label>
+                     <Textarea value={content.library.catalog.description} onChange={(e) => handleInputChange('library.catalog.description', e.target.value)} />
+                     <Label>Button Text</Label>
+                     <Input value={content.library.catalog.cta.text} onChange={(e) => handleInputChange('library.catalog.cta.text', e.target.value)} />
+                     <Label>Button Link</Label>
+                     <Input value={content.library.catalog.cta.href} onChange={(e) => handleInputChange('library.catalog.cta.href', e.target.value)} />
+                  </CardContent>
+                </Card>
+            </AccordionContent>
+          </AccordionItem>
+
+          <AccordionItem value="item-9">
+            <AccordionTrigger className="text-xl font-semibold">Campus Page</AccordionTrigger>
+            <AccordionContent>
+                <Card>
+                  <CardHeader><CardTitle>Campus Page</CardTitle></CardHeader>
+                  <CardContent className="space-y-4">
+                    <Label>Title (HTML allowed)</Label>
+                    <Input value={content.campus.title} onChange={(e) => handleInputChange('campus.title', e.target.value)} />
+                    <Label>Subtitle</Label>
+                    <Textarea value={content.campus.subtitle} onChange={(e) => handleInputChange('campus.subtitle', e.target.value)} />
+                     {content.campus.features.map((feature, index) => (
+                        <div key={index} className="p-4 border rounded-md space-y-2">
+                            <h3 className="font-semibold">Feature {index + 1}</h3>
+                            <Label>Name</Label>
+                            <Input value={feature.name} onChange={(e) => handleInputChange(`campus.features.${index}.name`, e.target.value)} />
+                            <Label>Description</Label>
+                            <Textarea value={feature.description} onChange={(e) => handleInputChange(`campus.features.${index}.description`, e.target.value)} />
+                        </div>
+                     ))}
+                  </CardContent>
+                </Card>
+            </AccordionContent>
+          </AccordionItem>
+
+          <AccordionItem value="item-10">
+            <AccordionTrigger className="text-xl font-semibold">Virtual Tour Page</AccordionTrigger>
+            <AccordionContent>
+                <Card>
+                  <CardHeader><CardTitle>Virtual Tour Page</CardTitle></CardHeader>
+                  <CardContent className="space-y-4">
+                    <Label>Title (HTML allowed)</Label>
+                    <Input value={content.virtualTourPage.title} onChange={(e) => handleInputChange('virtualTourPage.title', e.target.value)} />
+                    <Label>Subtitle</Label>
+                    <Textarea value={content.virtualTourPage.subtitle} onChange={(e) => handleInputChange('virtualTourPage.subtitle', e.target.value)} />
+                     {content.virtualTourPage.views.map((view, index) => (
+                        <div key={index} className="p-4 border rounded-md space-y-2">
+                            <h3 className="font-semibold">View {index + 1}</h3>
+                            <Label>Title</Label>
+                            <Input value={view.title} onChange={(e) => handleInputChange(`virtualTourPage.views.${index}.title`, e.target.value)} />
+                            <Label>Embed URL</Label>
+                            <Input value={view.embedUrl} onChange={(e) => handleInputChange(`virtualTourPage.views.${index}.embedUrl`, e.target.value)} />
+                        </div>
+                     ))}
+                  </CardContent>
+                </Card>
+            </AccordionContent>
+          </AccordionItem>
+          
+           <AccordionItem value="item-11">
             <AccordionTrigger className="text-xl font-semibold">Footer Content</AccordionTrigger>
             <AccordionContent>
                 <Card>

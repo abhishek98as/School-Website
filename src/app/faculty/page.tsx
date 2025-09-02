@@ -4,8 +4,10 @@
 
 import Image from 'next/image';
 import { Mail, Phone, Briefcase, User, MapPin } from 'lucide-react';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { cn } from '@/lib/utils';
+import type { IContent } from '@/lib/content';
+
 
 // New FacultyCard component
 const FacultyCard = ({ faculty }: { faculty: any }) => {
@@ -20,7 +22,7 @@ const FacultyCard = ({ faculty }: { faculty: any }) => {
   return (
     <div
       className={cn(
-        'card max-w-sm mx-auto overflow-hidden relative z-10 bg-card flex flex-col rounded-lg shadow-lg transition-all duration-300 ease-in-out',
+        'card max-w-sm mx-auto relative z-10 bg-card flex flex-col rounded-lg shadow-lg transition-all duration-300 ease-in-out overflow-hidden',
         activeSection === 'about' && 'h-[550px]',
         activeSection === 'experience' && 'h-[550px]'
       )}
@@ -146,96 +148,30 @@ const FacultyCard = ({ faculty }: { faculty: any }) => {
 
 
 export default function FacultyPage() {
-  const faculty = [
-    {
-      name: "Dr. Evelyn Reed",
-      title: "Professor, Computer Science",
-      image: { src: "https://picsum.photos/400/400?random=101", hint: "female professor" },
-      email: "e.reed@galgotiacollege.edu",
-      phone: "+91 98765 43210",
-      about: "Dr. Reed is an expert in artificial intelligence and machine learning, with over 15 years of experience in both academia and industry. Her research focuses on natural language processing.",
-      experience: [
-        { year: "2018", title: "Professor", company: "Galgametrics College", description: "Leading the AI research department."},
-        { year: "2012", title: "Senior Scientist", company: "TechNova Inc.", description: "Developed cutting-edge NLP models."},
-        { year: "2008", title: "Post-doc Researcher", company: "MIT", description: "Published foundational papers on neural networks."},
-      ]
-    },
-    {
-      name: "Dr. Marcus Thorne",
-      title: "Head of Mechanical Engineering",
-      image: { src: "https://picsum.photos/400/400?random=102", hint: "male professor" },
-      email: "m.thorne@galgotiacollege.edu",
-      phone: "+91 98765 43211",
-      about: "Dr. Thorne specializes in robotics and mechatronics. He is passionate about building autonomous systems and has led multiple award-winning student projects.",
-      experience: [
-        { year: "2015", title: "Head of Department", company: "Galgametrics College", description: "Overseeing curriculum and research initiatives."},
-        { year: "2010", title: "Associate Professor", company: "State University", description: "Taught advanced robotics courses."},
-        { year: "2006", title: "Design Engineer", company: "RoboCorp", description: "Designed robotic arms for manufacturing."},
-      ]
-    },
-    {
-      name: "Dr. Elena Vance",
-      title: "Associate Professor, Physics",
-      image: { src: "https://picsum.photos/400/400?random=103", hint: "female professor" },
-      email: "e.vance@galgotiacollege.edu",
-      phone: "+91 98765 43212",
-      about: "With a Ph.D. in quantum physics, Dr. Vance's work on quantum computing has be published in several prestigious journals. She enjoys making complex topics accessible.",
-       experience: [
-        { year: "2020", title: "Associate Professor", company: "Galgametrics College", description: "Researching quantum entanglement."},
-        { year: "2016", title: "Lecturer", company: "Institute of Science", description: "Taught undergraduate physics."},
-        { year: "2014", title: "Junior Scientist", company: "QuantumLeap", description: "Contributed to quantum processor design."},
-      ]
-    },
-    {
-      name: "Dr. Julian Croft",
-      title: "Professor, Business Administration",
-      image: { src: "https://picsum.photos/400/400?random=104", hint: "male professor" },
-      email: "j.croft@galgotiacollege.edu",
-      phone: "+91 98765 43213",
-      about: "Dr. Croft is a seasoned expert in strategic management and entrepreneurship. He brings a wealth of real-world business experience to the classroom.",
-       experience: [
-        { year: "2017", title: "Professor", company: "Galgametrics College", description: "Mentoring student startups."},
-        { year: "2010", title: "Management Consultant", company: "Stratagem Consulting", description: "Advised Fortune 500 companies."},
-        { year: "2005", title: "MBA", company: "Harvard Business School", description: "Graduated with honors."},
-      ]
-    },
-    {
-      name: "Dr. Ananya Sharma",
-      title: "Professor, Biotechnology",
-      image: { src: "https://picsum.photos/400/400?random=105", hint: "female professor" },
-      email: "a.sharma@galgotiacollege.edu",
-      phone: "+91 98765 43214",
-      about: "Dr. Sharma's research in genetic engineering has led to significant breakthroughs in crop improvement. She is a strong advocate for sustainable science.",
-       experience: [
-        { year: "2019", title: "Professor", company: "Galgametrics College", description: "Focused on gene-editing technologies."},
-        { year: "2014", title: "Research Lead", company: "BioGen Solutions", description: "Led a team in developing drought-resistant plants."},
-        { year: "2010", title: "PhD in Biotechnology", company: "Cambridge University", description: "Specialized in molecular biology."},
-      ]
-    },
-    {
-      name: "Dr. Rohan Gupta",
-      title: "Head of Civil Engineering",
-      image: { src: "https://picsum.photos/400/400?random=106", hint: "male professor" },
-      email: "r.gupta@galgotiacollege.edu",
-      phone: "+91 98765 43215",
-      about: "Dr. Gupta is a leading authority on sustainable infrastructure and smart city design. He has consulted on major urban development projects across the country.",
-       experience: [
-        { year: "2018", title: "Head of Department", company: "Galgametrics College", description: "Integrating green technologies in curriculum."},
-        { year: "2012", title: "Senior Structural Engineer", company: "Urban Planners Inc.", description: "Designed bridges and public buildings."},
-        { year: "2007", title: "Masters in Civil Eng.", company: "IIT Delhi", description: "Specialized in structural engineering."},
-      ]
-    },
-  ];
+  const [content, setContent] = useState<IContent['faculty'] | null>(null);
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    fetch('/api/content')
+      .then(res => res.json())
+      .then(data => {
+        setContent(data.faculty);
+        setIsLoading(false);
+      });
+  }, []);
+
+  if (isLoading || !content) {
+    return <div className="p-8">Loading faculty...</div>;
+  }
 
   return (
     <div className="bg-background">
       <section className="relative py-20 md:py-32 bg-primary/10">
         <div className="container mx-auto px-4 md:px-6 text-center">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold">
-            Our Esteemed <span className="text-primary">Faculty</span>
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold" dangerouslySetInnerHTML={{ __html: content.title }}>
           </h1>
           <p className="mt-4 text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto">
-            Meet the brilliant minds and dedicated mentors who form the backbone of our institution.
+            {content.subtitle}
           </p>
         </div>
       </section>
@@ -243,7 +179,7 @@ export default function FacultyPage() {
       <section className="py-12 lg:py-24">
         <div className="container mx-auto px-4 md:px-6">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-            {faculty.map((member, index) => (
+            {content.members.map((member, index) => (
               <FacultyCard key={index} faculty={member} />
             ))}
           </div>

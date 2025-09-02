@@ -1,7 +1,7 @@
 
 'use server';
 
-import { IContent } from '@/lib/content';
+import type { IContent } from '@/lib/content';
 import { revalidatePath } from 'next/cache';
 import fs from 'fs/promises';
 import path from 'path';
@@ -21,6 +21,11 @@ export async function saveContent(content: IContent) {
     revalidatePath('/academics');
     revalidatePath('/admission');
     revalidatePath('/faculty');
+    revalidatePath('/infrastructure');
+    revalidatePath('/student-life');
+    revalidatePath('/library');
+    revalidatePath('/campus');
+    revalidatePath('/virtual-tour');
     // ... add other paths as needed
     return { success: true };
   } catch (error) {
