@@ -1,4 +1,4 @@
-import type { Metadata } from 'next';
+import type { Metadata, Viewport } from 'next';
 import './globals.css';
 import { Header } from '@/components/layout/header';
 import { Footer } from '@/components/layout/footer';
@@ -9,34 +9,42 @@ import { ThemeProvider } from '@/components/theme-provider';
 import Script from 'next/script';
 import { getContent } from '@/lib/content-loader';
 
-export const metadata: Metadata = {
-  title: 'Galgametrics College Hub',
-  description: 'A professional college website built with Next.js. Fostering excellence, innovation, and a passion for learning.',
-  keywords: 'Galgametrics, college, education, university, engineering, business, computer science, higher education, innovation',
-  authors: [{ name: 'Galgametrics College' }],
-  openGraph: {
-    title: 'Galgametrics College Hub',
-    description: 'Fostering excellence, innovation, and a passion for learning.',
-    url: 'https://galgotiacollege.edu', // Replace with your actual domain
-    siteName: 'Galgametrics College',
-    images: [
-      {
-        url: 'https://picsum.photos/1200/630?random=1', // Replace with a link to your college's logo or a hero image
-        width: 1200,
-        height: 630,
-        alt: 'Galgametrics College Campus',
-      },
-    ],
-    locale: 'en_US',
-    type: 'website',
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: 'Galgametrics College Hub',
-    description: 'Fostering excellence, innovation, and a passion for learning.',
-    images: ['https://picsum.photos/1200/630?random=1'], // Replace with a link to your college's logo or a hero image
-  },
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const content = await getContent();
+  const { branding, footer } = content;
+
+  return {
+    title: `${branding.logoText} | ${footer.slogan}`,
+    description: 'A professional college website built with Next.js. Fostering excellence, innovation, and a passion for learning.',
+    keywords: 'Galgametrics, college, education, university, engineering, business, computer science, higher education, innovation',
+    authors: [{ name: branding.logoText }],
+    icons: {
+      icon: branding.faviconUrl,
+    },
+    openGraph: {
+      title: `${branding.logoText} | Hub`,
+      description: 'Fostering excellence, innovation, and a passion for learning.',
+      url: 'https://galgotiacollege.edu', // Replace with your actual domain
+      siteName: branding.logoText,
+      images: [
+        {
+          url: 'https://picsum.photos/1200/630?random=1', // Replace with a link to your college's logo or a hero image
+          width: 1200,
+          height: 630,
+          alt: `${branding.logoText} Campus`,
+        },
+      ],
+      locale: 'en_US',
+      type: 'website',
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: `${branding.logoText} | Hub`,
+      description: 'Fostering excellence, innovation, and a passion for learning.',
+      images: ['https://picsum.photos/1200/630?random=1'], // Replace with a link to your college's logo or a hero image
+    },
+  };
+}
 
 export default async function RootLayout({
   children,

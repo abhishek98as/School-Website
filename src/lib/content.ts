@@ -3,6 +3,11 @@ export interface IContent {
   global: {
     whatsappNumber: string;
   };
+  branding: {
+    logoUrl: string;
+    faviconUrl: string;
+    logoText: string;
+  };
   about: {
     ourAspiration: {
       title: string;
@@ -248,5 +253,3 @@ export interface IContent {
     copyright: string;
   };
 }
-
-    

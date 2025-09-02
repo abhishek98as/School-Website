@@ -6,7 +6,7 @@ import { useRouter } from 'next/navigation';
 import type { IContent } from '@/lib/content';
 import { saveContent } from '@/app/admin/actions';
 import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
@@ -144,6 +144,46 @@ export default function AdminPage() {
                               id="whatsappNumber"
                               value={content.global.whatsappNumber}
                               onChange={(e) => handleInputChange('global.whatsappNumber', e.target.value)}
+                            />
+                        </div>
+                    </CardContent>
+                </Card>
+             </AccordionContent>
+          </AccordionItem>
+
+          <AccordionItem value="item-branding">
+            <AccordionTrigger className="text-xl font-semibold">Branding</AccordionTrigger>
+             <AccordionContent>
+                <Card>
+                    <CardHeader>
+                        <CardTitle>Branding</CardTitle>
+                        <CardDescription>Manage your site logo and favicon.</CardDescription>
+                    </CardHeader>
+                    <CardContent className="space-y-4">
+                         <div className="space-y-2">
+                            <Label htmlFor="logoText">Logo Text</Label>
+                            <Input
+                              id="logoText"
+                              value={content.branding.logoText}
+                              onChange={(e) => handleInputChange('branding.logoText', e.target.value)}
+                            />
+                        </div>
+                        <div className="space-y-2">
+                            <Label htmlFor="logoUrl">Logo URL</Label>
+                             <CardDescription>Recommended size: 160x40 pixels</CardDescription>
+                            <Input
+                              id="logoUrl"
+                              value={content.branding.logoUrl}
+                              onChange={(e) => handleInputChange('branding.logoUrl', e.target.value)}
+                            />
+                        </div>
+                        <div className="space-y-2">
+                            <Label htmlFor="faviconUrl">Favicon URL</Label>
+                            <CardDescription>Recommended size: 32x32 pixels (.ico or .png)</CardDescription>
+                            <Input
+                              id="faviconUrl"
+                              value={content.branding.faviconUrl}
+                              onChange={(e) => handleInputChange('branding.faviconUrl', e.target.value)}
                             />
                         </div>
                     </CardContent>

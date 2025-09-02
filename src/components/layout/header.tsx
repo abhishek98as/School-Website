@@ -18,9 +18,11 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion"
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { ThemeToggle } from "../theme-toggle";
 import { cn } from "@/lib/utils";
+import type { IContent } from "@/lib/content";
+import Image from "next/image";
 
 const navLinks = [
   { href: "/", label: "Home" },
@@ -46,7 +48,14 @@ const navLinks = [
 
 export function Header() {
   const [isMenuOpen, setMenuOpen] = useState(false);
+  const [content, setContent] = useState<IContent | null>(null);
   const pathname = usePathname();
+
+  useEffect(() => {
+    fetch('/api/content')
+      .then(res => res.json())
+      .then(data => setContent(data));
+  }, []);
 
   const changeLanguage = (lang: string) => {
     const googleTranslateSelect = document.querySelector('#google_translate_element select') as HTMLSelectElement;
@@ -55,13 +64,29 @@ export function Header() {
       googleTranslateSelect.dispatchEvent(new Event('change'));
     }
   };
+  
+  if (!content) {
+    // You can render a loading state or a placeholder header
+    return (
+        <header className="sticky top-0 z-50 w-full border-b bg-card shadow-sm">
+            <div className="container mx-auto flex h-16 items-center justify-between px-4 md:px-6">
+                <div className="flex items-center gap-2">
+                    <University className="h-8 w-8 text-primary" />
+                    <span className="font-bold text-lg hidden sm:inline">Loading...</span>
+                </div>
+            </div>
+        </header>
+    );
+  }
+
+  const { branding } = content;
 
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-card shadow-sm">
       <div className="container mx-auto flex h-16 items-center justify-between px-4 md:px-6">
         <Link href="/" className="flex items-center gap-2 notranslate">
-          <University className="h-8 w-8 text-primary" />
-          <span className="font-bold text-lg hidden sm:inline">GALGOTIAS COLLEGE</span>
+          <Image src={branding.logoUrl} alt={branding.logoText} width={120} height={30} className="h-8 w-auto" />
+          <span className="font-bold text-lg hidden sm:inline">{branding.logoText}</span>
            <span className="font-bold text-lg sm:hidden">GCET</span>
         </Link>
         <nav className="hidden lg:flex items-center gap-6 text-sm font-medium">
@@ -137,8 +162,8 @@ export function Header() {
                 </SheetHeader>
                 <div className="grid gap-4 p-6">
                   <Link href="/" className="flex items-center gap-2 notranslate" onClick={() => setMenuOpen(false)}>
-                    <University className="h-8 w-8 text-primary" />
-                    <span className="font-bold">GALGOTIAS COLLEGE</span>
+                    <Image src={branding.logoUrl} alt={branding.logoText} width={120} height={30} className="h-8 w-auto" />
+                    <span className="font-bold">{branding.logoText}</span>
                   </Link>
 
                   <Button asChild variant="ghost" className="w-full justify-start text-lg font-medium hover:bg-primary/10 hover:text-primary" onClick={() => setMenuOpen(false)}>

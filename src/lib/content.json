@@ -1,6 +1,12 @@
+
 {
   "global": {
     "whatsappNumber": "+917985154505"
+  },
+  "branding": {
+    "logoUrl": "https://picsum.photos/seed/logo/160/40",
+    "faviconUrl": "https://picsum.photos/seed/favicon/32/32",
+    "logoText": "GALGOTIAS COLLEGE"
   },
   "about": {
     "ourAspiration": {
