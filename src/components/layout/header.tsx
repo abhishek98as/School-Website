@@ -135,11 +135,19 @@ export function Header() {
                  <SheetHeader>
                   <SheetTitle className="sr-only">Navigation Menu</SheetTitle>
                 </SheetHeader>
-                <div className="grid gap-6 p-6">
+                <div className="grid gap-4 p-6">
                   <Link href="/" className="flex items-center gap-2 notranslate" onClick={() => setMenuOpen(false)}>
                     <University className="h-8 w-8 text-primary" />
                     <span className="font-bold">GALGOTIAS COLLEGE</span>
                   </Link>
+
+                  <Button asChild variant="ghost" className="w-full justify-start text-lg font-medium hover:bg-primary/10 hover:text-primary" onClick={() => setMenuOpen(false)}>
+                     <Link href="/login">
+                        <LogIn className="mr-2 h-5 w-5" />
+                        Login
+                      </Link>
+                  </Button>
+                  
                   <nav className="grid gap-2">
                      <Accordion type="single" collapsible className="w-full">
                         {navLinks.map((link) => (
@@ -181,14 +189,6 @@ export function Header() {
                         )
                         ))}
                      </Accordion>
-                     <Link
-                      href="/login"
-                      onClick={() => setMenuOpen(false)}
-                      className="text-lg font-medium transition-colors hover:text-primary flex items-center pt-4"
-                    >
-                      <LogIn className="mr-2 h-5 w-5" />
-                      Login
-                    </Link>
                   </nav>
                 </div>
               </SheetContent>
