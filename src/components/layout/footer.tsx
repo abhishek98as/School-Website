@@ -1,11 +1,14 @@
 import Link from "next/link";
-import { University } from "lucide-react";
+import { University, Code } from "lucide-react";
 import { Separator } from "@/components/ui/separator";
 import { getContent } from "@/lib/content-loader";
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "../ui/tooltip";
 
 export async function Footer() {
   const content = await getContent();
   const footerContent = content.footer;
+  const developerWhatsapp = "+917068482741";
+  const whatsappLink = `https://wa.me/${developerWhatsapp}`;
 
   return (
     <footer className="bg-gray-900 text-gray-300">
@@ -46,9 +49,23 @@ export async function Footer() {
       <div className="container mx-auto px-4 md:px-6 py-4">
         <div className="flex flex-col md:flex-row justify-between items-center text-sm text-gray-500 text-center md:text-left">
           <p>{footerContent.copyright}</p>
-          <Link href="/privacy-policy" className="hover:text-primary transition-colors mt-2 md:mt-0 notranslate">
-            Privacy Policy
-          </Link>
+          <div className="flex items-center gap-4 mt-2 md:mt-0">
+             <Link href="/privacy-policy" className="hover:text-primary transition-colors notranslate">
+                Privacy Policy
+             </Link>
+             <TooltipProvider>
+                <Tooltip>
+                    <TooltipTrigger asChild>
+                        <Link href={whatsappLink} target="_blank" rel="noopener noreferrer" aria-label="Contact Developer">
+                            <Code className="h-5 w-5 hover:text-primary transition-colors" />
+                        </Link>
+                    </TooltipTrigger>
+                    <TooltipContent>
+                        <p>Contact Developer</p>
+                    </TooltipContent>
+                </Tooltip>
+             </TooltipProvider>
+          </div>
         </div>
       </div>
     </footer>

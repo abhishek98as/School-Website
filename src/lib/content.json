@@ -1,7 +1,6 @@
-
 {
   "global": {
-    "whatsappNumber": "+917068482741"
+    "whatsappNumber": "+917985154505"
   },
   "about": {
     "ourAspiration": {
@@ -302,32 +301,104 @@
     "title": "Admissions 2025-26",
     "subtitle": "Join our community of learners. Find all the information you need to start your journey with us.",
     "ageCriteria": [
-      { "class": "Nursery", "age": "03 years" },
-      { "class": "KG-I", "age": "04 years" },
-      { "class": "KG-II", "age": "05 years" },
-      { "class": "I", "age": "06 years" },
-      { "class": "II", "age": "07 years" },
-      { "class": "III", "age": "08 years" },
-      { "class": "IV", "age": "09 years" },
-      { "class": "V", "age": "10 years" },
-      { "class": "VI", "age": "11 years" },
-      { "class": "VII", "age": "12 years" },
-      { "class": "VIII", "age": "13 years" },
-      { "class": "IX", "age": "14 years" }
+      {
+        "class": "Nursery",
+        "age": "03 years"
+      },
+      {
+        "class": "KG-I",
+        "age": "04 years"
+      },
+      {
+        "class": "KG-II",
+        "age": "05 years"
+      },
+      {
+        "class": "I",
+        "age": "06 years"
+      },
+      {
+        "class": "II",
+        "age": "07 years"
+      },
+      {
+        "class": "III",
+        "age": "08 years"
+      },
+      {
+        "class": "IV",
+        "age": "09 years"
+      },
+      {
+        "class": "V",
+        "age": "10 years"
+      },
+      {
+        "class": "VI",
+        "age": "11 years"
+      },
+      {
+        "class": "VII",
+        "age": "12 years"
+      },
+      {
+        "class": "VIII",
+        "age": "13 years"
+      },
+      {
+        "class": "IX",
+        "age": "14 years"
+      }
     ],
     "feeStructure": [
-      { "class": "Nursery", "fee": "₹ 30,000" },
-      { "class": "KG-I", "fee": "₹ 32,000" },
-      { "class": "KG-II", "fee": "₹ 32,000" },
-      { "class": "I", "fee": "₹ 35,000" },
-      { "class": "II", "fee": "₹ 35,000" },
-      { "class": "III", "fee": "₹ 38,000" },
-      { "class": "IV", "fee": "₹ 38,000" },
-      { "class": "V", "fee": "₹ 40,000" },
-      { "class": "VI", "fee": "₹ 42,000" },
-      { "class": "VII", "fee": "₹ 42,000" },
-      { "class": "VIII", "fee": "₹ 45,000" },
-      { "class": "IX", "fee": "₹ 50,000" }
+      {
+        "class": "Nursery",
+        "fee": "₹ 30,000"
+      },
+      {
+        "class": "KG-I",
+        "fee": "₹ 32,000"
+      },
+      {
+        "class": "KG-II",
+        "fee": "₹ 32,000"
+      },
+      {
+        "class": "I",
+        "fee": "₹ 35,000"
+      },
+      {
+        "class": "II",
+        "fee": "₹ 35,000"
+      },
+      {
+        "class": "III",
+        "fee": "₹ 38,000"
+      },
+      {
+        "class": "IV",
+        "fee": "₹ 38,000"
+      },
+      {
+        "class": "V",
+        "fee": "₹ 40,000"
+      },
+      {
+        "class": "VI",
+        "fee": "₹ 42,000"
+      },
+      {
+        "class": "VII",
+        "fee": "₹ 42,000"
+      },
+      {
+        "class": "VIII",
+        "fee": "₹ 45,000"
+      },
+      {
+        "class": "IX",
+        "fee": "₹ 50,000"
+      }
     ],
     "documentsRequired": [
       "Evidence of date of birth (Birth Certificate for PG/KG, T.C. from previous school for Class I+).",
@@ -341,82 +412,190 @@
     "title": "Our Esteemed Faculty",
     "subtitle": "Meet the brilliant minds and dedicated mentors who form the backbone of our institution.",
     "members": [
-       {
+      {
         "name": "Dr. Evelyn Reed",
         "title": "Professor, Computer Science",
-        "image": { "src": "https://picsum.photos/400/400?random=101", "hint": "female professor" },
+        "image": {
+          "src": "https://picsum.photos/400/400?random=101",
+          "hint": "female professor"
+        },
         "email": "e.reed@galgotiacollege.edu",
         "phone": "+91 98765 43210",
         "about": "Dr. Reed is an expert in artificial intelligence and machine learning, with over 15 years of experience in both academia and industry. Her research focuses on natural language processing.",
         "experience": [
-          { "year": "2018", "title": "Professor", "company": "Galgametrics College", "description": "Leading the AI research department."},
-          { "year": "2012", "title": "Senior Scientist", "company": "TechNova Inc.", "description": "Developed cutting-edge NLP models."},
-          { "year": "2008", "title": "Post-doc Researcher", "company": "MIT", "description": "Published foundational papers on neural networks."}
+          {
+            "year": "2018",
+            "title": "Professor",
+            "company": "Galgametrics College",
+            "description": "Leading the AI research department."
+          },
+          {
+            "year": "2012",
+            "title": "Senior Scientist",
+            "company": "TechNova Inc.",
+            "description": "Developed cutting-edge NLP models."
+          },
+          {
+            "year": "2008",
+            "title": "Post-doc Researcher",
+            "company": "MIT",
+            "description": "Published foundational papers on neural networks."
+          }
         ]
       },
       {
         "name": "Dr. Marcus Thorne",
         "title": "Head of Mechanical Engineering",
-        "image": { "src": "https://picsum.photos/400/400?random=102", "hint": "male professor" },
+        "image": {
+          "src": "https://picsum.photos/400/400?random=102",
+          "hint": "male professor"
+        },
         "email": "m.thorne@galgotiacollege.edu",
         "phone": "+91 98765 43211",
         "about": "Dr. Thorne specializes in robotics and mechatronics. He is passionate about building autonomous systems and has led multiple award-winning student projects.",
         "experience": [
-          { "year": "2015", "title": "Head of Department", "company": "Galgametrics College", "description": "Overseeing curriculum and research initiatives."},
-          { "year": "2010", "title": "Associate Professor", "company": "State University", "description": "Taught advanced robotics courses."},
-          { "year": "2006", "title": "Design Engineer", "company": "RoboCorp", "description": "Designed robotic arms for manufacturing."}
+          {
+            "year": "2015",
+            "title": "Head of Department",
+            "company": "Galgametrics College",
+            "description": "Overseeing curriculum and research initiatives."
+          },
+          {
+            "year": "2010",
+            "title": "Associate Professor",
+            "company": "State University",
+            "description": "Taught advanced robotics courses."
+          },
+          {
+            "year": "2006",
+            "title": "Design Engineer",
+            "company": "RoboCorp",
+            "description": "Designed robotic arms for manufacturing."
+          }
         ]
       },
       {
         "name": "Dr. Elena Vance",
         "title": "Associate Professor, Physics",
-        "image": { "src": "https://picsum.photos/400/400?random=103", "hint": "female professor" },
+        "image": {
+          "src": "https://picsum.photos/400/400?random=103",
+          "hint": "female professor"
+        },
         "email": "e.vance@galgotiacollege.edu",
         "phone": "+91 98765 43212",
         "about": "With a Ph.D. in quantum physics, Dr. Vance's work on quantum computing has be published in several prestigious journals. She enjoys making complex topics accessible.",
-         "experience": [
-          { "year": "2020", "title": "Associate Professor", "company": "Galgametrics College", "description": "Researching quantum entanglement."},
-          { "year": "2016", "title": "Lecturer", "company": "Institute of Science", "description": "Taught undergraduate physics."},
-          { "year": "2014", "title": "Junior Scientist", "company": "QuantumLeap", "description": "Contributed to quantum processor design."}
+        "experience": [
+          {
+            "year": "2020",
+            "title": "Associate Professor",
+            "company": "Galgametrics College",
+            "description": "Researching quantum entanglement."
+          },
+          {
+            "year": "2016",
+            "title": "Lecturer",
+            "company": "Institute of Science",
+            "description": "Taught undergraduate physics."
+          },
+          {
+            "year": "2014",
+            "title": "Junior Scientist",
+            "company": "QuantumLeap",
+            "description": "Contributed to quantum processor design."
+          }
         ]
       },
       {
         "name": "Dr. Julian Croft",
         "title": "Professor, Business Administration",
-        "image": { "src": "https://picsum.photos/400/400?random=104", "hint": "male professor" },
+        "image": {
+          "src": "https://picsum.photos/400/400?random=104",
+          "hint": "male professor"
+        },
         "email": "j.croft@galgotiacollege.edu",
         "phone": "+91 98765 43213",
         "about": "Dr. Croft is a seasoned expert in strategic management and entrepreneurship. He brings a wealth of real-world business experience to the classroom.",
-         "experience": [
-          { "year": "2017", "title": "Professor", "company": "Galgametrics College", "description": "Mentoring student startups."},
-          { "year": "2010", "title": "Management Consultant", "company": "Stratagem Consulting", "description": "Advised Fortune 500 companies."},
-          { "year": "2005", "title": "MBA", "company": "Harvard Business School", "description": "Graduated with honors."}
+        "experience": [
+          {
+            "year": "2017",
+            "title": "Professor",
+            "company": "Galgametrics College",
+            "description": "Mentoring student startups."
+          },
+          {
+            "year": "2010",
+            "title": "Management Consultant",
+            "company": "Stratagem Consulting",
+            "description": "Advised Fortune 500 companies."
+          },
+          {
+            "year": "2005",
+            "title": "MBA",
+            "company": "Harvard Business School",
+            "description": "Graduated with honors."
+          }
         ]
       },
       {
         "name": "Dr. Ananya Sharma",
         "title": "Professor, Biotechnology",
-        "image": { "src": "https://picsum.photos/400/400?random=105", "hint": "female professor" },
+        "image": {
+          "src": "https://picsum.photos/400/400?random=105",
+          "hint": "female professor"
+        },
         "email": "a.sharma@galgotiacollege.edu",
         "phone": "+91 98765 43214",
         "about": "Dr. Sharma's research in genetic engineering has led to significant breakthroughs in crop improvement. She is a strong advocate for sustainable science.",
-         "experience": [
-          { "year": "2019", "title": "Professor", "company": "Galgametrics College", "description": "Focused on gene-editing technologies."},
-          { "year": "2014", "title": "Research Lead", "company": "BioGen Solutions", "description": "Led a team in developing drought-resistant plants."},
-          { "year": "2010", "title": "PhD in Biotechnology", "company": "Cambridge University", "description": "Specialized in molecular biology."}
+        "experience": [
+          {
+            "year": "2019",
+            "title": "Professor",
+            "company": "Galgametrics College",
+            "description": "Focused on gene-editing technologies."
+          },
+          {
+            "year": "2014",
+            "title": "Research Lead",
+            "company": "BioGen Solutions",
+            "description": "Led a team in developing drought-resistant plants."
+          },
+          {
+            "year": "2010",
+            "title": "PhD in Biotechnology",
+            "company": "Cambridge University",
+            "description": "Specialized in molecular biology."
+          }
         ]
       },
       {
         "name": "Dr. Rohan Gupta",
         "title": "Head of Civil Engineering",
-        "image": { "src": "https://picsum.photos/400/400?random=106", "hint": "male professor" },
+        "image": {
+          "src": "https://picsum.photos/400/400?random=106",
+          "hint": "male professor"
+        },
         "email": "r.gupta@galgotiacollege.edu",
         "phone": "+91 98765 43215",
         "about": "Dr. Gupta is a leading authority on sustainable infrastructure and smart city design. He has consulted on major urban development projects across the country.",
-         "experience": [
-          { "year": "2018", "title": "Head of Department", "company": "Galgametrics College", "description": "Integrating green technologies in curriculum."},
-          { "year": "2012", "title": "Senior Structural Engineer", "company": "Urban Planners Inc.", "description": "Designed bridges and public buildings."},
-          { "year": "2007", "title": "Masters in Civil Eng.", "company": "IIT Delhi", "description": "Specialized in structural engineering."}
+        "experience": [
+          {
+            "year": "2018",
+            "title": "Head of Department",
+            "company": "Galgametrics College",
+            "description": "Integrating green technologies in curriculum."
+          },
+          {
+            "year": "2012",
+            "title": "Senior Structural Engineer",
+            "company": "Urban Planners Inc.",
+            "description": "Designed bridges and public buildings."
+          },
+          {
+            "year": "2007",
+            "title": "Masters in Civil Eng.",
+            "company": "IIT Delhi",
+            "description": "Specialized in structural engineering."
+          }
         ]
       }
     ]
@@ -425,29 +604,41 @@
     "title": "Our Infrastructure",
     "subtitle": "World-class facilities to support a world-class education.",
     "facilities": [
-       {
+      {
         "name": "State-of-the-Art Labs",
         "description": "Equipped with the latest technology for practical learning.",
         "icon": "FlaskConical",
-        "image": { "src": "https://picsum.photos/600/400?random=61", "hint": "science lab" }
+        "image": {
+          "src": "https://picsum.photos/600/400?random=61",
+          "hint": "science lab"
+        }
       },
       {
         "name": "Modern Classrooms",
         "description": "Smart classrooms that foster an interactive learning environment.",
         "icon": "Computer",
-        "image": { "src": "https://picsum.photos/600/400?random=62", "hint": "modern classroom" }
+        "image": {
+          "src": "https://picsum.photos/600/400?random=62",
+          "hint": "modern classroom"
+        }
       },
       {
         "name": "Rich Library",
         "description": "A vast collection of books, journals, and digital resources.",
         "icon": "Library",
-        "image": { "src": "https://picsum.photos/600/400?random=63", "hint": "library interior" }
+        "image": {
+          "src": "https://picsum.photos/600/400?random=63",
+          "hint": "library interior"
+        }
       },
       {
         "name": "Expansive Campus",
         "description": "Lush green campus with sports facilities and open spaces.",
         "icon": "Building",
-        "image": { "src": "https://picsum.photos/600/400?random=64", "hint": "college campus" }
+        "image": {
+          "src": "https://picsum.photos/600/400?random=64",
+          "hint": "college campus"
+        }
       }
     ]
   },
@@ -455,32 +646,47 @@
     "title": "Vibrant Student Life",
     "subtitle": "Experience a rich and diverse campus life beyond academics.",
     "hero": {
-      "image": { "src": "https://picsum.photos/1920/1080?random=70", "hint": "students laughing" }
+      "image": {
+        "src": "https://picsum.photos/1920/1080?random=70",
+        "hint": "students laughing"
+      }
     },
     "activities": [
       {
         "name": "Arts & Culture",
         "description": "Express your creativity through various art forms and cultural events.",
         "icon": "Paintbrush",
-        "image": { "src": "https://picsum.photos/600/400?random=71", "hint": "students painting" }
+        "image": {
+          "src": "https://picsum.photos/600/400?random=71",
+          "hint": "students painting"
+        }
       },
       {
         "name": "Music & Performing Arts",
         "description": "Join bands, choirs, and theatre groups to showcase your talents.",
         "icon": "Music",
-        "image": { "src": "https://picsum.photos/600/400?random=72", "hint": "student concert" }
+        "image": {
+          "src": "https://picsum.photos/600/400?random=72",
+          "hint": "student concert"
+        }
       },
       {
         "name": "Sports & Fitness",
         "description": "Stay active with our excellent sports facilities and fitness programs.",
         "icon": "Dumbbell",
-        "image": { "src": "https://picsum.photos/600/400?random=73", "hint": "college sports" }
+        "image": {
+          "src": "https://picsum.photos/600/400?random=73",
+          "hint": "college sports"
+        }
       },
       {
         "name": "Clubs & Organizations",
         "description": "Connect with like-minded peers and develop leadership skills.",
         "icon": "Users",
-        "image": { "src": "https://picsum.photos/600/400?random=74", "hint": "student club" }
+        "image": {
+          "src": "https://picsum.photos/600/400?random=74",
+          "hint": "student club"
+        }
       }
     ]
   },
@@ -524,29 +730,41 @@
     "title": "Explore Our Campus",
     "subtitle": "A sprawling 19-acre campus designed to provide a holistic educational experience.",
     "features": [
-       {
+      {
         "name": "Green & Serene",
         "description": "A lush, eco-friendly campus that provides a tranquil environment for learning.",
         "icon": "Trees",
-        "image": { "src": "https://picsum.photos/600/400?random=91", "hint": "green campus" }
+        "image": {
+          "src": "https://picsum.photos/600/400?random=91",
+          "hint": "green campus"
+        }
       },
       {
         "name": "Cafeteria & Dining",
         "description": "Hygienic and diverse food options to cater to all tastes.",
         "icon": "Utensils",
-        "image": { "src": "https://picsum.photos/600/400?random=92", "hint": "college cafeteria" }
+        "image": {
+          "src": "https://picsum.photos/600/400?random=92",
+          "hint": "college cafeteria"
+        }
       },
       {
         "name": "Transport Facility",
         "description": "Safe and reliable transport services connecting various parts of the city.",
         "icon": "Bus",
-        "image": { "src": "https://picsum.photos/600/400?random=93", "hint": "college bus" }
+        "image": {
+          "src": "https://picsum.photos/600/400?random=93",
+          "hint": "college bus"
+        }
       },
       {
         "name": "Secure Environment",
         "description": "24/7 security and surveillance to ensure a safe campus for all.",
         "icon": "ShieldCheck",
-        "image": { "src": "https://picsum.photos/600/400?random=94", "hint": "security camera" }
+        "image": {
+          "src": "https://picsum.photos/600/400?random=94",
+          "hint": "security camera"
+        }
       }
     ]
   },
@@ -554,7 +772,7 @@
     "title": "360° Virtual Tour",
     "subtitle": "Explore our campus from anywhere in the world. Click and drag to look around.",
     "views": [
-       {
+      {
         "title": "Main Campus Entrance",
         "id": "streetview",
         "icon": "Building",
@@ -581,29 +799,51 @@
     ]
   },
   "footer": {
-    "collegeName": "GALGOTIAS COLLEGE",
-    "slogan": "Fostering excellence, innovation, and a passion for learning since 2004.",
+    "collegeName": " PMS SCHOOL",
+    "slogan": "Nurturing Minds, Shaping Futures",
     "quickLinks": {
       "title": "Quick Links",
       "links": [
-        { "href": "/academics", "label": "Academics" },
-        { "href": "/admission", "label": "Admission" },
-        { "href": "/faculty", "label": "Our Faculty" },
-        { "href": "/infrastructure", "label": "Infrastructure" },
-        { "href": "/student-life", "label": "Student Life" },
-        { "href": "/library", "label": "Library" },
-        { "href": "/campus", "label": "Campus" },
-        { "href": "/virtual-tour", "label": "Virtual Tour" }
+        {
+          "href": "/academics",
+          "label": "Academics"
+        },
+        {
+          "href": "/admission",
+          "label": "Admission"
+        },
+        {
+          "href": "/faculty",
+          "label": "Our Faculty"
+        },
+        {
+          "href": "/infrastructure",
+          "label": "Infrastructure"
+        },
+        {
+          "href": "/student-life",
+          "label": "Student Life"
+        },
+        {
+          "href": "/library",
+          "label": "Library"
+        },
+        {
+          "href": "/campus",
+          "label": "Campus"
+        },
+        {
+          "href": "/virtual-tour",
+          "label": "Virtual Tour"
+        }
       ]
     },
     "reachUs": {
       "title": "Reach Us",
-      "address": "1, Knowledge Park, Phase-II, Greater Noida, Uttar Pradesh 201306",
-      "phone": "(+91) 120-4370000",
-      "email": "info@galgotiacollege.edu"
+      "address": "Police Modern School , 39 BN PAC Mirzapur,231001",
+      "phone": "+917985154505",
+      "email": "pms39bnmirzapur@gmail.com"
     },
-    "copyright": "© Copyright 2024, all rights reserved with GALGOTIA COLLEGE"
+    "copyright": "© Copyright 2025, All rights reserved with PMS School MZP"
   }
 }
-
-    
