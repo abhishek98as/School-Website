@@ -96,7 +96,7 @@ const FacultyCard = ({ faculty }: { faculty: any }) => {
              <div className="absolute top-0 w-0.5 h-full bg-gradient-to-t from-transparent via-primary/50 to-primary" style={{left: '2.625rem'}}></div>
              {faculty.experience.map((item: any, index: number) => (
                 <div key={index} className="card-item relative pl-16 pb-7 z-10" data-year={item.year}>
-                   <div className="absolute top-0 left-[37px] w-4 h-4 rounded-full border-2 border-card bg-primary z-10"></div>
+                   <div className="absolute top-[3px] left-[37px] w-4 h-4 rounded-full border-2 border-card bg-primary z-10"></div>
                    <div className="font-medium text-sm mb-1">{item.title} at <span className="font-bold">{item.company}</span></div>
                    <div className="text-xs text-muted-foreground">{item.description}</div>
                 </div>
@@ -179,7 +179,7 @@ export default function FacultyPage() {
       image: { src: "https://picsum.photos/400/400?random=103", hint: "female professor" },
       email: "e.vance@galgotiacollege.edu",
       phone: "+91 98765 43212",
-      about: "With a Ph.D. in quantum physics, Dr. Vance's work on quantum computing has been published in several prestigious journals. She enjoys making complex topics accessible.",
+      about: "With a Ph.D. in quantum physics, Dr. Vance's work on quantum computing has be published in several prestigious journals. She enjoys making complex topics accessible.",
        experience: [
         { year: "2020", title: "Associate Professor", company: "Galgametrics College", description: "Researching quantum entanglement."},
         { year: "2016", title: "Lecturer", company: "Institute of Science", description: "Taught undergraduate physics."},
