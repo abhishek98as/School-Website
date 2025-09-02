@@ -79,6 +79,13 @@ export function Header() {
             </DropdownMenuContent>
           </DropdownMenu>
 
+           <Button asChild variant="secondary" className="hidden lg:flex group transition-all duration-300 ease-in-out">
+            <Link href="/login">
+              <LogIn className="mr-2 h-5 w-5 transition-transform duration-300 group-hover:translate-x-1" />
+              Login
+            </Link>
+          </Button>
+
           <div className="lg:hidden">
             <Sheet open={isMenuOpen} onOpenChange={setMenuOpen}>
               <SheetTrigger asChild>
