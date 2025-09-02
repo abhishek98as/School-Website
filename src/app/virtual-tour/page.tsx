@@ -20,7 +20,8 @@ export default async function VirtualTourPage() {
     <div className="bg-background">
       <section className="relative py-20 md:py-32 bg-primary/10">
         <div className="container mx-auto px-4 md:px-6 text-center">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold" dangerouslySetInnerHTML={{ __html: virtualTourContent.title }}>
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold">
+            {virtualTourContent.title}
           </h1>
           <p className="mt-4 text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto">
             {virtualTourContent.subtitle}

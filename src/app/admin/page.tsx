@@ -217,7 +217,7 @@ export default function AdminPage() {
               <Card>
                 <CardHeader><CardTitle>Academics Page</CardTitle></CardHeader>
                 <CardContent className="space-y-4">
-                  <Label>Title (HTML allowed)</Label>
+                  <Label>Title</Label>
                   <Input value={content.academics.title} onChange={(e) => handleInputChange('academics.title', e.target.value)} />
                   <Label>Subtitle</Label>
                   <Textarea value={content.academics.subtitle} onChange={(e) => handleInputChange('academics.subtitle', e.target.value)} />
@@ -241,7 +241,7 @@ export default function AdminPage() {
               <Card>
                 <CardHeader><CardTitle>Admission Page</CardTitle></CardHeader>
                 <CardContent className="space-y-4">
-                  <Label>Title (HTML allowed)</Label>
+                  <Label>Title</Label>
                   <Input value={content.admission.title} onChange={(e) => handleInputChange('admission.title', e.target.value)} />
                   <Label>Subtitle</Label>
                   <Textarea value={content.admission.subtitle} onChange={(e) => handleInputChange('admission.subtitle', e.target.value)} />
@@ -282,7 +282,7 @@ export default function AdminPage() {
               <Card>
                 <CardHeader><CardTitle>Faculty Page</CardTitle></CardHeader>
                 <CardContent className="space-y-4">
-                  <Label>Title (HTML allowed)</Label>
+                  <Label>Title</Label>
                   <Input value={content.faculty.title} onChange={(e) => handleInputChange('faculty.title', e.target.value)} />
                   <Label>Subtitle</Label>
                   <Textarea value={content.faculty.subtitle} onChange={(e) => handleInputChange('faculty.subtitle', e.target.value)} />
@@ -330,7 +330,7 @@ export default function AdminPage() {
                 <Card>
                   <CardHeader><CardTitle>Infrastructure Page</CardTitle></CardHeader>
                   <CardContent className="space-y-4">
-                    <Label>Title (HTML allowed)</Label>
+                    <Label>Title</Label>
                     <Input value={content.infrastructure.title} onChange={(e) => handleInputChange('infrastructure.title', e.target.value)} />
                     <Label>Subtitle</Label>
                     <Textarea value={content.infrastructure.subtitle} onChange={(e) => handleInputChange('infrastructure.subtitle', e.target.value)} />
@@ -354,7 +354,7 @@ export default function AdminPage() {
                 <Card>
                   <CardHeader><CardTitle>Student Life Page</CardTitle></CardHeader>
                   <CardContent className="space-y-4">
-                    <Label>Title (HTML allowed)</Label>
+                    <Label>Title</Label>
                     <Input value={content.studentLife.title} onChange={(e) => handleInputChange('studentLife.title', e.target.value)} />
                     <Label>Subtitle</Label>
                     <Textarea value={content.studentLife.subtitle} onChange={(e) => handleInputChange('studentLife.subtitle', e.target.value)} />
@@ -378,7 +378,7 @@ export default function AdminPage() {
                 <Card>
                   <CardHeader><CardTitle>Library Page</CardTitle></CardHeader>
                   <CardContent className="space-y-4">
-                    <Label>Title (HTML allowed)</Label>
+                    <Label>Title</Label>
                     <Input value={content.library.title} onChange={(e) => handleInputChange('library.title', e.target.value)} />
                     <Label>Subtitle</Label>
                     <Textarea value={content.library.subtitle} onChange={(e) => handleInputChange('library.subtitle', e.target.value)} />
@@ -410,7 +410,7 @@ export default function AdminPage() {
                 <Card>
                   <CardHeader><CardTitle>Campus Page</CardTitle></CardHeader>
                   <CardContent className="space-y-4">
-                    <Label>Title (HTML allowed)</Label>
+                    <Label>Title</Label>
                     <Input value={content.campus.title} onChange={(e) => handleInputChange('campus.title', e.target.value)} />
                     <Label>Subtitle</Label>
                     <Textarea value={content.campus.subtitle} onChange={(e) => handleInputChange('campus.subtitle', e.target.value)} />
@@ -434,7 +434,7 @@ export default function AdminPage() {
                 <Card>
                   <CardHeader><CardTitle>Virtual Tour Page</CardTitle></CardHeader>
                   <CardContent className="space-y-4">
-                    <Label>Title (HTML allowed)</Label>
+                    <Label>Title</Label>
                     <Input value={content.virtualTourPage.title} onChange={(e) => handleInputChange('virtualTourPage.title', e.target.value)} />
                     <Label>Subtitle</Label>
                     <Textarea value={content.virtualTourPage.subtitle} onChange={(e) => handleInputChange('virtualTourPage.subtitle', e.target.value)} />

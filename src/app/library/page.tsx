@@ -31,7 +31,8 @@ export default async function LibraryPage() {
         />
         <div className="absolute inset-0 bg-black/60 z-10"></div>
         <div className="relative z-20 text-center text-white px-4">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold" dangerouslySetInnerHTML={{ __html: libraryContent.title }}>
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold">
+            {libraryContent.title}
           </h1>
           <p className="mt-4 text-lg md:text-xl max-w-3xl mx-auto">
             {libraryContent.subtitle}

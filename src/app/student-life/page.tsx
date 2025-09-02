@@ -22,7 +22,8 @@ export default async function StudentLifePage() {
       <section className="relative py-20 md:py-32 bg-cover bg-center" style={{ backgroundImage: `url('${studentLifeContent.hero.image.src}')` }}>
         <div className="absolute inset-0 bg-black/60"></div>
         <div className="container relative mx-auto px-4 md:px-6 text-center text-white">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold" dangerouslySetInnerHTML={{ __html: studentLifeContent.title }}>
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold">
+            {studentLifeContent.title}
           </h1>
           <p className="mt-4 text-lg md:text-xl max-w-3xl mx-auto">
             {studentLifeContent.subtitle}

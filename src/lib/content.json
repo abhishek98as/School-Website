@@ -110,7 +110,7 @@
       }
     },
     "achievements": {
-      "title": "Our <span class=\"text-primary\">Achievements</span>",
+      "title": "Our Achievements",
       "description": "Celebrating the milestones and successes of our students and faculty.",
       "videos": [
         {
@@ -132,7 +132,7 @@
       ]
     },
     "risingStars": {
-      "title": "Our <span class=\"text-primary\">Rising Stars</span>",
+      "title": "Our Rising Stars",
       "description": "Meet the brilliant minds shaping the future.",
       "cta": {
         "text": "View All"
@@ -177,7 +177,7 @@
       ]
     },
     "newsAndEvents": {
-      "title": "News &amp; <span class=\"text-primary\">Events</span>",
+      "title": "News & Events",
       "description": "Stay updated with the latest happenings at our college.",
       "items": [
         {
@@ -216,7 +216,7 @@
     }
   },
   "academics": {
-    "title": "Academics at <span class=\"text-primary\">Galgametrics</span>",
+    "title": "Academics at Galgametrics",
     "subtitle": "Empowering minds through a comprehensive and innovative curriculum, fostering both intellectual and personal growth.",
     "programs": [
       {
@@ -249,7 +249,7 @@
     ]
   },
   "admission": {
-    "title": "Admissions <span class=\"text-primary\">2025-26</span>",
+    "title": "Admissions 2025-26",
     "subtitle": "Join our community of learners. Find all the information you need to start your journey with us.",
     "ageCriteria": [
       { "class": "Nursery", "age": "03 years" },
@@ -288,7 +288,7 @@
     "enquiryFormUrl": "https://docs.google.com/forms/d/e/1FAIpQLSfwLVi5E2tO-Vp1J_iJg_3J-3z_Rz-tX6yQ9z3zX3zX3zX3zX/viewform?embedded=true"
   },
   "faculty": {
-    "title": "Our Esteemed <span class=\"text-primary\">Faculty</span>",
+    "title": "Our Esteemed Faculty",
     "subtitle": "Meet the brilliant minds and dedicated mentors who form the backbone of our institution.",
     "members": [
        {
@@ -372,7 +372,7 @@
     ]
   },
   "infrastructure": {
-    "title": "Our <span class=\"text-primary\">Infrastructure</span>",
+    "title": "Our Infrastructure",
     "subtitle": "World-class facilities to support a world-class education.",
     "facilities": [
        {
@@ -402,7 +402,7 @@
     ]
   },
   "studentLife": {
-    "title": "Vibrant <span class=\"text-primary\">Student Life</span>",
+    "title": "Vibrant Student Life",
     "subtitle": "Experience a rich and diverse campus life beyond academics.",
     "hero": {
       "image": { "src": "https://picsum.photos/1920/1080?random=70", "hint": "students laughing" }
@@ -435,7 +435,7 @@
     ]
   },
   "library": {
-    "title": "The Knowledge <span class=\"text-primary\">Center</span>",
+    "title": "The Knowledge Center",
     "subtitle": "A gateway to a world of information, resources, and collaborative learning.",
     "hero": {
       "image": {
@@ -471,7 +471,7 @@
     }
   },
   "campus": {
-    "title": "Explore Our <span class=\"text-primary\">Campus</span>",
+    "title": "Explore Our Campus",
     "subtitle": "A sprawling 19-acre campus designed to provide a holistic educational experience.",
     "features": [
        {
@@ -501,7 +501,7 @@
     ]
   },
   "virtualTourPage": {
-    "title": "360° <span class=\"text-primary\">Virtual Tour</span>",
+    "title": "360° Virtual Tour",
     "subtitle": "Explore our campus from anywhere in the world. Click and drag to look around.",
     "views": [
        {

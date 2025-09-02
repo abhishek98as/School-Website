@@ -24,7 +24,8 @@ export function RisingStars({ content }: RisingStarsProps) {
       <div className="container mx-auto px-4 md:px-6">
         <div className="flex flex-col sm:flex-row justify-between items-center mb-8 gap-4">
           <div className="text-center sm:text-left">
-            <h2 className="text-3xl md:text-4xl font-bold" dangerouslySetInnerHTML={{ __html: content.title }}>
+            <h2 className="text-3xl md:text-4xl font-bold">
+              {content.title}
             </h2>
             <p className="text-muted-foreground mt-2">
               {content.description}
