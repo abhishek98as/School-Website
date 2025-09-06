@@ -7,6 +7,7 @@ import { RisingStars } from '@/components/rising-stars';
 import { NewsAndEvents } from '@/components/news-and-events';
 import { WelcomePopup } from '@/components/welcome-popup';
 import { getContent } from '@/lib/content-loader';
+import { Facilities } from '@/components/facilities';
 
 export default async function Home() {
   const content = await getContent();
@@ -18,6 +19,7 @@ export default async function Home() {
       <ScrollingText content={content.home.scrollingText} />
       <Highlights content={content.home.highlights} />
       <VirtualTour content={content.home.virtualTour} />
+      <Facilities />
       <Achievements content={content.home.achievements} />
       <RisingStars content={content.home.risingStars} />
       <NewsAndEvents content={content.home.newsAndEvents} />
