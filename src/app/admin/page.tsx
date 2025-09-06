@@ -23,16 +23,24 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 
 export default function AdminPage() {
   const router = useRouter();
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [content, setContent] = useState<IContent | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   const { toast } = useToast();
 
   useEffect(() => {
+    // This effect handles authentication.
     const isAdmin = sessionStorage.getItem('isAdmin');
-    if (isAdmin !== 'true') {
+    if (isAdmin === 'true') {
+      setIsAuthenticated(true);
+    } else {
       router.push('/login');
-      return;
     }
+  }, [router]);
+
+  useEffect(() => {
+    // This effect fetches content only if authenticated.
+    if (!isAuthenticated) return;
 
     const fetchContent = async () => {
       try {
@@ -50,7 +58,7 @@ export default function AdminPage() {
     };
     
     fetchContent();
-  }, [router, toast]);
+  }, [isAuthenticated, toast]);
 
   const handleInputChange = (path: string, value: any) => {
     if (!content) return;
@@ -112,8 +120,13 @@ export default function AdminPage() {
     }
   };
 
+  if (!isAuthenticated) {
+    // Render a loading state or null while authentication is checked
+    return <div className="p-8">Authenticating...</div>;
+  }
+  
   if (isLoading) {
-    return <div className="p-8">Loading...</div>;
+    return <div className="p-8">Loading Content...</div>;
   }
   
   if (!content) {
@@ -719,6 +732,8 @@ export default function AdminPage() {
     </div>
   );
 }
+
+    
 
     
 
