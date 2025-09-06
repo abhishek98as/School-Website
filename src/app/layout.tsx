@@ -4,11 +4,11 @@ import './globals.css';
 import { Header } from '@/components/layout/header';
 import { Footer } from '@/components/layout/footer';
 import { Toaster } from '@/components/ui/toaster';
-import { GoogleTranslate } from '@/components/google-translate';
 import { WhatsappBubble } from '@/components/whatsapp-bubble';
 import { ThemeProvider } from '@/components/theme-provider';
 import Script from 'next/script';
 import { getContent } from '@/lib/content-loader';
+import { GoogleTranslate } from '@/components/google-translate';
 
 export async function generateMetadata(): Promise<Metadata> {
   const content = await getContent();

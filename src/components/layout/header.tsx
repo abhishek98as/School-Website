@@ -139,7 +139,7 @@ export function Header() {
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
               <Button variant="outline" size="sm" className="font-bold transition-all hover:scale-110 hover:text-accent-foreground hover:bg-accent">
-                <span className="notranslate text-xs">हिन्दी | EN</span>
+                <span className="text-xs">हिन्दी | EN</span>
               </Button>
             </DropdownMenuTrigger>
             <DropdownMenuContent>
