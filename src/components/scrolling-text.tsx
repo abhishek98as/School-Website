@@ -1,3 +1,4 @@
+
 import { IContent } from "@/lib/content";
 
 type ScrollingTextProps = {

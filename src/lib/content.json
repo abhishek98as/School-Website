@@ -1,4 +1,3 @@
-
 {
   "global": {
     "whatsappNumber": "+917068482741"
@@ -430,7 +429,7 @@
         "name": "Dr. Evelyn Reed",
         "title": "Professor, Computer Science",
         "image": {
-          "src": "https://picsum.photos/400/400?random=101",
+          "src": "https://ik.imagekit.io/d6s8a2mzi/Krishna%20School%20Website%20Assets/WhatsApp%20Image%202025-08-29%20at%2019.11.43_ed192c47.jpg?updatedAt=1757144071847",
           "hint": "female professor"
         },
         "email": "e.reed@galgotiacollege.edu",
@@ -461,7 +460,7 @@
         "name": "Dr. Marcus Thorne",
         "title": "Head of Mechanical Engineering",
         "image": {
-          "src": "https://picsum.photos/400/400?random=102",
+          "src": "https://ik.imagekit.io/d6s8a2mzi/Krishna%20School%20Website%20Assets/WhatsApp%20Image%202025-08-29%20at%2011.37.18_eef669b0.jpg?updatedAt=1757144071694",
           "hint": "male professor"
         },
         "email": "m.thorne@galgotiacollege.edu",
@@ -492,7 +491,7 @@
         "name": "Dr. Elena Vance",
         "title": "Associate Professor, Physics",
         "image": {
-          "src": "https://picsum.photos/400/400?random=103",
+          "src": "https://ik.imagekit.io/d6s8a2mzi/Krishna%20School%20Website%20Assets/WhatsApp%20Image%202025-08-29%20at%2010.55.06_add823ef.jpg?updatedAt=1757144071465",
           "hint": "female professor"
         },
         "email": "e.vance@galgotiacollege.edu",
@@ -523,7 +522,7 @@
         "name": "Dr. Julian Croft",
         "title": "Professor, Business Administration",
         "image": {
-          "src": "https://picsum.photos/400/400?random=104",
+          "src": "https://ik.imagekit.io/d6s8a2mzi/Krishna%20School%20Website%20Assets/WhatsApp%20Image%202025-08-29%20at%2017.20.17_c8a648f4.jpg?updatedAt=1757144071254",
           "hint": "male professor"
         },
         "email": "j.croft@galgotiacollege.edu",
@@ -554,7 +553,7 @@
         "name": "Dr. Ananya Sharma",
         "title": "Professor, Biotechnology",
         "image": {
-          "src": "https://picsum.photos/400/400?random=105",
+          "src": "https://ik.imagekit.io/d6s8a2mzi/Krishna%20School%20Website%20Assets/WhatsApp%20Image%202025-08-29%20at%2010.55.24_7bba4272.jpg?updatedAt=1757144071047",
           "hint": "female professor"
         },
         "email": "a.sharma@galgotiacollege.edu",
@@ -585,7 +584,7 @@
         "name": "Dr. Rohan Gupta",
         "title": "Head of Civil Engineering",
         "image": {
-          "src": "https://picsum.photos/400/400?random=106",
+          "src": "https://ik.imagekit.io/d6s8a2mzi/Krishna%20School%20Website%20Assets/IMG-20250719-WA0001.jpg?updatedAt=1757144063960",
           "hint": "male professor"
         },
         "email": "r.gupta@galgotiacollege.edu",
