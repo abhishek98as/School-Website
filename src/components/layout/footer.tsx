@@ -1,9 +1,11 @@
+
 import Link from "next/link";
 import { University, Code, Phone, Mail, MapPin } from "lucide-react";
 import { Separator } from "@/components/ui/separator";
 import { getContent } from "@/lib/content-loader";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "../ui/tooltip";
 import Image from "next/image";
+import { ParticleCanvas } from "../particle-canvas";
 
 
 export async function Footer() {
@@ -13,8 +15,9 @@ export async function Footer() {
   const whatsappLink = `https://wa.me/${developerWhatsapp}`;
 
   return (
-    <footer className="footer-bg text-gray-300 overflow-hidden">
-      <div className="container mx-auto px-4 md:px-6 py-12">
+    <footer className="footer-bg text-gray-300 overflow-hidden relative">
+      <ParticleCanvas />
+      <div className="container mx-auto px-4 md:px-6 py-12 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12">
 
           {/* Left Column: Branding and Slogan */}
@@ -57,8 +60,8 @@ export async function Footer() {
 
         </div>
       </div>
-      <Separator className="bg-white/10" />
-      <div className="container mx-auto px-4 md:px-6 py-4">
+      <Separator className="bg-white/10 relative z-10" />
+      <div className="container mx-auto px-4 md:px-6 py-4 relative z-10">
         <div className="flex flex-col md:flex-row justify-between items-center text-sm text-gray-400 text-center md:text-left">
           <p>{footer.copyright}</p>
           <div className="flex items-center gap-4 mt-2 md:mt-0">
