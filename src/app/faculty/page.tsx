@@ -21,7 +21,7 @@ const FacultyCard = ({ faculty }: { faculty: any }) => {
   return (
     <div
       className={cn(
-        'card max-w-sm mx-auto relative z-10 bg-card flex flex-col rounded-lg shadow-lg transition-all duration-300 ease-in-out overflow-hidden'
+        'card max-w-sm mx-auto relative z-10 bg-card flex flex-col rounded-lg shadow-lg transition-all duration-300 ease-in-out'
       )}
     >
       <div
@@ -32,21 +32,26 @@ const FacultyCard = ({ faculty }: { faculty: any }) => {
       >
         <div
           className="card-cover w-full h-full absolute left-0 bg-cover bg-center filter blur-xl scale-125 transition-all duration-500 ease-in-out"
-          style={{ backgroundImage: `url(${faculty.image.src})`, top: '0' }}
+          style={{ backgroundImage: `url(${faculty.image.src})` }}
         />
-        <Image
-          className={cn(
-            'card-avatar object-cover object-center absolute left-1/2 shadow-lg rounded-full transition-all duration-300 ease-in-out',
-            isActive
-              ? 'w-[50px] h-[50px] bottom-2.5 left-5 transform-none'
-              : 'w-40 h-40 bottom-0 transform -translate-x-1/2 -translate-y-[120px]'
-          )}
-          src={faculty.image.src}
-          alt={`Photo of ${faculty.name}`}
-          width={160}
-          height={160}
-          data-ai-hint={faculty.image.hint}
-        />
+        <div className={cn(
+          'absolute transition-all duration-300 ease-in-out',
+           isActive ? 'bottom-2.5 left-5' : 'bottom-0 left-1/2 transform -translate-x-1/2 translate-y-[-70px]'
+        )}>
+            <Image
+              className={cn(
+                'card-avatar object-cover object-top absolute shadow-lg rounded-full transition-all duration-300 ease-in-out',
+                isActive
+                  ? 'w-[50px] h-[50px]'
+                  : 'w-40 h-40'
+              )}
+              src={faculty.image.src}
+              alt={`Photo of ${faculty.name}`}
+              width={160}
+              height={160}
+              data-ai-hint={faculty.image.hint}
+            />
+        </div>
         <h1
           className={cn(
             'card-fullname absolute font-bold text-white whitespace-nowrap transition-all duration-300 ease-in-out',
