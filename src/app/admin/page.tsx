@@ -1,4 +1,5 @@
 
+
 'use client';
 
 import { useEffect, useState } from 'react';
@@ -30,11 +31,13 @@ export default function AdminPage() {
 
   useEffect(() => {
     // This effect handles authentication.
-    const isAdmin = sessionStorage.getItem('isAdmin');
-    if (isAdmin === 'true') {
-      setIsAuthenticated(true);
-    } else {
-      router.push('/login');
+    if (typeof window !== 'undefined') {
+        const isAdmin = sessionStorage.getItem('isAdmin');
+        if (isAdmin === 'true') {
+            setIsAuthenticated(true);
+        } else {
+            router.push('/login');
+        }
     }
   }, [router]);
 
