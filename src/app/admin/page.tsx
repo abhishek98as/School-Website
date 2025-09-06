@@ -311,6 +311,25 @@ export default function AdminPage() {
                            ))}
                        </CardContent>
                     </Card>
+                    
+                    <Card>
+                        <CardHeader><CardTitle>Achievements Section</CardTitle></CardHeader>
+                        <CardContent className="space-y-4">
+                            <Label>Title</Label>
+                            <Input value={content.home.achievements.title} onChange={(e) => handleInputChange('home.achievements.title', e.target.value)} />
+                            <Label>Description</Label>
+                             <Textarea value={content.home.achievements.description} onChange={(e) => handleInputChange('home.achievements.description', e.target.value)} />
+                           {content.home.achievements.videos.map((video, index) => (
+                               <div key={index} className="p-4 border rounded-md space-y-2">
+                                   <h3 className="font-semibold">Video {index + 1}</h3>
+                                   <Label>Title</Label>
+                                   <Input value={video.title} onChange={(e) => handleInputChange(`home.achievements.videos.${index}.title`, e.target.value)} />
+                                   <Label>YouTube Video ID</Label>
+                                   <Input value={video.id} onChange={(e) => handleInputChange(`home.achievements.videos.${index}.id`, e.target.value)} />
+                               </div>
+                           ))}
+                       </CardContent>
+                    </Card>
 
                      <Card>
                         <CardHeader><CardTitle>Virtual Tour Section</CardTitle></CardHeader>

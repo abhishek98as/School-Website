@@ -87,7 +87,7 @@ export function Header() {
         <Link href="/" className="flex items-center gap-2 notranslate">
           <Image src={branding.logoUrl} alt={branding.logoText} width={120} height={30} className="h-8 w-auto" />
           <span className="font-bold text-lg hidden sm:inline">{branding.logoText}</span>
-           <span className="font-bold text-lg sm:hidden">GCET</span>
+           <span className="font-bold text-lg sm:hidden">PMS</span>
         </Link>
         <nav className="hidden lg:flex items-center gap-6 text-sm font-medium">
           {navLinks.map((link) => (
