@@ -1,17 +1,52 @@
 
+'use client';
+
 import Image from "next/image";
 import Link from "next/link";
-import { getContent } from "@/lib/content-loader";
-import { ArrowRight, Calendar, MapPin, Newspaper } from "lucide-react";
+import { ArrowRight, Calendar, MapPin } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
+import { useEffect, useState } from "react";
+import type { IContent } from "@/lib/content";
 
-export default async function BlogIndexPage() {
-  const content = await getContent();
-  const allPosts = content.home.newsAndEvents.items.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+export default function BlogIndexPage() {
+  const [content, setContent] = useState<IContent | null>(null);
+
+  useEffect(() => {
+    const fetchContent = async () => {
+      try {
+        const response = await fetch('/api/content');
+        if (!response.ok) {
+          throw new Error('Failed to fetch content');
+        }
+        const fetchedContent = await response.json();
+        setContent(fetchedContent);
+      } catch (error) {
+        console.error("Failed to load blog content:", error);
+      }
+    };
+    
+    fetchContent();
+  }, []);
+
+  if (!content) {
+    // You can return a loading state here
+    return (
+        <div className="py-20 md:py-32">
+            <div className="container mx-auto px-4 md:px-6 text-center">
+                <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tighter">News & Events</h1>
+                <p className="mt-4 text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto">
+                    Loading posts...
+                </p>
+            </div>
+      </div>
+    );
+  }
+
+  const allPosts = [...content.home.newsAndEvents.items].sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 
   return (
     <div className="blog-index-bg">
-        <style jsx global>{`
+        <style jsx>{`
             .blog-index-bg {
                 background:
                     radial-gradient(ellipse 80% 50% at 50% -20%, hsl(var(--primary) / 0.1), transparent),
