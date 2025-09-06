@@ -9,6 +9,11 @@ const nextConfig: NextConfig = {
   eslint: {
     ignoreDuringBuilds: true,
   },
+  experimental: {
+    allowedDevOrigins: [
+      'https://6000-firebase-studio-1756549681848.cluster-fdkw7vjj7bgguspe3fbbc25tra.cloudworkstations.dev',
+    ],
+  },
   images: {
     remotePatterns: [
       {
@@ -32,6 +37,12 @@ const nextConfig: NextConfig = {
       {
         protocol: 'https',
         hostname: 'photos.app.goo.gl',
+        port: '',
+        pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'ik.imagekit.io',
         port: '',
         pathname: '/**',
       }
