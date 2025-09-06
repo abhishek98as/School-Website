@@ -1,7 +1,11 @@
+
+'use client';
+
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { getContent } from "@/lib/content-loader";
-import { Building, Library, Microscope, SwatchBook } from "lucide-react";
+import { Building, Library, Microscope, SwatchBook, Camera } from "lucide-react";
 import { ParticleCanvas } from "@/components/particle-canvas";
+import { useEffect, useState } from "react";
+import type { IContent } from "@/lib/content";
 
 const getIcon = (iconName: string) => {
     switch (iconName) {
@@ -9,12 +13,35 @@ const getIcon = (iconName: string) => {
         case 'Library': return <Library className="h-8 w-8 text-primary" />;
         case 'Microscope': return <Microscope className="h-8 w-8 text-primary" />;
         case 'SwatchBook': return <SwatchBook className="h-8 w-8 text-primary" />;
+        case 'Camera': return <Camera className="h-8 w-8 text-primary" />;
         default: return null;
     }
 }
 
-export default async function VirtualTourPage() {
-  const content = await getContent();
+export default function VirtualTourPage() {
+  const [content, setContent] = useState<IContent | null>(null);
+
+  useEffect(() => {
+    const fetchContent = async () => {
+      try {
+        const response = await fetch('/api/content');
+        if (!response.ok) {
+          throw new Error('Failed to fetch content');
+        }
+        const fetchedContent = await response.json();
+        setContent(fetchedContent);
+      } catch (error) {
+        console.error("Failed to load content:", error);
+      }
+    };
+    
+    fetchContent();
+  }, []);
+
+  if (!content) {
+    return <div className="p-8">Loading tour...</div>;
+  }
+
   const virtualTourContent = content.virtualTourPage;
 
   return (
@@ -43,14 +70,14 @@ export default async function VirtualTourPage() {
                 <CardContent>
                   <div className="aspect-video w-full rounded-md overflow-hidden border">
                     <iframe
-                      src={view.embedUrl}
-                      width="100%"
-                      height="100%"
-                      style={{ border: 0 }}
-                      allowFullScreen={true}
-                      loading="lazy"
-                      referrerPolicy="no-referrer-when-downgrade"
-                      title={`360 View of ${view.title}`}
+                        src={view.embedUrl}
+                        width="100%"
+                        height="100%"
+                        style={{ border: 0 }}
+                        allowFullScreen={true}
+                        loading="lazy"
+                        referrerPolicy="no-referrer-when-downgrade"
+                        title={`360 View of ${view.title}`}
                     ></iframe>
                   </div>
                 </CardContent>

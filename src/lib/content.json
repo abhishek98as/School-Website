@@ -1,3 +1,4 @@
+
 {
   "global": {
     "whatsappNumber": "+917068482741"
@@ -81,7 +82,7 @@
         },
         {
           "image": {
-            "src": "https://ik.imagekit.io/d6s8a2mzi/Krishna%20School%20Website%20Assets/WhatsApp%20Image%202025-09-01%20at%2013.25.33_a8eeb4d1.jpg?updatedAt=1757144076849",
+            "src": "https://ik.imagekit.io/d6s8a2mzi/Krishna%20School%20Website%20Assets/WhatsApp%20Image%202025-09-01%20at%  13.25.33_a8eeb4d1.jpg?updatedAt=1757144076849",
             "alt": "Graduation ceremony",
             "hint": "graduation ceremony"
           },
@@ -168,7 +169,7 @@
           "title": "Convocation Ceremony Moments"
         },
         {
-          "id": "https://youtu.be/OvulGPckjDk?si=-2l9MeSCkDn80aT9",
+          "id": "https://youtu.be/Ov35U9mll3M?si=-2l9MeSCkDn80aT9",
           "title": "Student Project Showcase"
         }
       ]
@@ -911,27 +912,10 @@
     "views": [
       {
         "id": "1",
+        "type": "iframe",
         "title": "Main Campus Building",
         "icon": "Building",
         "embedUrl": "https://www.google.com/maps/embed?pb=!4v1617265939882!6m8!1m7!1sCAoSLEFGMVFpcE5YcTdfYlZEX2wzX1lYc3dfX0tDX2lfU3N3Z05pX2lFX01fSWs!2m2!1d28.614305!2d77.372559!3f324.99!4f0!5f0.78"
-      },
-      {
-        "id": "2",
-        "title": "Central Library",
-        "icon": "Library",
-        "embedUrl": "https://www.google.com/maps/embed?pb=!4v1617266184589!6m8!1m7!1sCAoSLEFGMVFpcE5RQ2hfLVNXMUhxM1BsaWxraVotb2dPY3NfN3d0QldIdWN3Xzhn!2m2!1d28.614624!2d77.37265!3f0!4f0!5f0.78"
-      },
-      {
-        "id": "3",
-        "title": "Science Labs",
-        "icon": "Microscope",
-        "embedUrl": "https://www.google.com/maps/embed?pb=!4v1617266347924!6m8!1m7!1sCAoSLEFGMVFpcE5kSlB6bVFRRk5xd1IyUXpfeWNRLXRwV0hfZ21sMmVYd0hxLW9S!2m2!1d28.61448!2d77.37286!3f0!4f0!5f0.78"
-      },
-      {
-        "id": "4",
-        "title": "Design Studio",
-        "icon": "SwatchBook",
-        "embedUrl": "https://www.google.com/maps/embed?pb=!4v1617266456396!6m8!1m7!1sCAoSLEFGMVFpcE1DSlVHM3dZcVZ3X2JzWFNzTjZfX1ZlMnhGclVqUmVhNlBvUVpr!2m2!1d28.614565!2d77.37233!3f0!4f0!5f0.78"
       }
     ]
   },

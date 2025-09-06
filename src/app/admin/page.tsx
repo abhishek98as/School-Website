@@ -781,10 +781,10 @@ export default function AdminPage() {
                     <Textarea value={content.virtualTourPage.subtitle} onChange={(e) => handleInputChange('virtualTourPage.subtitle', e.target.value)} />
                      {content.virtualTourPage.views.map((view, index) => (
                         <div key={index} className="p-4 border rounded-md space-y-2">
-                            <h3 className="font-semibold">View {index + 1}</h3>
+                            <h3 className="font-semibold">View {index + 1}: {view.title}</h3>
                             <Label>Title</Label>
                             <Input value={view.title} onChange={(e) => handleInputChange(`virtualTourPage.views.${index}.title`, e.target.value)} />
-                            <Label>Embed URL</Label>
+                            <Label>Embed URL (Google Maps)</Label>
                             <Input value={view.embedUrl} onChange={(e) => handleInputChange(`virtualTourPage.views.${index}.embedUrl`, e.target.value)} />
                         </div>
                      ))}

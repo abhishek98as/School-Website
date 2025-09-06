@@ -234,6 +234,7 @@ export interface IContent {
       title: string;
       id: string;
       icon: string;
+      type: 'iframe';
       embedUrl: string;
     }[];
   };

@@ -10,9 +10,7 @@ const nextConfig: NextConfig = {
     ignoreDuringBuilds: true,
   },
   experimental: {
-    allowedDevOrigins: [
-      'https://6000-firebase-studio-1756549681848.cluster-fdkw7vjj7bgguspe3fbbc25tra.cloudworkstations.dev',
-    ],
+    // Empty for now, but leaving the key in case it's needed later
   },
   images: {
     remotePatterns: [
