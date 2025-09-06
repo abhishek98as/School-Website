@@ -1,3 +1,4 @@
+
 {
   "global": {
     "whatsappNumber": "+917068482741"
@@ -156,19 +157,19 @@
       "description": "Celebrating the milestones and successes of our students and faculty.",
       "videos": [
         {
-          "id": "dQw4w9WgXcQ",
+          "id": "https://youtu.be/WbY8RTqvkIg?si=UZkFogiBIuqF_x9o",
           "title": "Annual Cultural Fest Highlights"
         },
         {
-          "id": "3JZ_D3pSS4U",
+          "id": "https://youtu.be/MHjt3FwTpNU?si=7BMRVvgi4AyAld3q",
           "title": "Tech Symposium 2023 Recap"
         },
         {
-          "id": "C0DPdy98e4c",
+          "id": "https://youtu.be/Ub35U9mll3M?si=7WdGB5DCIeTYReTq",
           "title": "Convocation Ceremony Moments"
         },
         {
-          "id": "L_LUpnjgPso",
+          "id": "https://youtu.be/OvulGPckjDk?si=-2l9MeSCkDn80aT9",
           "title": "Student Project Showcase"
         }
       ]
@@ -235,34 +236,42 @@
       "description": "Stay updated with the latest happenings at our college.",
       "items": [
         {
+          "slug": "convocation-2024",
           "type": "Event",
           "title": "Annual Convocation Ceremony 2024",
           "date": "25th December 2024",
           "location": "Main Auditorium",
           "description": "Join us in celebrating the achievements of our graduating class.",
+          "content": "This is the full blog post content for the convocation ceremony. It will be a joyous occasion where we honor the hard work and dedication of our students. The event will be graced by esteemed guests and will feature inspiring speeches, award distributions, and cultural performances. All students, parents, and faculty are invited to attend and make this a memorable day. The ceremony will commence at 10:00 AM in the Main Auditorium. Please be seated by 9:45 AM. Lunch will be served after the ceremony.",
+          "googleFormUrl": "https://docs.google.com/forms/d/e/1FAIpQLSc_xJc3z_9A-2dE1bF4G5H6I7j8K9L0mN1o2P3q4R5s6T7u8V/viewform?embedded=true",
           "image": {
-            "src": "https://picsum.photos/600/400?random=41",
+            "src": "https://ik.imagekit.io/d6s8a2mzi/Krishna%20School%20Website%20Assets/IMG_3529.JPG?updatedAt=1757144068857",
             "hint": "convocation ceremony"
           }
         },
         {
+          "slug": "innovation-ranking-news",
           "type": "News",
-          "title": "GCET secures top spot in National Innovation Rankings",
+          "title": "Secures top spot in National Innovation Rankings",
           "date": "18th November 2024",
           "description": "Our commitment to research and development has been recognized once again.",
+          "content": "We are thrilled to announce that our college has been ranked #1 in the National Innovation Rankings for the third consecutive year. This prestigious recognition is a testament to the relentless efforts of our faculty and students who are pushing the boundaries of research and development. Our state-of-the-art labs, incubation center, and a culture of curiosity have created an ecosystem where great ideas thrive. We thank everyone in our community for their contribution to this outstanding achievement.",
           "image": {
-            "src": "https://picsum.photos/600/400?random=42",
+            "src": "https://ik.imagekit.io/d6s8a2mzi/Krishna%20School%20Website%20Assets/IMG_0164.HEIC?updatedAt=1757144064382",
             "hint": "award trophy"
           }
         },
         {
+          "slug": "sports-meet-2024",
           "type": "Event",
           "title": "Inter-College Sports Meet 'Ignite '24'",
           "date": "10th - 12th January 2025",
           "location": "Sports Complex",
           "description": "Witness thrilling competitions and sportsmanship.",
+          "content": "Get ready for the most awaited sporting event of the year! 'Ignite '24' will bring together athletes from colleges across the state for three days of intense competition and camaraderie. The event will feature a wide range of sports including cricket, football, basketball, athletics, and more. We invite all sports enthusiasts to come and cheer for our teams. The opening ceremony is on January 10th at 9:00 AM. Let's celebrate the spirit of sportsmanship together! Register to participate via the form below.",
+          "googleFormUrl": "https://docs.google.com/forms/d/e/1FAIpQLSe_ABc_DEF_GHI_JKL_MNO_PQR_STU_VWX_YZ1_234/viewform?embedded=true",
           "image": {
-            "src": "https://picsum.photos/600/400?random=43",
+            "src": "https://ik.imagekit.io/d6s8a2mzi/Krishna%20School%20Website%20Assets/WhatsApp%20Image%202025-09-01%20at%2013.23.58_896c678e.jpg?updatedAt=1757144076632",
             "hint": "sports competition"
           }
         }

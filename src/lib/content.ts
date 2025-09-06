@@ -95,11 +95,14 @@ export interface IContent {
       title: string;
       description: string;
       items: {
+        slug: string;
         type: string;
         title: string;
         date: string;
         location?: string;
         description: string;
+        content: string;
+        googleFormUrl?: string;
         image: {
           src: string;
           hint: string;

@@ -54,11 +54,11 @@ export function NewsAndEvents({ content }: NewsAndEventsProps) {
                 </div>
               </CardHeader>
               <CardContent className="flex-grow">
-                <p className="text-muted-foreground leading-relaxed">{item.description}</p>
+                <p className="text-muted-foreground leading-relaxed line-clamp-3">{item.description}</p>
               </CardContent>
               <CardFooter>
                  <Button asChild variant="link" className="p-0 h-auto text-primary">
-                    <Link href="#">
+                    <Link href={`/blog/${item.slug}`}>
                         Read More <ArrowRight className="ml-2 h-4 w-4"/>
                     </Link>
                  </Button>

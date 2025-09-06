@@ -18,6 +18,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion"
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 
 
 export default function AdminPage() {
@@ -363,20 +364,65 @@ export default function AdminPage() {
                             ))}
                         </CardContent>
                     </Card>
-
-                     <Card>
-                        <CardHeader><CardTitle>News and Events Section</CardTitle></CardHeader>
+                    
+                    <Card>
+                        <CardHeader><CardTitle>News &amp; Events (Blog)</CardTitle></CardHeader>
                         <CardContent className="space-y-4">
                             {content.home.newsAndEvents.items.map((item, index) => (
-                                <div key={index} className="p-4 border rounded-md space-y-2">
-                                    <h3 className="font-semibold">Item {index + 1}</h3>
-                                    <Label>Title</Label>
-                                    <Input value={item.title} onChange={(e) => handleInputChange(`home.newsAndEvents.items.${index}.title`, e.target.value)} />
-                                    <Label>Description</Label>
-                                    <Textarea value={item.description} onChange={(e) => handleInputChange(`home.newsAndEvents.items.${index}.description`, e.target.value)} />
-                                    <Label>Image URL</Label>
-                                    <Input value={item.image.src} onChange={(e) => handleInputChange(`home.newsAndEvents.items.${index}.image.src`, e.target.value)} />
-                                </div>
+                                <Accordion key={index} type="single" collapsible className="p-4 border rounded-md space-y-2">
+                                    <AccordionItem value={`news-${index}`}>
+                                        <AccordionTrigger className="font-semibold">
+                                            Item {index + 1}: {item.title}
+                                        </AccordionTrigger>
+                                        <AccordionContent className="space-y-4">
+                                            <div className="grid grid-cols-2 gap-4">
+                                                <div className="space-y-2">
+                                                    <Label>Type</Label>
+                                                    <Select
+                                                        value={item.type}
+                                                        onValueChange={(value) => handleInputChange(`home.newsAndEvents.items.${index}.type`, value)}
+                                                    >
+                                                        <SelectTrigger>
+                                                            <SelectValue placeholder="Select type" />
+                                                        </SelectTrigger>
+                                                        <SelectContent>
+                                                            <SelectItem value="News">News</SelectItem>
+                                                            <SelectItem value="Event">Event</SelectItem>
+                                                        </SelectContent>
+                                                    </Select>
+                                                </div>
+                                                <div className="space-y-2">
+                                                    <Label>URL Slug</Label>
+                                                    <Input value={item.slug} onChange={(e) => handleInputChange(`home.newsAndEvents.items.${index}.slug`, e.target.value)} />
+                                                </div>
+                                            </div>
+
+                                            <div className="space-y-2">
+                                                <Label>Title</Label>
+                                                <Input value={item.title} onChange={(e) => handleInputChange(`home.newsAndEvents.items.${index}.title`, e.target.value)} />
+                                            </div>
+                                             <div className="space-y-2">
+                                                <Label>Short Description (for card)</Label>
+                                                <Textarea value={item.description} onChange={(e) => handleInputChange(`home.newsAndEvents.items.${index}.description`, e.target.value)} rows={3} />
+                                            </div>
+                                             <div className="space-y-2">
+                                                <Label>Full Blog Content</Label>
+                                                <Textarea value={item.content} onChange={(e) => handleInputChange(`home.newsAndEvents.items.${index}.content`, e.target.value)} rows={10} />
+                                            </div>
+                                             <div className="space-y-2">
+                                                <Label>Image URL</Label>
+                                                <Input value={item.image.src} onChange={(e) => handleInputChange(`home.newsAndEvents.items.${index}.image.src`, e.target.value)} />
+                                            </div>
+
+                                            {item.type === 'Event' && (
+                                                <div className="space-y-2">
+                                                    <Label>Google Form Embed URL (for events only)</Label>
+                                                    <Input value={item.googleFormUrl || ''} onChange={(e) => handleInputChange(`home.newsAndEvents.items.${index}.googleFormUrl`, e.target.value)} />
+                                                </div>
+                                            )}
+                                        </AccordionContent>
+                                    </AccordionItem>
+                                </Accordion>
                             ))}
                         </CardContent>
                     </Card>
