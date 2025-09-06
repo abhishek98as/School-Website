@@ -31,24 +31,25 @@ export default function AdminPage() {
     const isAdmin = sessionStorage.getItem('isAdmin');
     if (isAdmin !== 'true') {
       router.push('/login');
-    } else {
-      const fetchContent = async () => {
-        try {
-          const response = await fetch('/api/content');
-          if (!response.ok) {
-            throw new Error('Failed to fetch content');
-          }
-          const data = await response.json();
-          setContent(data);
-        } catch (error) {
-           toast({ variant: 'destructive', title: 'Error', description: 'Failed to load content.' });
-        } finally {
-          setIsLoading(false);
-        }
-      };
-      
-      fetchContent();
+      return;
     }
+
+    const fetchContent = async () => {
+      try {
+        const response = await fetch('/api/content');
+        if (!response.ok) {
+          throw new Error('Failed to fetch content');
+        }
+        const data = await response.json();
+        setContent(data);
+      } catch (error) {
+         toast({ variant: 'destructive', title: 'Error', description: 'Failed to load content.' });
+      } finally {
+        setIsLoading(false);
+      }
+    };
+    
+    fetchContent();
   }, [router, toast]);
 
   const handleInputChange = (path: string, value: any) => {
@@ -718,5 +719,7 @@ export default function AdminPage() {
     </div>
   );
 }
+
+    
 
     
