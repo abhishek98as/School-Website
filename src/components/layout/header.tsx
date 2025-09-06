@@ -40,10 +40,17 @@ const navLinks = [
   { href: "/admission", label: "Admission" },
   { href: "/faculty", label: "Our Faculty" },
   { href: "/infrastructure", label: "Infrastructure" },
-  { href: "/student-life", label: "Student Life" },
-  { href: "/library", label: "Library" },
-  { href: "/campus", label: "Campus" },
-  { href: "/virtual-tour", label: "Virtual Tour" },
+  {
+    href: "#",
+    label: "More",
+    subLinks: [
+      { href: "/student-life", label: "Student Life" },
+      { href: "/library", label: "Library" },
+      { href: "/campus", label: "Campus" },
+      { href: "/virtual-tour", label: "Virtual Tour" },
+      { href: "/#news-and-events", label: "News & Events" },
+    ]
+  }
 ];
 
 export function Header() {
@@ -92,11 +99,11 @@ export function Header() {
         <nav className="hidden lg:flex items-center gap-6 text-sm font-medium">
           {navLinks.map((link) => (
             link.subLinks ? (
-              <DropdownMenu key={link.href}>
+              <DropdownMenu key={link.label}>
                 <DropdownMenuTrigger asChild>
                   <Button variant="ghost" className={cn(
                     "transition-colors hover:text-primary notranslate relative px-2",
-                    pathname.startsWith(link.href) && "text-primary font-semibold"
+                    pathname.startsWith(link.href) && link.href !== "#" && "text-primary font-semibold"
                   )}>
                     {link.label}
                     <ChevronDown className="ml-1 h-4 w-4" />
@@ -177,7 +184,7 @@ export function Header() {
                      <Accordion type="single" collapsible className="w-full">
                         {navLinks.map((link) => (
                         link.subLinks ? (
-                            <AccordionItem value={link.href} key={link.href} className="border-b-0">
+                            <AccordionItem value={link.label} key={link.label} className="border-b-0">
                                 <AccordionTrigger className="text-lg font-medium hover:no-underline hover:text-primary transition-colors py-2">
                                     {link.label}
                                 </AccordionTrigger>
