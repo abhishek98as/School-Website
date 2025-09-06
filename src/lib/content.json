@@ -610,6 +610,130 @@
             "description": "Specialized in structural engineering."
           }
         ]
+      },
+      {
+        "name": "Dr. Sofia Chen",
+        "title": "Professor, Economics",
+        "image": {
+          "src": "https://picsum.photos/seed/p1/400/500",
+          "hint": "female professor"
+        },
+        "email": "s.chen@galgotiacollege.edu",
+        "phone": "+91 98765 43216",
+        "about": "Dr. Chen is a leading economist specializing in international trade and development. She is a published author and a frequent commentator on economic policy.",
+        "experience": [
+          {
+            "year": "2016",
+            "title": "Professor",
+            "company": "Galgametrics College",
+            "description": "Teaches macroeconomics and econometrics."
+          },
+          {
+            "year": "2010",
+            "title": "Economic Advisor",
+            "company": "Ministry of Finance",
+            "description": "Advised on trade policy and foreign investment."
+          },
+          {
+            "year": "2005",
+            "title": "PhD in Economics",
+            "company": "London School of Economics",
+            "description": "Focused on emerging markets."
+          }
+        ]
+      },
+      {
+        "name": "Dr. Liam O'Sullivan",
+        "title": "Associate Professor, History",
+        "image": {
+          "src": "https://picsum.photos/seed/p2/400/500",
+          "hint": "male professor"
+        },
+        "email": "l.osullivan@galgotiacollege.edu",
+        "phone": "+91 98765 43217",
+        "about": "Dr. O'Sullivan is an expert in medieval European history, with a focus on cultural and social history. He is known for his engaging lectures and storytelling.",
+        "experience": [
+          {
+            "year": "2019",
+            "title": "Associate Professor",
+            "company": "Galgametrics College",
+            "description": "Conducts research on medieval manuscripts."
+          },
+          {
+            "year": "2015",
+            "title": "Assistant Professor",
+            "company": "Trinity College Dublin",
+            "description": "Taught courses on the Renaissance and Reformation."
+          },
+          {
+            "year": "2014",
+            "title": "Postdoctoral Fellow",
+            "company": "University of Oxford",
+            "description": "Specialized in paleography."
+          }
+        ]
+      },
+      {
+        "name": "Dr. Isabella Rossi",
+        "title": "Head of Fine Arts",
+        "image": {
+          "src": "https://picsum.photos/seed/p3/400/500",
+          "hint": "female professor"
+        },
+        "email": "i.rossi@galgotiacollege.edu",
+        "phone": "+91 98765 43218",
+        "about": "Dr. Rossi is a celebrated painter and art historian. Her work explores the intersection of traditional techniques and contemporary themes.",
+        "experience": [
+          {
+            "year": "2021",
+            "title": "Head of Department",
+            "company": "Galgametrics College",
+            "description": "Curating the annual student art exhibition."
+          },
+          {
+            "year": "2015",
+            "title": "Artist in Residence",
+            "company": "Florence Academy of Art",
+            "description": "Created a series of large-scale oil paintings."
+          },
+          {
+            "year": "2012",
+            "title": "MFA in Painting",
+            "company": "Rhode Island School of Design",
+            "description": "Focused on contemporary art practices."
+          }
+        ]
+      },
+      {
+        "name": "Dr. Kenji Tanaka",
+        "title": "Professor, Electrical Engineering",
+        "image": {
+          "src": "https://picsum.photos/seed/p4/400/500",
+          "hint": "male professor"
+        },
+        "email": "k.tanaka@galgotiacollege.edu",
+        "phone": "+91 98765 43219",
+        "about": "Dr. Tanaka is a pioneer in the field of renewable energy systems. His research on solar cell efficiency has been widely cited and implemented.",
+        "experience": [
+          {
+            "year": "2017",
+            "title": "Professor",
+            "company": "Galgametrics College",
+            "description": "Leading research on next-generation photovoltaics."
+          },
+          {
+            "year": "2011",
+            "title": "Chief Engineer",
+            "company": "SunPower Innovations",
+            "description": "Developed patented solar panel technology."
+          },
+          {
+            "year": "2008",
+            "title": "PhD in Electrical Engineering",
+            "company": "Stanford University",
+            "description": "Specialized in semiconductor physics."
+          }
+        ]
       }
     ]
   },
