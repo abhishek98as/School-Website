@@ -40,7 +40,7 @@ const FacultyCard = ({ faculty }: { faculty: any }) => {
         )}>
             <Image
               className={cn(
-                'card-avatar object-cover object-top absolute shadow-lg rounded-full transition-all duration-300 ease-in-out',
+                'card-avatar object-cover object-top shadow-lg rounded-full transition-all duration-300 ease-in-out',
                 isActive
                   ? 'w-[50px] h-[50px]'
                   : 'w-40 h-40'
@@ -71,7 +71,7 @@ const FacultyCard = ({ faculty }: { faculty: any }) => {
           )}
         >
           <div className="card-subtitle font-bold text-sm mb-2 text-card-foreground">ABOUT</div>
-           <p className="card-jobtitle text-sm text-muted-foreground uppercase tracking-wider mb-2 font-semibold">
+           <p className="card-jobtitle text-sm text-muted-foreground uppercase tracking-wider font-semibold">
             {faculty.title}
           </p>
           <p className="card-desc text-sm text-muted-foreground leading-relaxed">
