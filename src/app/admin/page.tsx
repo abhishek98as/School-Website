@@ -19,7 +19,19 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion"
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+  AlertDialogTrigger,
+} from "@/components/ui/alert-dialog"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
+import { Trash2 } from 'lucide-react';
 
 
 export default function AdminPage() {
@@ -63,21 +75,20 @@ export default function AdminPage() {
 
   const handleInputChange = (path: string, value: any) => {
     if (!content) return;
-    
+
     const newContent = JSON.parse(JSON.stringify(content));
     let current: any = newContent;
-    
     const keys = path.split('.');
-    
+
     for (let i = 0; i < keys.length - 1; i++) {
         const key = keys[i];
-        let nextKey: string | number = keys[i+1];
-        
+        let nextKey: string | number = keys[i + 1];
+
         if (!isNaN(parseInt(key, 10))) {
             current = current[parseInt(key, 10)];
         } else {
-             if (!current[key]) {
-                if (!isNaN(parseInt(nextKey, 10))) {
+            if (!current[key]) {
+                if (!isNaN(parseInt(String(nextKey), 10))) {
                     current[key] = [];
                 } else {
                     current[key] = {};
@@ -88,10 +99,38 @@ export default function AdminPage() {
     }
     
     const lastKey = keys[keys.length - 1];
-    if (Array.isArray(current)) {
-        current[parseInt(lastKey)] = value;
+    if (Array.isArray(current) && !isNaN(parseInt(lastKey, 10))) {
+        current[parseInt(lastKey, 10)] = value;
     } else {
         current[lastKey] = value;
+    }
+    
+    setContent(newContent);
+  };
+
+  const handleArrayAction = (path: string, action: 'add' | 'remove', index?: number, newItem?: any) => {
+    if (!content) return;
+
+    const newContent = JSON.parse(JSON.stringify(content));
+    let current = newContent;
+
+    const keys = path.split('.');
+    const parentPath = keys.slice(0, -1);
+    const arrayKey = keys[keys.length - 1];
+
+    let parent = newContent;
+    parentPath.forEach(key => {
+        if (!isNaN(parseInt(key, 10))) {
+            parent = parent[parseInt(key, 10)];
+        } else {
+            parent = parent[key];
+        }
+    });
+
+    if (action === 'add' && newItem) {
+        parent[arrayKey].push(newItem);
+    } else if (action === 'remove' && index !== undefined) {
+        parent[arrayKey].splice(index, 1);
     }
 
     setContent(newContent);
@@ -119,7 +158,7 @@ export default function AdminPage() {
   };
 
   if (!isAuthenticated) {
-    return <div className="p-8">Authenticating...</div>;
+    return null; // Or a loading spinner
   }
   
   if (isLoading) {
@@ -129,6 +168,18 @@ export default function AdminPage() {
   if (!content) {
     return <div className="p-8">Could not load content.</div>;
   }
+    
+  const newFacultyMemberTemplate = {
+      name: "New Faculty Member",
+      title: "Title/Position",
+      image: { src: "https://picsum.photos/400/500?random=99", hint: "person portrait" },
+      email: "new.member@example.com",
+      phone: "+91 00000 00000",
+      about: "A brief bio about the new faculty member.",
+      experience: [
+        { year: "2024", title: "Job Title", company: "Company Name", description: "Description of experience." }
+      ]
+  };
 
   return (
     <div className="min-h-screen bg-gray-100 dark:bg-gray-900">
@@ -378,7 +429,7 @@ export default function AdminPage() {
                 </div>
             </AccordionContent>
           </AccordionItem>
-
+          
           <AccordionItem value="item-news">
             <AccordionTrigger className="text-xl font-semibold">News &amp; Events (Blog)</AccordionTrigger>
             <AccordionContent>
@@ -448,7 +499,7 @@ export default function AdminPage() {
                 </Card>
             </AccordionContent>
           </AccordionItem>
-          
+
           <AccordionItem value="item-3">
             <AccordionTrigger className="text-xl font-semibold">Academics Page</AccordionTrigger>
             <AccordionContent>
@@ -520,7 +571,15 @@ export default function AdminPage() {
             <AccordionTrigger className="text-xl font-semibold">Faculty Page</AccordionTrigger>
             <AccordionContent>
               <Card>
-                <CardHeader><CardTitle>Faculty Page</CardTitle></CardHeader>
+                <CardHeader className="flex flex-row items-center justify-between">
+                    <div>
+                        <CardTitle>Faculty Page</CardTitle>
+                        <CardDescription>Manage your faculty members.</CardDescription>
+                    </div>
+                    <Button onClick={() => handleArrayAction('faculty.members', 'add', undefined, newFacultyMemberTemplate)}>
+                        Add New Member
+                    </Button>
+                </CardHeader>
                 <CardContent className="space-y-4">
                   <Label>Title</Label>
                   <Input value={content.faculty.title} onChange={(e) => handleInputChange('faculty.title', e.target.value)} />
@@ -529,8 +588,34 @@ export default function AdminPage() {
                   {content.faculty.members.map((member, memberIndex) => (
                     <Accordion key={memberIndex} type="single" collapsible className="p-4 border rounded-md space-y-2">
                        <AccordionItem value={`faculty-${memberIndex}`}>
-                        <AccordionTrigger className="font-semibold">Faculty Member: {member.name}</AccordionTrigger>
+                        <AccordionTrigger className="font-semibold flex justify-between items-center w-full">
+                          <span>Faculty Member: {member.name}</span>
+                        </AccordionTrigger>
                         <AccordionContent className="space-y-2">
+                           <div className="flex justify-end">
+                               <AlertDialog>
+                                  <AlertDialogTrigger asChild>
+                                    <Button variant="destructive" size="sm">
+                                      <Trash2 className="mr-2 h-4 w-4" />
+                                      Remove
+                                    </Button>
+                                  </AlertDialogTrigger>
+                                  <AlertDialogContent>
+                                    <AlertDialogHeader>
+                                      <AlertDialogTitle>Are you sure?</AlertDialogTitle>
+                                      <AlertDialogDescription>
+                                        This action cannot be undone. This will permanently delete this faculty member.
+                                      </AlertDialogDescription>
+                                    </AlertDialogHeader>
+                                    <AlertDialogFooter>
+                                      <AlertDialogCancel>Cancel</AlertDialogCancel>
+                                      <AlertDialogAction onClick={() => handleArrayAction('faculty.members', 'remove', memberIndex)}>
+                                        Continue
+                                      </AlertDialogAction>
+                                    </AlertDialogFooter>
+                                  </AlertDialogContent>
+                                </AlertDialog>
+                           </div>
                            <Label>Name</Label>
                            <Input value={member.name} onChange={(e) => handleInputChange(`faculty.members.${memberIndex}.name`, e.target.value)} />
                            <Label>Title</Label>
