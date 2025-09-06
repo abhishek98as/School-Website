@@ -41,7 +41,7 @@ const FacultyCard = ({ faculty }: { faculty: any }) => {
             'card-avatar object-cover object-center absolute left-1/2 shadow-lg rounded-full transition-all duration-300 ease-in-out',
             isActive
               ? 'w-[50px] h-[50px] bottom-2.5 left-5 transform-none'
-              : 'w-40 h-40 bottom-0 transform -translate-x-1/2 translate-y-[-90px]'
+              : 'w-40 h-40 bottom-0 transform -translate-x-1/2 -translate-y-[80px]'
           )}
           src={faculty.image.src}
           alt={`Photo of ${faculty.name}`}
