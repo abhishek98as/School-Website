@@ -1,8 +1,25 @@
+
 import { Card, CardContent } from "@/components/ui/card";
 import { IContent } from "@/lib/content";
 
 type AchievementsProps = {
   content: IContent['home']['achievements'];
+};
+
+const getYouTubeId = (url: string) => {
+  let videoId = '';
+  try {
+    const urlObj = new URL(url);
+    if (urlObj.hostname === 'www.youtube.com' || urlObj.hostname === 'youtube.com') {
+      videoId = urlObj.searchParams.get('v') || '';
+    } else if (urlObj.hostname === 'youtu.be') {
+      videoId = urlObj.pathname.substring(1);
+    }
+  } catch (error) {
+    // If URL is invalid or just an ID is passed, assume it's the ID
+    videoId = url;
+  }
+  return videoId;
 };
 
 export function Achievements({ content }: AchievementsProps) {
@@ -18,23 +35,28 @@ export function Achievements({ content }: AchievementsProps) {
           </p>
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {content.videos.map((video) => (
-            <Card key={video.id} className="overflow-hidden shadow-lg hover:shadow-xl transition-shadow group">
-              <div className="relative w-full aspect-video">
-                <iframe
-                  src={`https://www.youtube.com/embed/${video.id}`}
-                  title={video.title}
-                  frameBorder="0"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowFullScreen
-                  className="absolute top-0 left-0 w-full h-full"
-                ></iframe>
-              </div>
-              <CardContent className="p-4">
-                  <h3 className="font-semibold text-lg group-hover:text-primary transition-colors truncate">{video.title}</h3>
-              </CardContent>
-            </Card>
-          ))}
+          {content.videos.map((video) => {
+            const videoId = getYouTubeId(video.id);
+            if (!videoId) return null;
+
+            return (
+              <Card key={video.id} className="overflow-hidden shadow-lg hover:shadow-xl transition-shadow group">
+                <div className="relative w-full aspect-video">
+                  <iframe
+                    src={`https://www.youtube.com/embed/${videoId}`}
+                    title={video.title}
+                    frameBorder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowFullScreen
+                    className="absolute top-0 left-0 w-full h-full"
+                  ></iframe>
+                </div>
+                <CardContent className="p-4">
+                    <h3 className="font-semibold text-lg group-hover:text-primary transition-colors truncate">{video.title}</h3>
+                </CardContent>
+              </Card>
+            );
+          })}
         </div>
       </div>
     </section>

@@ -324,8 +324,8 @@ export default function AdminPage() {
                                    <h3 className="font-semibold">Video {index + 1}</h3>
                                    <Label>Title</Label>
                                    <Input value={video.title} onChange={(e) => handleInputChange(`home.achievements.videos.${index}.title`, e.target.value)} />
-                                   <Label>YouTube Video ID</Label>
-                                   <Input value={video.id} onChange={(e) => handleInputChange(`home.achievements.videos.${index}.id`, e.target.value)} />
+                                   <Label>YouTube Video URL</Label>
+                                   <Input type="url" value={video.id} onChange={(e) => handleInputChange(`home.achievements.videos.${index}.id`, e.target.value)} />
                                </div>
                            ))}
                        </CardContent>
