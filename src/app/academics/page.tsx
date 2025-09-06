@@ -2,6 +2,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { BookOpen, BrainCircuit, Rocket } from "lucide-react";
 import Image from "next/image";
 import { getContent } from "@/lib/content-loader";
+import { ParticleCanvas } from "@/components/particle-canvas";
 
 
 export default async function AcademicsPage() {
@@ -19,8 +20,9 @@ export default async function AcademicsPage() {
 
   return (
     <div className="bg-background">
-      <section className="relative py-20 md:py-32 bg-primary/10">
-        <div className="container mx-auto px-4 md:px-6 text-center">
+      <section className="relative py-20 md:py-32 bg-primary/10 overflow-hidden">
+        <ParticleCanvas />
+        <div className="container mx-auto px-4 md:px-6 text-center relative z-10">
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold">
             {academicsContent.title}
           </h1>

@@ -6,6 +6,7 @@ import { Mail, Phone, Briefcase, User, MapPin } from 'lucide-react';
 import React, { useState, useEffect } from 'react';
 import { cn } from '@/lib/utils';
 import type { IContent } from '@/lib/content';
+import { ParticleCanvas } from '@/components/particle-canvas';
 
 
 // New FacultyCard component
@@ -36,7 +37,7 @@ const FacultyCard = ({ faculty }: { faculty: any }) => {
         />
         <div className={cn(
           'absolute transition-all duration-300 ease-in-out',
-           isActive ? 'bottom-2.5 left-5' : 'bottom-0 left-1/2 transform -translate-x-1/2 translate-y-[-70px]'
+           isActive ? 'bottom-2.5 left-5' : 'bottom-0 left-1/2 transform -translate-x-1/2 -translate-y-[70px]'
         )}>
             <Image
               className={cn(
@@ -168,8 +169,9 @@ export default function FacultyPage() {
 
   return (
     <div className="bg-background">
-      <section className="relative py-20 md:py-32 bg-primary/10">
-        <div className="container mx-auto px-4 md:px-6 text-center">
+      <section className="relative py-20 md:py-32 bg-primary/10 overflow-hidden">
+        <ParticleCanvas />
+        <div className="container mx-auto px-4 md:px-6 text-center relative z-10">
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold">
             {content.title}
           </h1>

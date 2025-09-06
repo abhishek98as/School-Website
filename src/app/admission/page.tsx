@@ -3,6 +3,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { getContent } from "@/lib/content-loader";
 import { CheckCircle, FileText } from "lucide-react";
+import { ParticleCanvas } from "@/components/particle-canvas";
 
 
 export default async function AdmissionPage() {
@@ -11,8 +12,9 @@ export default async function AdmissionPage() {
 
   return (
     <div className="bg-background">
-      <section className="relative py-20 md:py-32 bg-primary/10">
-        <div className="container mx-auto px-4 md:px-6 text-center">
+      <section className="relative py-20 md:py-32 bg-primary/10 overflow-hidden">
+        <ParticleCanvas />
+        <div className="container mx-auto px-4 md:px-6 text-center relative z-10">
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold">
             {admissionContent.title}
           </h1>
