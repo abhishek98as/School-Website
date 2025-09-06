@@ -114,4 +114,35 @@
       transform: translateY(0px);
     }
   }
+
+  /* New Footer Styles */
+  .footer-bg {
+    background: #111827; /* Fallback */
+    background-size: 200% 200%;
+    animation: gradient-animation 10s ease infinite;
+    background-image: linear-gradient(45deg, #111827, #1f2937, #111827, #374151);
+  }
+  
+  @keyframes gradient-animation {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+
+  .footer-link {
+    @apply relative text-sm text-gray-400 transition-colors duration-300 hover:text-white;
+  }
+
+  .footer-link > span {
+    @apply relative z-10;
+  }
+
+  .footer-link::after {
+    content: '';
+    @apply absolute bottom-0 left-0 h-px w-full bg-primary origin-left scale-x-0 transition-transform duration-300 ease-out;
+  }
+
+  .footer-link:hover::after {
+    @apply scale-x-100;
+  }
 }
