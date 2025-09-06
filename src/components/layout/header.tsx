@@ -48,7 +48,7 @@ const navLinks = [
       { href: "/library", label: "Library" },
       { href: "/campus", label: "Campus" },
       { href: "/virtual-tour", label: "Virtual Tour" },
-      { href: "/#news-and-events", label: "News & Events" },
+      { href: "/blog", label: "News & Events" },
     ]
   }
 ];
