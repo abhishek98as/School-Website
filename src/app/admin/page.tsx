@@ -30,19 +30,17 @@ export default function AdminPage() {
   const { toast } = useToast();
 
   useEffect(() => {
-    // This effect handles authentication.
     if (typeof window !== 'undefined') {
-        const isAdmin = sessionStorage.getItem('isAdmin');
-        if (isAdmin === 'true') {
-            setIsAuthenticated(true);
-        } else {
-            router.push('/login');
-        }
+      const isAdmin = sessionStorage.getItem('isAdmin');
+      if (isAdmin === 'true') {
+        setIsAuthenticated(true);
+      } else {
+        router.push('/login');
+      }
     }
   }, [router]);
 
   useEffect(() => {
-    // This effect fetches content only if authenticated.
     if (!isAuthenticated) return;
 
     const fetchContent = async () => {
@@ -66,7 +64,6 @@ export default function AdminPage() {
   const handleInputChange = (path: string, value: any) => {
     if (!content) return;
     
-    // Create a deep copy to avoid direct state mutation
     const newContent = JSON.parse(JSON.stringify(content));
     let current: any = newContent;
     
@@ -76,12 +73,10 @@ export default function AdminPage() {
         const key = keys[i];
         let nextKey: string | number = keys[i+1];
         
-        // If the key is a number, we are dealing with an array
         if (!isNaN(parseInt(key, 10))) {
             current = current[parseInt(key, 10)];
         } else {
              if (!current[key]) {
-                // If a key doesn't exist, create it. This is useful for nested objects.
                 if (!isNaN(parseInt(nextKey, 10))) {
                     current[key] = [];
                 } else {
@@ -124,7 +119,6 @@ export default function AdminPage() {
   };
 
   if (!isAuthenticated) {
-    // Render a loading state or null while authentication is checked
     return <div className="p-8">Authenticating...</div>;
   }
   
@@ -381,70 +375,77 @@ export default function AdminPage() {
                             ))}
                         </CardContent>
                     </Card>
-                    
-                    <Card>
-                        <CardHeader><CardTitle>News &amp; Events (Blog)</CardTitle></CardHeader>
-                        <CardContent className="space-y-4">
-                            {content.home.newsAndEvents.items.map((item, index) => (
-                                <Accordion key={index} type="single" collapsible className="p-4 border rounded-md space-y-2">
-                                    <AccordionItem value={`news-${index}`}>
-                                        <AccordionTrigger className="font-semibold">
-                                            Item {index + 1}: {item.title}
-                                        </AccordionTrigger>
-                                        <AccordionContent className="space-y-4">
-                                            <div className="grid grid-cols-2 gap-4">
-                                                <div className="space-y-2">
-                                                    <Label>Type</Label>
-                                                    <Select
-                                                        value={item.type}
-                                                        onValueChange={(value) => handleInputChange(`home.newsAndEvents.items.${index}.type`, value)}
-                                                    >
-                                                        <SelectTrigger>
-                                                            <SelectValue placeholder="Select type" />
-                                                        </SelectTrigger>
-                                                        <SelectContent>
-                                                            <SelectItem value="News">News</SelectItem>
-                                                            <SelectItem value="Event">Event</SelectItem>
-                                                        </SelectContent>
-                                                    </Select>
-                                                </div>
-                                                <div className="space-y-2">
-                                                    <Label>URL Slug</Label>
-                                                    <Input value={item.slug} onChange={(e) => handleInputChange(`home.newsAndEvents.items.${index}.slug`, e.target.value)} />
-                                                </div>
-                                            </div>
-
-                                            <div className="space-y-2">
-                                                <Label>Title</Label>
-                                                <Input value={item.title} onChange={(e) => handleInputChange(`home.newsAndEvents.items.${index}.title`, e.target.value)} />
-                                            </div>
-                                             <div className="space-y-2">
-                                                <Label>Short Description (for card)</Label>
-                                                <Textarea value={item.description} onChange={(e) => handleInputChange(`home.newsAndEvents.items.${index}.description`, e.target.value)} rows={3} />
-                                            </div>
-                                             <div className="space-y-2">
-                                                <Label>Full Blog Content</Label>
-                                                <Textarea value={item.content} onChange={(e) => handleInputChange(`home.newsAndEvents.items.${index}.content`, e.target.value)} rows={10} />
-                                            </div>
-                                             <div className="space-y-2">
-                                                <Label>Image URL</Label>
-                                                <Input value={item.image.src} onChange={(e) => handleInputChange(`home.newsAndEvents.items.${index}.image.src`, e.target.value)} />
-                                            </div>
-
-                                            {item.type === 'Event' && (
-                                                <div className="space-y-2">
-                                                    <Label>Google Form Embed URL (for events only)</Label>
-                                                    <Input value={item.googleFormUrl || ''} onChange={(e) => handleInputChange(`home.newsAndEvents.items.${index}.googleFormUrl`, e.target.value)} />
-                                                </div>
-                                            )}
-                                        </AccordionContent>
-                                    </AccordionItem>
-                                </Accordion>
-                            ))}
-                        </CardContent>
-                    </Card>
-
                 </div>
+            </AccordionContent>
+          </AccordionItem>
+
+          <AccordionItem value="item-news">
+            <AccordionTrigger className="text-xl font-semibold">News &amp; Events (Blog)</AccordionTrigger>
+            <AccordionContent>
+                <Card>
+                    <CardHeader>
+                        <CardTitle>Manage News &amp; Events</CardTitle>
+                        <CardDescription>Edit the posts that appear on your blog and homepage.</CardDescription>
+                    </CardHeader>
+                    <CardContent className="space-y-4">
+                        {content.home.newsAndEvents.items.map((item, index) => (
+                            <Accordion key={index} type="single" collapsible className="p-4 border rounded-md space-y-2">
+                                <AccordionItem value={`news-${index}`}>
+                                    <AccordionTrigger className="font-semibold">
+                                        Item {index + 1}: {item.title}
+                                    </AccordionTrigger>
+                                    <AccordionContent className="space-y-4">
+                                        <div className="grid grid-cols-2 gap-4">
+                                            <div className="space-y-2">
+                                                <Label>Type</Label>
+                                                <Select
+                                                    value={item.type}
+                                                    onValueChange={(value) => handleInputChange(`home.newsAndEvents.items.${index}.type`, value)}
+                                                >
+                                                    <SelectTrigger>
+                                                        <SelectValue placeholder="Select type" />
+                                                    </SelectTrigger>
+                                                    <SelectContent>
+                                                        <SelectItem value="News">News</SelectItem>
+                                                        <SelectItem value="Event">Event</SelectItem>
+                                                    </SelectContent>
+                                                </Select>
+                                            </div>
+                                            <div className="space-y-2">
+                                                <Label>URL Slug</Label>
+                                                <Input value={item.slug} onChange={(e) => handleInputChange(`home.newsAndEvents.items.${index}.slug`, e.target.value)} />
+                                            </div>
+                                        </div>
+
+                                        <div className="space-y-2">
+                                            <Label>Title</Label>
+                                            <Input value={item.title} onChange={(e) => handleInputChange(`home.newsAndEvents.items.${index}.title`, e.target.value)} />
+                                        </div>
+                                        <div className="space-y-2">
+                                            <Label>Short Description (for card)</Label>
+                                            <Textarea value={item.description} onChange={(e) => handleInputChange(`home.newsAndEvents.items.${index}.description`, e.target.value)} rows={3} />
+                                        </div>
+                                        <div className="space-y-2">
+                                            <Label>Full Blog Content</Label>
+                                            <Textarea value={item.content} onChange={(e) => handleInputChange(`home.newsAndEvents.items.${index}.content`, e.target.value)} rows={10} />
+                                        </div>
+                                        <div className="space-y-2">
+                                            <Label>Image URL</Label>
+                                            <Input value={item.image.src} onChange={(e) => handleInputChange(`home.newsAndEvents.items.${index}.image.src`, e.target.value)} />
+                                        </div>
+
+                                        {item.type === 'Event' && (
+                                            <div className="space-y-2">
+                                                <Label>Google Form Embed URL (for events only)</Label>
+                                                <Input value={item.googleFormUrl || ''} onChange={(e) => handleInputChange(`home.newsAndEvents.items.${index}.googleFormUrl`, e.target.value)} />
+                                            </div>
+                                        )}
+                                    </AccordionContent>
+                                </AccordionItem>
+                            </Accordion>
+                        ))}
+                    </CardContent>
+                </Card>
             </AccordionContent>
           </AccordionItem>
           
