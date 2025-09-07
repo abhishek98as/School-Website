@@ -36,7 +36,7 @@ export function GoogleTranslate() {
         (window as any).googleTranslateElementInit = () => {
             new (window as any).google.translate.TranslateElement(
                 { 
-                    pageLanguage: 'hi', 
+                    pageLanguage: 'en', 
                     includedLanguages: 'en,hi', 
                     layout: (window as any).google.translate.TranslateElement.InlineLayout.SIMPLE, 
                     autoDisplay: false 
@@ -50,6 +50,19 @@ export function GoogleTranslate() {
         addScript.setAttribute('src', '//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit');
         document.body.appendChild(addScript);
 
+        // Add CSS to hide Google Translate UI
+        const style = document.createElement('style');
+        style.textContent = `
+          .goog-te-banner-frame { display: none !important; }
+          .goog-te-menu-value { display: none !important; }
+          .goog-te-gadget { display: none !important; }
+          .goog-te-combo { display: none !important; }
+          body { top: 0 !important; }
+          .goog-text-highlight { background: none !important; box-shadow: none !important; }
+          .goog-te-banner-frame.skiptranslate { display: none !important; }
+        `;
+        document.head.appendChild(style);
+
         return () => {
             const script = document.getElementById(scriptId);
             if (script) {
@@ -59,5 +72,7 @@ export function GoogleTranslate() {
         };
     }, [pathname]); // Rerun on path change if needed
 
-  return <div id="google_translate_element" style={{ display: 'none' }}></div>;
+  return (
+    <div id="google_translate_element" style={{ display: 'none' }}></div>
+  );
 }

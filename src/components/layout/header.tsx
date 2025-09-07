@@ -68,6 +68,8 @@ export function Header() {
   const [content, setContent] = useState<IContent | null>(null);
   const pathname = usePathname();
 
+  const [currentLang, setCurrentLang] = useState('en');
+
   useEffect(() => {
     fetch('/api/content')
       .then(res => res.json())
@@ -75,11 +77,19 @@ export function Header() {
   }, []);
 
   const changeLanguage = (lang: string) => {
-    const googleTranslateSelect = document.querySelector('#google_translate_element select') as HTMLSelectElement;
-    if (googleTranslateSelect) {
-      googleTranslateSelect.value = lang;
-      googleTranslateSelect.dispatchEvent(new Event('change'));
-    }
+    // Wait for Google Translate to be loaded
+    const checkGoogleTranslate = () => {
+      const googleTranslateSelect = document.querySelector('#google_translate_element select') as HTMLSelectElement;
+      if (googleTranslateSelect) {
+        googleTranslateSelect.value = lang;
+        googleTranslateSelect.dispatchEvent(new Event('change'));
+        setCurrentLang(lang);
+      } else {
+        // If Google Translate is not ready, wait and try again
+        setTimeout(checkGoogleTranslate, 100);
+      }
+    };
+    checkGoogleTranslate();
   };
   
   if (!content) {
@@ -149,12 +159,24 @@ export function Header() {
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
               <Button variant="outline" size="sm" className="font-bold transition-all hover:scale-110 hover:text-accent-foreground hover:bg-accent">
-                <span className="text-xs">हिन्दी | EN</span>
+                <span className="text-xs">
+                  {currentLang === 'hi' ? 'हिन्दी' : 'EN'} | {currentLang === 'hi' ? 'EN' : 'हिन्दी'}
+                </span>
               </Button>
             </DropdownMenuTrigger>
             <DropdownMenuContent>
-              <DropdownMenuItem onClick={() => changeLanguage('en')}>English</DropdownMenuItem>
-              <DropdownMenuItem onClick={() => changeLanguage('hi')}>Hindi</DropdownMenuItem>
+              <DropdownMenuItem 
+                onClick={() => changeLanguage('en')}
+                className={currentLang === 'en' ? 'bg-accent' : ''}
+              >
+                English
+              </DropdownMenuItem>
+              <DropdownMenuItem 
+                onClick={() => changeLanguage('hi')}
+                className={currentLang === 'hi' ? 'bg-accent' : ''}
+              >
+                हिन्दी (Hindi)
+              </DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>
 
@@ -199,7 +221,30 @@ export function Header() {
                         </Link>
                     ))}
                   </nav>
-                   <div className="mt-auto p-4 border-t border-primary-foreground/20">
+                   <div className="mt-auto p-4 border-t border-primary-foreground/20 space-y-3">
+                        {/* Language Selector for Mobile */}
+                        <div className="space-y-2">
+                          <p className="text-sm text-primary-foreground/80 font-medium">Language / भाषा</p>
+                          <div className="flex gap-2">
+                            <Button 
+                              variant={currentLang === 'en' ? 'secondary' : 'ghost'} 
+                              size="sm" 
+                              className="flex-1 text-sm"
+                              onClick={() => changeLanguage('en')}
+                            >
+                              English
+                            </Button>
+                            <Button 
+                              variant={currentLang === 'hi' ? 'secondary' : 'ghost'} 
+                              size="sm" 
+                              className="flex-1 text-sm"
+                              onClick={() => changeLanguage('hi')}
+                            >
+                              हिन्दी
+                            </Button>
+                          </div>
+                        </div>
+                        
                         <Button asChild variant="ghost" className="w-full justify-center text-base font-medium bg-primary-foreground/10 text-white hover:bg-primary-foreground/20" onClick={() => setMenuOpen(false)}>
                             <Link href="/login">
                                 <LogIn className="mr-2 h-5 w-5" />
