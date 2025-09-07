@@ -31,6 +31,17 @@ interface ConstellationOptions {
   radius?: number;
 }
 
+// Fully-resolved options with no undefineds
+type ResolvedConstellationOptions = {
+  star: { color: string; width: number; randomWidth: boolean };
+  line: { color: string; width: number };
+  position: { x: number; y: number };
+  velocity: number;
+  length: number;
+  distance: number;
+  radius: number;
+};
+
 export function ParticleCanvas({ options }: { options?: ConstellationOptions }) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
@@ -41,7 +52,7 @@ export function ParticleCanvas({ options }: { options?: ConstellationOptions }) 
     const context = canvas.getContext('2d');
     if (!context) return;
 
-    const defaults: Required<ConstellationOptions> = {
+  const defaults: ResolvedConstellationOptions = {
       star: {
         color: 'rgba(255, 255, 255, 0.5)',
         width: 1,
@@ -61,7 +72,16 @@ export function ParticleCanvas({ options }: { options?: ConstellationOptions }) 
       radius: 150,
     };
 
-    const config = { ...defaults, ...options };
+    // Build a fully-resolved, strongly-typed config so we don't carry undefineds
+  const config: ResolvedConstellationOptions = {
+      star: { ...defaults.star, ...(options?.star ?? {}) },
+      line: { ...defaults.line, ...(options?.line ?? {}) },
+      position: options?.position ?? { ...defaults.position },
+      velocity: options?.velocity ?? defaults.velocity,
+      length: options?.length ?? defaults.length,
+      distance: options?.distance ?? defaults.distance,
+      radius: options?.radius ?? defaults.radius,
+    };
     const stars: Star[] = [];
     let rAF: number;
 
@@ -74,17 +94,17 @@ export function ParticleCanvas({ options }: { options?: ConstellationOptions }) 
     };
 
     const setContext = () => {
-      context.fillStyle = config.star.color || defaults.star.color;
-      context.strokeStyle = config.line.color || defaults.line.color;
-      context.lineWidth = config.line.width || defaults.line.width;
+      context.fillStyle = config.star.color;
+      context.strokeStyle = config.line.color;
+      context.lineWidth = config.line.width;
     };
     
     const createStar = (): Star => ({
       x: Math.random() * canvas.width,
       y: Math.random() * canvas.height,
-      vx: (config.velocity || defaults.velocity) - Math.random() * 0.5,
-      vy: (config.velocity || defaults.velocity) - Math.random() * 0.5,
-      radius: (config.star?.randomWidth ? Math.random() * (config.star.width || defaults.star.width) : config.star?.width) || 1,
+  vx: config.velocity - Math.random() * 0.5,
+  vy: config.velocity - Math.random() * 0.5,
+  radius: config.star.randomWidth ? Math.random() * config.star.width : config.star.width,
     });
     
     const drawStar = (star: Star) => {
@@ -110,8 +130,8 @@ export function ParticleCanvas({ options }: { options?: ConstellationOptions }) 
         for (let j = 0; j < stars.length; j++) {
           const iStar = stars[i];
           const jStar = stars[j];
-          const distance = config.distance || defaults.distance;
-          const radius = config.radius || defaults.radius;
+          const distance = config.distance;
+          const radius = config.radius;
 
           if (
             Math.abs(iStar.x - jStar.x) < distance &&
@@ -142,9 +162,9 @@ export function ParticleCanvas({ options }: { options?: ConstellationOptions }) 
     };
 
     const handleMouseMove = (e: MouseEvent) => {
-        const rect = canvas.getBoundingClientRect();
-        config.position.x = e.clientX - rect.left;
-        config.position.y = e.clientY - rect.top;
+  const rect = canvas.getBoundingClientRect();
+  config.position.x = e.clientX - rect.left;
+  config.position.y = e.clientY - rect.top;
     };
 
     const handleResize = () => {
@@ -156,7 +176,7 @@ export function ParticleCanvas({ options }: { options?: ConstellationOptions }) 
       setCanvas();
       setContext();
       stars.length = 0;
-      for (let i = 0; i < (config.length || defaults.length); i++) {
+  for (let i = 0; i < config.length; i++) {
         stars.push(createStar());
       }
       config.position = { x: canvas.width / 2, y: canvas.height / 2 };
