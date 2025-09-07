@@ -7,13 +7,15 @@ const contentPath = path.join(process.cwd(), 'src/lib/content.json');
 
 // This function is intended to be used in Server Components and Server Actions.
 export async function getContent(): Promise<IContent> {
-  // Check if we're running on Netlify (either production or build context)
+  // Check if we're running on Netlify Functions (AWS Lambda environment)
+  // Netlify Functions run on AWS Lambda, so AWS_LAMBDA_FUNCTION_NAME will be present
   const isNetlify = process.env.NETLIFY === 'true' || 
                    process.env.NETLIFY_DEV === 'true' || 
                    process.env.CONTEXT === 'production' ||
                    process.env.CONTEXT === 'deploy-preview' ||
                    process.env.CONTEXT === 'branch-deploy' ||
-                   typeof process.env.NETLIFY_SITE_ID !== 'undefined';
+                   typeof process.env.NETLIFY_SITE_ID !== 'undefined' ||
+                   typeof process.env.AWS_LAMBDA_FUNCTION_NAME !== 'undefined';
 
   // In Netlify, try durable storage first. If not available during build, fall back.
   if (isNetlify) {

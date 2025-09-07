@@ -19,15 +19,20 @@ async function saveContent(content: IContent) {
     console.log('saveContent: Starting save operation');
     console.log('Environment check - NETLIFY:', process.env.NETLIFY);
     console.log('Environment check - NETLIFY_DEV:', process.env.NETLIFY_DEV);
+    console.log('Environment check - CONTEXT:', process.env.CONTEXT);
+    console.log('Environment check - NETLIFY_SITE_ID:', process.env.NETLIFY_SITE_ID);
+    console.log('Environment check - AWS_LAMBDA_FUNCTION_NAME:', process.env.AWS_LAMBDA_FUNCTION_NAME);
     console.log('Environment check - NODE_ENV:', process.env.NODE_ENV);
     
-    // Check if we're running on Netlify (either production or build context)
+    // Check if we're running on Netlify Functions (AWS Lambda environment)
+    // Netlify Functions run on AWS Lambda, so AWS_LAMBDA_FUNCTION_NAME will be present
     const isNetlify = process.env.NETLIFY === 'true' || 
                      process.env.NETLIFY_DEV === 'true' || 
                      process.env.CONTEXT === 'production' ||
                      process.env.CONTEXT === 'deploy-preview' ||
                      process.env.CONTEXT === 'branch-deploy' ||
-                     typeof process.env.NETLIFY_SITE_ID !== 'undefined';
+                     typeof process.env.NETLIFY_SITE_ID !== 'undefined' ||
+                     typeof process.env.AWS_LAMBDA_FUNCTION_NAME !== 'undefined';
     
     console.log('saveContent: Detected Netlify environment:', isNetlify);
     
