@@ -970,6 +970,66 @@
       }
     ]
   },
+  "contactUs": {
+    "title": "Contact Us",
+    "subtitle": "Get in touch with us. We're here to help and answer any questions you might have.",
+    "description": "Whether you have questions about our programs, admission process, or campus life, our team is ready to assist you. Fill out the form below and we'll get back to you as soon as possible.",
+    "googleFormUrl": "https://docs.google.com/forms/d/e/1FAIpQLSe_example_contact_form_url/viewform?embedded=true",
+    "hero": {
+      "image": {
+        "src": "https://picsum.photos/1920/1080?random=100",
+        "alt": "Contact Us",
+        "hint": "college campus contact"
+      }
+    }
+  },
+  "privacyPolicy": {
+    "title": "Privacy Policy",
+    "subtitle": "Your privacy is important to us. This policy explains how we collect, use, and protect your information.",
+    "lastUpdated": "September 7, 2025",
+    "sections": [
+      {
+        "title": "Information We Collect",
+        "content": [
+          "We collect information you provide directly to us, such as when you create an account, fill out a form, or contact us.",
+          "This may include your name, email address, phone number, and any other information you choose to provide.",
+          "We also collect information automatically when you use our website, including your IP address, browser type, and usage data."
+        ]
+      },
+      {
+        "title": "How We Use Your Information",
+        "content": [
+          "We use the information we collect to provide, maintain, and improve our services.",
+          "We may also use your information to communicate with you about updates, events, and other information we think you might find interesting.",
+          "Your information helps us personalize your experience and respond to your individual needs."
+        ]
+      },
+      {
+        "title": "Information Sharing and Disclosure",
+        "content": [
+          "We do not sell, trade, or otherwise transfer your personal information to third parties without your consent.",
+          "We may share your information in certain limited circumstances, such as to comply with legal requirements or protect our rights.",
+          "We may also share aggregate, non-personally identifiable information with third parties for research and analysis purposes."
+        ]
+      },
+      {
+        "title": "Data Security",
+        "content": [
+          "We implement appropriate security measures to protect your personal information against unauthorized access, alteration, disclosure, or destruction.",
+          "However, no method of transmission over the internet or electronic storage is 100% secure, so we cannot guarantee absolute security.",
+          "We regularly review and update our security practices to ensure the protection of your information."
+        ]
+      },
+      {
+        "title": "Contact Information",
+        "content": [
+          "If you have any questions about this Privacy Policy, please contact us at info@galgotiacollege.edu.",
+          "You can also reach us by phone at +91 120 451 3800 or visit us at our campus address.",
+          "We are committed to resolving any concerns you may have about our privacy practices."
+        ]
+      }
+    ]
+  },
   "footer": {
     "collegeName": "PMS",
     "slogan": "Fostering Excellence and Innovation",

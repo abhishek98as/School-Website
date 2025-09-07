@@ -52,6 +52,8 @@ const navLinks = [
       { href: "/campus", label: "Campus", icon: School },
       { href: "/virtual-tour", label: "Virtual Tour", icon: Camera },
       { href: "/blog", label: "News & Events", icon: Newspaper },
+      { href: "/contact-us", label: "Contact Us", icon: Star },
+      { href: "/privacy-policy", label: "Privacy Policy", icon: Star },
     ]
   }
 ];

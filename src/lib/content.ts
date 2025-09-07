@@ -255,6 +255,28 @@ export interface IContent {
       embedUrl: string;
     }[];
   };
+  contactUs: {
+    title: string;
+    subtitle: string;
+    description: string;
+    googleFormUrl: string;
+    hero: {
+      image: {
+        src: string;
+        alt: string;
+        hint: string;
+      };
+    };
+  };
+  privacyPolicy: {
+    title: string;
+    subtitle: string;
+    lastUpdated: string;
+    sections: {
+      title: string;
+      content: string[];
+    }[];
+  };
   footer: {
     collegeName: string;
     slogan: string;

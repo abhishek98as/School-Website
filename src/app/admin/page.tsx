@@ -888,7 +888,98 @@ export default function AdminPage() {
                 </Card>
             </AccordionContent>
           </AccordionItem>
-          
+
+          <AccordionItem value="item-contact">
+            <AccordionTrigger className="text-xl font-semibold">Contact Us Page</AccordionTrigger>
+            <AccordionContent>
+                <Card>
+                  <CardHeader>
+                    <CardTitle>Contact Us Content</CardTitle>
+                  </CardHeader>
+                  <CardContent className="space-y-4">
+                        <Label>Page Title</Label>
+                        <Input value={content.contactUs.title} onChange={(e) => handleInputChange('contactUs.title', e.target.value)} />
+                        <Label>Page Subtitle</Label>
+                        <Input value={content.contactUs.subtitle} onChange={(e) => handleInputChange('contactUs.subtitle', e.target.value)} />
+                        <Label>Description</Label>
+                        <Textarea value={content.contactUs.description} onChange={(e) => handleInputChange('contactUs.description', e.target.value)} />
+                        <Label>Google Form URL</Label>
+                        <Input 
+                          value={content.contactUs.googleFormUrl} 
+                          onChange={(e) => handleInputChange('contactUs.googleFormUrl', e.target.value)} 
+                          placeholder="https://docs.google.com/forms/d/e/..."
+                        />
+                        <Label>Hero Image URL</Label>
+                        <Input value={content.contactUs.hero.image.src} onChange={(e) => handleInputChange('contactUs.hero.image.src', e.target.value)} />
+                        <Label>Hero Image Alt Text</Label>
+                        <Input value={content.contactUs.hero.image.alt} onChange={(e) => handleInputChange('contactUs.hero.image.alt', e.target.value)} />
+                        <Label>Hero Image AI Hint</Label>
+                        <Input value={content.contactUs.hero.image.hint} onChange={(e) => handleInputChange('contactUs.hero.image.hint', e.target.value)} />
+                    </CardContent>
+                </Card>
+            </AccordionContent>
+          </AccordionItem>
+
+          <AccordionItem value="item-privacy">
+            <AccordionTrigger className="text-xl font-semibold">Privacy Policy Page</AccordionTrigger>
+            <AccordionContent>
+                <Card>
+                  <CardHeader>
+                    <CardTitle>Privacy Policy Content</CardTitle>
+                  </CardHeader>
+                  <CardContent className="space-y-4">
+                        <Label>Page Title</Label>
+                        <Input value={content.privacyPolicy.title} onChange={(e) => handleInputChange('privacyPolicy.title', e.target.value)} />
+                        <Label>Page Subtitle</Label>
+                        <Input value={content.privacyPolicy.subtitle} onChange={(e) => handleInputChange('privacyPolicy.subtitle', e.target.value)} />
+                        <Label>Last Updated Date</Label>
+                        <Input value={content.privacyPolicy.lastUpdated} onChange={(e) => handleInputChange('privacyPolicy.lastUpdated', e.target.value)} />
+                        
+                        <div className="space-y-4">
+                          <div className="flex justify-between items-center">
+                            <h3 className="font-semibold">Privacy Policy Sections</h3>
+                            <Button 
+                              onClick={() => handleArrayAction('privacyPolicy.sections', 'add', undefined, {
+                                title: "New Section",
+                                content: ["Add content here..."]
+                              })}
+                              size="sm"
+                            >
+                              Add Section
+                            </Button>
+                          </div>
+                          
+                          {content.privacyPolicy.sections.map((section, index) => (
+                            <div key={index} className="p-4 border rounded-md space-y-2">
+                              <div className="flex justify-between items-center">
+                                <h4 className="font-semibold">Section {index + 1}</h4>
+                                <Button 
+                                  onClick={() => handleArrayAction('privacyPolicy.sections', 'remove', index)}
+                                  variant="destructive" 
+                                  size="sm"
+                                >
+                                  Remove
+                                </Button>
+                              </div>
+                              <Label>Section Title</Label>
+                              <Input 
+                                value={section.title} 
+                                onChange={(e) => handleInputChange(`privacyPolicy.sections.${index}.title`, e.target.value)} 
+                              />
+                              <Label>Content (one paragraph per line)</Label>
+                              <Textarea 
+                                value={section.content.join('\n')} 
+                                onChange={(e) => handleInputChange(`privacyPolicy.sections.${index}.content`, e.target.value.split('\n'))}
+                                rows={5}
+                              />
+                            </div>
+                          ))}
+                        </div>
+                    </CardContent>
+                </Card>
+            </AccordionContent>
+          </AccordionItem>
+
            <AccordionItem value="item-11">
             <AccordionTrigger className="text-xl font-semibold">Footer Content</AccordionTrigger>
             <AccordionContent>
