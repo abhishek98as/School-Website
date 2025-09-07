@@ -32,10 +32,10 @@ const navLinks = [
     label: "About Us",
     icon: Building,
     subLinks: [
-      { href: "/about/our-aspiration", label: "Our Aspiration" },
-      { href: "/about/about-us", label: "About The School" },
-      { href: "/about/philosophy", label: "Philosophy" },
-      { href: "/about/our-motto", label: "Our Motto" },
+      { href: "/about/our-aspiration", label: "Our Aspiration", icon: Star },
+      { href: "/about/about-us", label: "About The School", icon: School },
+      { href: "/about/philosophy", label: "Philosophy", icon: BookOpen },
+      { href: "/about/our-motto", label: "Our Motto", icon: Star },
     ]
   },
   { href: "/academics", label: "Academics", icon: BookOpen },
@@ -47,14 +47,19 @@ const navLinks = [
     label: "More",
     icon: Star,
     subLinks: [
-      { href: "/student-life", label: "Student Life" },
-      { href: "/library", label: "Library" },
-      { href: "/campus", label: "Campus" },
-      { href: "/virtual-tour", label: "Virtual Tour" },
-      { href: "/blog", label: "News & Events" },
+      { href: "/student-life", label: "Student Life", icon: Star },
+      { href: "/library", label: "Library", icon: Library },
+      { href: "/campus", label: "Campus", icon: Campus },
+      { href: "/virtual-tour", label: "Virtual Tour", icon: Camera },
+      { href: "/blog", label: "News & Events", icon: Newspaper },
     ]
   }
 ];
+
+const mobileNavLinks = navLinks.flatMap(link =>
+    link.subLinks ? link.subLinks.map(sub => ({ ...sub })) : [{ href: link.href, label: link.label, icon: link.icon }]
+);
+
 
 export function Header() {
   const [isMenuOpen, setMenuOpen] = useState(false);
@@ -177,34 +182,9 @@ export function Header() {
                     <p className="text-sm text-white/70">{content.footer.slogan}</p>
                   </div>
                 
-                  <nav className="flex-1 overflow-y-auto p-4">
-                     <Accordion type="single" collapsible className="w-full">
-                        {navLinks.map((link) => (
-                        link.subLinks ? (
-                            <AccordionItem value={link.label} key={link.label} className="border-b-0">
-                                <AccordionTrigger className="text-base font-medium hover:no-underline hover:bg-white/10 hover:text-white rounded-md transition-colors py-2 px-3 flex items-center gap-3">
-                                   <link.icon className="h-5 w-5 text-primary"/> <span>{link.label}</span>
-                                </AccordionTrigger>
-                                <AccordionContent className="pb-0 pl-8">
-                                <div className="grid gap-1 mt-1">
-                                    {link.subLinks.map(subLink => (
-                                        <Link
-                                            key={subLink.href}
-                                            href={subLink.href}
-                                            onClick={() => setMenuOpen(false)}
-                                            className={cn(
-                                                "text-sm font-medium transition-colors hover:text-primary py-1.5 rounded-md block",
-                                                pathname === subLink.href && "text-primary font-bold"
-                                            )}
-                                        >
-                                            {subLink.label}
-                                        </Link>
-                                    ))}
-                                </div>
-                                </AccordionContent>
-                            </AccordionItem>
-                        ) : (
-                        <Link
+                  <nav className="flex-1 overflow-y-auto p-4 space-y-2">
+                    {mobileNavLinks.map((link) => (
+                         <Link
                             key={link.href}
                             href={link.href}
                             onClick={() => setMenuOpen(false)}
@@ -215,12 +195,10 @@ export function Header() {
                         >
                              <link.icon className="h-5 w-5" /> <span>{link.label}</span>
                         </Link>
-                        )
-                        ))}
-                     </Accordion>
+                    ))}
                   </nav>
                    <div className="mt-auto p-4 border-t border-white/10">
-                        <Button asChild variant="ghost" className="w-full justify-center text-base font-medium hover:bg-white/10 hover:text-white" onClick={() => setMenuOpen(false)}>
+                        <Button asChild variant="ghost" className="w-full justify-center text-base font-medium hover:bg-white/10 !text-primary hover:!text-primary-foreground" onClick={() => setMenuOpen(false)}>
                             <Link href="/login">
                                 <LogIn className="mr-2 h-5 w-5" />
                                 Admin Login
