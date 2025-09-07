@@ -22,37 +22,47 @@ async function saveContent(content: IContent) {
     console.log('Environment check - CONTEXT:', process.env.CONTEXT);
     console.log('Environment check - NETLIFY_SITE_ID:', process.env.NETLIFY_SITE_ID);
     console.log('Environment check - AWS_LAMBDA_FUNCTION_NAME:', process.env.AWS_LAMBDA_FUNCTION_NAME);
+    console.log('Environment check - AWS_EXECUTION_ENV:', process.env.AWS_EXECUTION_ENV);
+    console.log('Environment check - LAMBDA_RUNTIME_DIR:', process.env.LAMBDA_RUNTIME_DIR);
     console.log('Environment check - NODE_ENV:', process.env.NODE_ENV);
     
-    // Check if we're running on Netlify Functions (AWS Lambda environment)
-    // Netlify Functions run on AWS Lambda, so AWS_LAMBDA_FUNCTION_NAME will be present
+    // Check if we're running on Netlify Functions (multiple detection methods)
     const isNetlify = process.env.NETLIFY === 'true' || 
                      process.env.NETLIFY_DEV === 'true' || 
                      process.env.CONTEXT === 'production' ||
                      process.env.CONTEXT === 'deploy-preview' ||
                      process.env.CONTEXT === 'branch-deploy' ||
                      typeof process.env.NETLIFY_SITE_ID !== 'undefined' ||
-                     typeof process.env.AWS_LAMBDA_FUNCTION_NAME !== 'undefined';
+                     typeof process.env.AWS_LAMBDA_FUNCTION_NAME !== 'undefined' ||
+                     typeof process.env.AWS_EXECUTION_ENV !== 'undefined' ||
+                     typeof process.env.LAMBDA_RUNTIME_DIR !== 'undefined' ||
+                     process.env.AWS_EXECUTION_ENV === 'AWS_Lambda_nodejs18.x' ||
+                     process.env.AWS_EXECUTION_ENV === 'AWS_Lambda_nodejs20.x';
     
     console.log('saveContent: Detected Netlify environment:', isNetlify);
     
-    if (isNetlify) {
-      console.log('saveContent: Using Netlify Blobs storage');
-      try {
-        const store = getStore({ name: 'content', consistency: 'strong' });
-        const result = await store.setJSON('content.json', content);
-        console.log('saveContent: Successfully saved to Netlify Blobs', { modified: result.modified, etag: result.etag });
-      } catch (blobError) {
-        console.error('saveContent: Blob save failed, falling back to file:', blobError);
-        // If Blobs isn't available (e.g., unexpected build/preview context), fall back to file
+    // Always try Netlify Blobs first - this is the most reliable approach
+    try {
+      console.log('saveContent: Attempting Netlify Blobs storage');
+      const store = getStore({ name: 'content', consistency: 'strong' });
+      const result = await store.setJSON('content.json', content);
+      console.log('saveContent: Successfully saved to Netlify Blobs', { modified: result.modified, etag: result.etag });
+    } catch (blobError) {
+      console.error('saveContent: Blob save failed:', blobError);
+      
+      // Check if we're in a serverless environment where filesystem is read-only
+      const isServerless = typeof process.env.AWS_LAMBDA_FUNCTION_NAME !== 'undefined' ||
+                          typeof process.env.AWS_EXECUTION_ENV !== 'undefined' ||
+                          typeof process.env.LAMBDA_RUNTIME_DIR !== 'undefined';
+      
+      if (isServerless) {
+        console.error('saveContent: In serverless environment with read-only filesystem, cannot fallback');
+        throw new Error('Netlify Blobs unavailable in serverless environment and filesystem is read-only');
+      } else {
+        console.log('saveContent: Falling back to local file system');
         await saveContentToFile(content);
         console.log('saveContent: Fallback file save completed');
       }
-    } else {
-      console.log('saveContent: Using local file system');
-      // Local dev fallback to file system
-      await saveContentToFile(content);
-      console.log('saveContent: Local file save completed');
     }
     
     console.log('saveContent: Starting cache revalidation');
