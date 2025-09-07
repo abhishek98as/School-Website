@@ -8,14 +8,22 @@ import path from 'path';
 
 const contentPath = path.join(process.cwd(), 'src/lib/content.json');
 
+import { getStore } from '@netlify/blobs';
+
 async function saveContentToFile(content: IContent): Promise<void> {
   await fs.writeFile(contentPath, JSON.stringify(content, null, 2), 'utf8');
 }
 
-
-export async function saveContent(content: IContent) {
+async function saveContent(content: IContent) {
   try {
-    await saveContentToFile(content);
+    // If running on Netlify, persist to Netlify Blobs (durable storage)
+    if (process.env.NETLIFY === 'true') {
+      const store = getStore({ name: 'content', consistency: 'strong' });
+      await store.set('content.json', JSON.stringify(content, null, 2));
+    } else {
+      // Local dev fallback to file system
+      await saveContentToFile(content);
+    }
     // Revalidate all pages that might use this content
     revalidatePath('/');
     revalidatePath('/academics');
@@ -26,10 +34,10 @@ export async function saveContent(content: IContent) {
     revalidatePath('/library');
     revalidatePath('/campus');
     revalidatePath('/virtual-tour');
-    // ... add other paths as needed
     return { success: true };
   } catch (error) {
     console.error('Failed to save content:', error);
     return { success: false, error: 'Failed to save content.' };
   }
 }
+export { saveContent };
