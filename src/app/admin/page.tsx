@@ -62,6 +62,41 @@ export default function AdminPage() {
           throw new Error('Failed to fetch content');
         }
         const data = await response.json();
+        
+        // Ensure contactUs and privacyPolicy sections exist with default values
+        if (!data.contactUs) {
+          data.contactUs = {
+            title: "Contact Us",
+            subtitle: "Get in touch with us. We're here to help and answer any questions you might have.",
+            description: "Whether you have questions about our programs, admission process, or campus life, our team is ready to assist you. Fill out the form below and we'll get back to you as soon as possible.",
+            googleFormUrl: "https://docs.google.com/forms/d/e/1FAIpQLSe_example_contact_form_url/viewform?embedded=true",
+            hero: {
+              image: {
+                src: "https://picsum.photos/1920/1080?random=100",
+                alt: "Contact Us",
+                hint: "college campus contact"
+              }
+            }
+          };
+        }
+        
+        if (!data.privacyPolicy) {
+          data.privacyPolicy = {
+            title: "Privacy Policy",
+            subtitle: "Your privacy is important to us. This policy explains how we collect, use, and protect your information.",
+            lastUpdated: "September 7, 2025",
+            sections: [
+              {
+                title: "Information We Collect",
+                content: [
+                  "We collect information you provide directly to us, such as when you create an account, fill out a form, or contact us.",
+                  "This may include your name, email address, phone number, and any other information you choose to provide."
+                ]
+              }
+            ]
+          };
+        }
+        
         setContent(data);
       } catch (error) {
          toast({ variant: 'destructive', title: 'Error', description: 'Failed to load content.' });
@@ -898,23 +933,23 @@ export default function AdminPage() {
                   </CardHeader>
                   <CardContent className="space-y-4">
                         <Label>Page Title</Label>
-                        <Input value={content.contactUs.title} onChange={(e) => handleInputChange('contactUs.title', e.target.value)} />
+                        <Input value={content.contactUs?.title || ''} onChange={(e) => handleInputChange('contactUs.title', e.target.value)} />
                         <Label>Page Subtitle</Label>
-                        <Input value={content.contactUs.subtitle} onChange={(e) => handleInputChange('contactUs.subtitle', e.target.value)} />
+                        <Input value={content.contactUs?.subtitle || ''} onChange={(e) => handleInputChange('contactUs.subtitle', e.target.value)} />
                         <Label>Description</Label>
-                        <Textarea value={content.contactUs.description} onChange={(e) => handleInputChange('contactUs.description', e.target.value)} />
+                        <Textarea value={content.contactUs?.description || ''} onChange={(e) => handleInputChange('contactUs.description', e.target.value)} />
                         <Label>Google Form URL</Label>
                         <Input 
-                          value={content.contactUs.googleFormUrl} 
+                          value={content.contactUs?.googleFormUrl || ''} 
                           onChange={(e) => handleInputChange('contactUs.googleFormUrl', e.target.value)} 
                           placeholder="https://docs.google.com/forms/d/e/..."
                         />
                         <Label>Hero Image URL</Label>
-                        <Input value={content.contactUs.hero.image.src} onChange={(e) => handleInputChange('contactUs.hero.image.src', e.target.value)} />
+                        <Input value={content.contactUs?.hero?.image?.src || ''} onChange={(e) => handleInputChange('contactUs.hero.image.src', e.target.value)} />
                         <Label>Hero Image Alt Text</Label>
-                        <Input value={content.contactUs.hero.image.alt} onChange={(e) => handleInputChange('contactUs.hero.image.alt', e.target.value)} />
+                        <Input value={content.contactUs?.hero?.image?.alt || ''} onChange={(e) => handleInputChange('contactUs.hero.image.alt', e.target.value)} />
                         <Label>Hero Image AI Hint</Label>
-                        <Input value={content.contactUs.hero.image.hint} onChange={(e) => handleInputChange('contactUs.hero.image.hint', e.target.value)} />
+                        <Input value={content.contactUs?.hero?.image?.hint || ''} onChange={(e) => handleInputChange('contactUs.hero.image.hint', e.target.value)} />
                     </CardContent>
                 </Card>
             </AccordionContent>
@@ -929,11 +964,11 @@ export default function AdminPage() {
                   </CardHeader>
                   <CardContent className="space-y-4">
                         <Label>Page Title</Label>
-                        <Input value={content.privacyPolicy.title} onChange={(e) => handleInputChange('privacyPolicy.title', e.target.value)} />
+                        <Input value={content.privacyPolicy?.title || ''} onChange={(e) => handleInputChange('privacyPolicy.title', e.target.value)} />
                         <Label>Page Subtitle</Label>
-                        <Input value={content.privacyPolicy.subtitle} onChange={(e) => handleInputChange('privacyPolicy.subtitle', e.target.value)} />
+                        <Input value={content.privacyPolicy?.subtitle || ''} onChange={(e) => handleInputChange('privacyPolicy.subtitle', e.target.value)} />
                         <Label>Last Updated Date</Label>
-                        <Input value={content.privacyPolicy.lastUpdated} onChange={(e) => handleInputChange('privacyPolicy.lastUpdated', e.target.value)} />
+                        <Input value={content.privacyPolicy?.lastUpdated || ''} onChange={(e) => handleInputChange('privacyPolicy.lastUpdated', e.target.value)} />
                         
                         <div className="space-y-4">
                           <div className="flex justify-between items-center">
@@ -949,7 +984,7 @@ export default function AdminPage() {
                             </Button>
                           </div>
                           
-                          {content.privacyPolicy.sections.map((section, index) => (
+                          {(content.privacyPolicy?.sections || []).map((section, index) => (
                             <div key={index} className="p-4 border rounded-md space-y-2">
                               <div className="flex justify-between items-center">
                                 <h4 className="font-semibold">Section {index + 1}</h4>

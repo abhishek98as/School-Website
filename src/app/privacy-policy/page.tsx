@@ -6,6 +6,25 @@ export default async function PrivacyPolicyPage() {
   const content = await getContent();
   const privacyContent = content.privacyPolicy;
 
+  // If privacyPolicy content is not available, show error page
+  if (!privacyContent) {
+    return (
+      <div className="bg-background">
+        <section className="relative py-20 md:py-32 bg-primary/10 overflow-hidden">
+          <ParticleCanvas />
+          <div className="container mx-auto px-4 md:px-6 text-center relative z-10">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold">
+              Privacy Policy
+            </h1>
+            <p className="mt-4 text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto">
+              Content is being loaded. Please refresh the page.
+            </p>
+          </div>
+        </section>
+      </div>
+    );
+  }
+
   return (
     <div className="bg-background">
       <section className="relative py-20 md:py-32 bg-primary/10 overflow-hidden">

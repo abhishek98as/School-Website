@@ -35,5 +35,41 @@ export async function getContent(): Promise<IContent> {
   // Fallback to repo file (dev/local or if no blob yet)
   console.log('getContent: Reading from local file system');
   const fileContent = await fs.readFile(contentPath, 'utf8');
-  return JSON.parse(fileContent);
+  const content = JSON.parse(fileContent);
+  
+  // Ensure required sections exist with default values
+  if (!content.contactUs) {
+    content.contactUs = {
+      title: "Contact Us",
+      subtitle: "Get in touch with us. We're here to help and answer any questions you might have.",
+      description: "Whether you have questions about our programs, admission process, or campus life, our team is ready to assist you. Fill out the form below and we'll get back to you as soon as possible.",
+      googleFormUrl: "https://docs.google.com/forms/d/e/1FAIpQLSe_example_contact_form_url/viewform?embedded=true",
+      hero: {
+        image: {
+          src: "https://picsum.photos/1920/1080?random=100",
+          alt: "Contact Us",
+          hint: "college campus contact"
+        }
+      }
+    };
+  }
+  
+  if (!content.privacyPolicy) {
+    content.privacyPolicy = {
+      title: "Privacy Policy",
+      subtitle: "Your privacy is important to us. This policy explains how we collect, use, and protect your information.",
+      lastUpdated: "September 7, 2025",
+      sections: [
+        {
+          title: "Information We Collect",
+          content: [
+            "We collect information you provide directly to us, such as when you create an account, fill out a form, or contact us.",
+            "This may include your name, email address, phone number, and any other information you choose to provide."
+          ]
+        }
+      ]
+    };
+  }
+  
+  return content;
 }

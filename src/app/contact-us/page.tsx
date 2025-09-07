@@ -7,6 +7,24 @@ export default async function ContactUsPage() {
   const content = await getContent();
   const contactUsContent = content.contactUs;
 
+  // If contactUs content is not available, show error page
+  if (!contactUsContent) {
+    return (
+      <div className="bg-background">
+        <section className="relative py-20 md:py-32 bg-primary/10 overflow-hidden">
+          <div className="container mx-auto px-4 md:px-6 text-center relative z-10">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold">
+              Contact Us
+            </h1>
+            <p className="mt-4 text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto">
+              Content is being loaded. Please refresh the page.
+            </p>
+          </div>
+        </section>
+      </div>
+    );
+  }
+
   return (
     <div className="bg-background">
       <section className="relative h-[50vh] md:h-[60vh] flex items-center justify-center">
