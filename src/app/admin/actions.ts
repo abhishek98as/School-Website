@@ -18,8 +18,13 @@ async function saveContent(content: IContent) {
   try {
     // If running on Netlify, persist to Netlify Blobs (durable storage)
     if (process.env.NETLIFY === 'true') {
-      const store = getStore({ name: 'content', consistency: 'strong' });
-      await store.set('content.json', JSON.stringify(content, null, 2));
+      try {
+        const store = getStore({ name: 'content', consistency: 'strong' });
+        await store.set('content.json', JSON.stringify(content, null, 2));
+      } catch (err) {
+        // If Blobs isn't available (e.g., unexpected build/preview context), fall back to file
+        await saveContentToFile(content);
+      }
     } else {
       // Local dev fallback to file system
       await saveContentToFile(content);
