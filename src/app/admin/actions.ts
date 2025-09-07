@@ -24,8 +24,8 @@ async function saveContent(content: IContent) {
       console.log('saveContent: Using Netlify Blobs storage');
       try {
         const store = getStore({ name: 'content', consistency: 'strong' });
-        await store.set('content.json', JSON.stringify(content, null, 2));
-        console.log('saveContent: Successfully saved to Netlify Blobs');
+        const result = await store.setJSON('content.json', content);
+        console.log('saveContent: Successfully saved to Netlify Blobs', { modified: result.modified, etag: result.etag });
       } catch (blobError) {
         console.error('saveContent: Blob save failed, falling back to file:', blobError);
         // If Blobs isn't available (e.g., unexpected build/preview context), fall back to file

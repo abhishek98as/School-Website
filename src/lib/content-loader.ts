@@ -12,13 +12,18 @@ export async function getContent(): Promise<IContent> {
     try {
       const store = getStore({ name: 'content', consistency: 'strong' });
       const json = await store.get('content.json', { type: 'json' });
-      if (json) return json as IContent;
+      if (json) {
+        console.log('getContent: Successfully loaded from Netlify Blobs');
+        return json as IContent;
+      }
+      console.log('getContent: No content found in Netlify Blobs, falling back to file');
     } catch (err) {
       // MissingBlobsEnvironmentError during build -> fall back to file
-      // console.warn('Blobs unavailable in this environment, falling back to file:', err);
+      console.log('getContent: Blobs unavailable in this environment, falling back to file:', err);
     }
   }
   // Fallback to repo file (dev/local or if no blob yet)
+  console.log('getContent: Reading from local file system');
   const fileContent = await fs.readFile(contentPath, 'utf8');
   return JSON.parse(fileContent);
 }
