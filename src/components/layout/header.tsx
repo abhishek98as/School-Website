@@ -3,7 +3,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Menu, University, LogIn, ChevronDown, Home, Building, BookOpen, User, GraduationCap, School, Library, Campus, Camera, Newspaper, Star } from "lucide-react";
+import { Menu, University, LogIn, ChevronDown, Home, Building, BookOpen, User, GraduationCap, School, Library, Camera, Newspaper, Star } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
 import {
@@ -49,7 +49,7 @@ const navLinks = [
     subLinks: [
       { href: "/student-life", label: "Student Life", icon: Star },
       { href: "/library", label: "Library", icon: Library },
-      { href: "/campus", label: "Campus", icon: Campus },
+      { href: "/campus", label: "Campus", icon: School },
       { href: "/virtual-tour", label: "Virtual Tour", icon: Camera },
       { href: "/blog", label: "News & Events", icon: Newspaper },
     ]
