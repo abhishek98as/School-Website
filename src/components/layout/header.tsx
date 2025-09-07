@@ -110,11 +110,11 @@ export function Header() {
 
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-card shadow-sm">
-      <div className="container mx-auto flex h-16 items-center justify-between px-4 md:px-6">
+      <div className="container mx-auto flex h-20 items-center justify-between px-4 md:px-6">
         <Link href="/" className="flex items-center gap-2 notranslate">
-          <Image src={branding.logoUrl} alt={branding.logoText} width={120} height={30} className="h-8 w-auto" />
-          <span className="font-bold text-lg hidden sm:inline">{branding.logoText}</span>
-           <span className="font-bold text-lg sm:hidden">PMS</span>
+          <Image src={branding.logoUrl} alt={branding.logoText} width={120} height={48} className="h-12 w-auto" />
+          <span className="font-bold text-[2.125rem] hidden sm:inline">{branding.logoText}</span>
+           <span className="font-bold text-xl sm:hidden">PMS</span>
         </Link>
         <nav className="hidden lg:flex items-center gap-6 text-sm font-medium">
           {navLinks.map((link) => (
@@ -201,8 +201,8 @@ export function Header() {
                 </SheetHeader>
                 <div className="flex flex-col h-full">
                   <div className="p-6 text-center border-b border-primary-foreground/20">
-                    <Image src={branding.logoUrl} alt="User Profile" width={70} height={70} className="w-20 h-20 rounded-full mx-auto border-2 border-primary-foreground/50 bg-white/20 p-1" />
-                    <h3 className="mt-3 text-lg font-semibold">{branding.logoText}</h3>
+                    <Image src={branding.logoUrl} alt="User Profile" width={80} height={80} className="w-24 h-24 rounded-full mx-auto border-2 border-primary-foreground/50 bg-white/20 p-1" />
+                    <h3 className="mt-3 text-xl font-semibold">{branding.logoText}</h3>
                     <p className="text-sm text-primary-foreground/80">{content.footer.slogan}</p>
                   </div>
                 

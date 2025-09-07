@@ -80,7 +80,7 @@ export function WelcomePopup({ content }: WelcomePopupProps) {
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogContent 
-        className="max-w-[95vw] sm:max-w-2xl md:max-w-4xl lg:max-w-5xl p-0 border-0 rounded-lg overflow-hidden"
+        className="max-w-[98vw] max-h-[98vh] sm:max-w-2xl md:max-w-4xl lg:max-w-5xl p-0 border-0 rounded-lg overflow-hidden"
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
       >
@@ -88,7 +88,7 @@ export function WelcomePopup({ content }: WelcomePopupProps) {
           <DialogTitle>Welcome to Galgametrics College</DialogTitle>
         </DialogHeader>
         <DialogClose asChild>
-          <button className="absolute top-2 right-2 md:top-4 md:right-4 z-20 rounded-full p-2 bg-black/50 text-white hover:bg-black/70 transition-colors">
+          <button className="absolute top-1 right-1 sm:top-2 sm:right-2 md:top-4 md:right-4 z-20 rounded-full p-1.5 sm:p-2 bg-black/50 text-white hover:bg-black/70 transition-colors">
             <X className="h-5 w-5 md:h-6 md:w-6" />
             <span className="sr-only">Close</span>
           </button>
@@ -98,7 +98,7 @@ export function WelcomePopup({ content }: WelcomePopupProps) {
             {content.slides.map((slide, index) => (
                 <CarouselItem key={index}>
                     {slide.type === 'table' ? (
-                         <div className="relative h-[90svh] md:h-[80vh] w-full flex flex-col items-center justify-center p-4 md:p-10">
+                         <div className="relative h-[85vh] sm:h-[90vh] md:h-[80vh] w-full flex flex-col items-center justify-center p-2 sm:p-4 md:p-10">
                             <Image
                                 src={slide.image.src}
                                 alt={slide.image.alt}
@@ -107,14 +107,14 @@ export function WelcomePopup({ content }: WelcomePopupProps) {
                                 className="object-cover"
                             />
                             <div className="absolute inset-0 bg-black/60" />
-                            <div className="relative z-10 flex flex-col items-center text-center w-full max-w-sm md:max-w-2xl">
+                            <div className="relative z-10 flex flex-col items-center text-center w-full max-w-[90vw] sm:max-w-sm md:max-w-2xl">
                                 <div className="flex items-center gap-4 mb-4 md:mb-6 text-primary">
                                     {getIcon(slide.title)}
                                     <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white drop-shadow-lg">{slide.title}</h2>
                                 </div>
                                 <Card className="w-full bg-white/90 backdrop-blur-sm shadow-2xl border-0">
                                     <CardContent className="p-0">
-                                        <ScrollArea className="h-[60svh] md:h-96">
+                                        <ScrollArea className="h-[50vh] sm:h-[60vh] md:h-96">
                                         <Table>
                                         <TableHeader>
                                             <TableRow>
@@ -137,7 +137,7 @@ export function WelcomePopup({ content }: WelcomePopupProps) {
                             </div>
                         </div>
                     ) : (
-                         <div className="relative h-[90svh] md:h-[80vh] w-full flex items-center justify-center p-4">
+                         <div className="relative h-[85vh] sm:h-[90vh] md:h-[80vh] w-full flex items-center justify-center p-2 sm:p-4">
                             <Image
                                 src={slide.image.src}
                                 alt={slide.image.alt}
@@ -146,19 +146,19 @@ export function WelcomePopup({ content }: WelcomePopupProps) {
                                 className="object-cover"
                             />
                             <div className="absolute inset-0 bg-black/50" />
-                             <div className="relative text-center text-white p-6 md:p-8 bg-black/40 rounded-xl shadow-2xl backdrop-blur-sm">
+                             <div className="relative text-center text-white p-3 sm:p-6 md:p-8 bg-black/40 rounded-xl shadow-2xl backdrop-blur-sm max-w-[90vw] sm:max-w-md md:max-w-lg">
                                 {getIcon(slide.title)}
-                                <h2 className="text-3xl md:text-5xl lg:text-6xl font-bold tracking-tighter drop-shadow-lg">{slide.title}</h2>
-                                {slide.subtitle && <p className="text-base md:text-xl lg:text-2xl mt-2 text-primary-foreground/90 drop-shadow-md">{slide.subtitle}</p>}
-                                {slide.description && <p className="mt-4 max-w-xs md:max-w-sm mx-auto text-sm md:text-base text-primary-foreground/80">{slide.description}</p>}
+                                <h2 className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-bold tracking-tighter drop-shadow-lg">{slide.title}</h2>
+                                {slide.subtitle && <p className="text-sm sm:text-base md:text-xl lg:text-2xl mt-2 text-primary-foreground/90 drop-shadow-md">{slide.subtitle}</p>}
+                                {slide.description && <p className="mt-2 sm:mt-4 max-w-[85vw] sm:max-w-xs md:max-w-sm mx-auto text-xs sm:text-sm md:text-base text-primary-foreground/80">{slide.description}</p>}
                             </div>
                         </div>
                     )}
                 </CarouselItem>
             ))}
           </CarouselContent>
-          <CarouselPrevious className="absolute left-2 md:left-4 top-1/2 -translate-y-1/2 z-10" />
-          <CarouselNext className="absolute right-2 md:right-4 top-1/2 -translate-y-1/2 z-10" />
+          <CarouselPrevious className="absolute left-1 sm:left-2 md:left-4 top-1/2 -translate-y-1/2 z-10 h-8 w-8 sm:h-10 sm:w-10" />
+          <CarouselNext className="absolute right-1 sm:right-2 md:right-4 top-1/2 -translate-y-1/2 z-10 h-8 w-8 sm:h-10 sm:w-10" />
           <div className="absolute bottom-4 left-1/2 -translate-x-1/2 text-sm text-white bg-black/50 px-3 py-1 rounded-full z-10">
             {current} / {count}
           </div>
