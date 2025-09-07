@@ -8,6 +8,57 @@
     "faviconUrl": "https://ik.imagekit.io/d6s8a2mzi/WhatsApp%20Image%202025-08-29%20at%2011.36.55_c68342bf-Photoroom.png?updatedAt=1757081305697",
     "logoText": "Police Modern School"
   },
+  "welcomePopup": {
+    "slides": [
+      {
+        "type": "image",
+        "title": "Admissions Open",
+        "subtitle": "2025-2026",
+        "description": "Join our vibrant community and start your journey towards excellence.",
+        "image": {
+          "src": "https://picsum.photos/1200/800?random=110",
+          "alt": "Students studying",
+          "hint": "students campus"
+        }
+      },
+      {
+        "type": "table",
+        "title": "Fee Structure",
+        "subtitle": "",
+        "description": "",
+        "image": {
+          "src": "https://picsum.photos/1200/800?random=111",
+          "alt": "Students in a classroom",
+          "hint": "students classroom"
+        }
+      },
+      {
+        "type": "image",
+        "title": "RHYTHM NIGHT",
+        "subtitle": "An evening of unforgettable melodies.",
+        "description": "October 28th, 2024 | 7:00 PM Onwards",
+        "image": {
+          "src": "https://picsum.photos/1200/800?random=112",
+          "alt": "Music Event",
+          "hint": "college concert"
+        }
+      }
+    ],
+    "feeStructure": [
+      { "class": "Nursery", "fee": "₹ 30,000" },
+      { "class": "KG-I", "fee": "₹ 32,000" },
+      { "class": "KG-II", "fee": "₹ 32,000" },
+      { "class": "I", "fee": "₹ 35,000" },
+      { "class": "II", "fee": "₹ 35,000" },
+      { "class": "III", "fee": "₹ 38,000" },
+      { "class": "IV", "fee": "₹ 38,000" },
+      { "class": "V", "fee": "₹ 40,000" },
+      { "class": "VI", "fee": "₹ 42,000" },
+      { "class": "VII", "fee": "₹ 42,000" },
+      { "class": "VIII", "fee": "₹ 45,000" },
+      { "class": "IX", "fee": "₹ 50,000" }
+    ]
+  },
   "about": {
     "ourAspiration": {
       "title": "Our Aspiration",
@@ -82,7 +133,7 @@
         },
         {
           "image": {
-            "src": "https://ik.imagekit.io/d6s8a2mzi/Krishna%20School%20Website%20Assets/WhatsApp%20Image%202025-09-01%20at%  13.25.33_a8eeb4d1.jpg?updatedAt=1757144076849",
+            "src": "https://ik.imagekit.io/d6s8a2mzi/Krishna%20School%20Website%20Assets/WhatsApp%20Image%202025-09-01%20at%2013.25.33_a8eeb4d1.jpg?updatedAt=1757144076849",
             "alt": "Graduation ceremony",
             "hint": "graduation ceremony"
           },

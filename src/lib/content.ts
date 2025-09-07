@@ -8,6 +8,23 @@ export interface IContent {
     faviconUrl: string;
     logoText: string;
   };
+  welcomePopup: {
+    slides: {
+      type: 'image' | 'table';
+      title: string;
+      subtitle: string;
+      description: string;
+      image: {
+        src: string;
+        alt: string;
+        hint: string;
+      };
+    }[];
+    feeStructure: {
+      class: string;
+      fee: string;
+    }[];
+  };
   about: {
     ourAspiration: {
       title: string;

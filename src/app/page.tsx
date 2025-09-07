@@ -14,7 +14,7 @@ export default async function Home() {
   
   return (
     <>
-      <WelcomePopup />
+      <WelcomePopup content={content.welcomePopup} />
       <HeroSlider content={content.home.heroSlider} />
       <ScrollingText content={content.home.scrollingText} />
       <Highlights content={content.home.highlights} />

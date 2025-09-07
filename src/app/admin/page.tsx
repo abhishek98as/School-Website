@@ -181,6 +181,14 @@ export default function AdminPage() {
       ]
   };
 
+  const newPopupSlideTemplate = {
+    type: "image",
+    title: "New Slide Title",
+    subtitle: "New Slide Subtitle",
+    description: "New slide description.",
+    image: { src: "https://picsum.photos/1200/800?random=999", alt: "New Slide Image", hint: "slide image" }
+  };
+
   return (
     <div className="min-h-screen bg-gray-100 dark:bg-gray-900">
       <header className="bg-background shadow-sm sticky top-0 z-40">
@@ -253,6 +261,94 @@ export default function AdminPage() {
                 </Card>
              </AccordionContent>
           </AccordionItem>
+
+           <AccordionItem value="item-popup">
+                <AccordionTrigger className="text-xl font-semibold">Welcome Popup</AccordionTrigger>
+                <AccordionContent>
+                    <Card>
+                        <CardHeader className="flex flex-row items-center justify-between">
+                            <div>
+                                <CardTitle>Manage Welcome Popup</CardTitle>
+                                <CardDescription>Edit the slides and fee structure for the welcome popup.</CardDescription>
+                            </div>
+                            <Button onClick={() => handleArrayAction('welcomePopup.slides', 'add', undefined, newPopupSlideTemplate)}>
+                                Add New Slide
+                            </Button>
+                        </CardHeader>
+                        <CardContent className="space-y-6">
+                            {content.welcomePopup.slides.map((slide, index) => (
+                                <Accordion key={index} type="single" collapsible className="p-4 border rounded-md">
+                                    <AccordionItem value={`slide-${index}`}>
+                                        <AccordionTrigger className="font-semibold flex justify-between items-center w-full">
+                                            <span>Slide {index + 1}: {slide.title}</span>
+                                        </AccordionTrigger>
+                                        <AccordionContent className="space-y-4 pt-4">
+                                            <div className="flex justify-end">
+                                                <AlertDialog>
+                                                    <AlertDialogTrigger asChild>
+                                                        <Button variant="destructive" size="sm"><Trash2 className="mr-2 h-4 w-4" />Remove Slide</Button>
+                                                    </AlertDialogTrigger>
+                                                    <AlertDialogContent>
+                                                        <AlertDialogHeader>
+                                                            <AlertDialogTitle>Are you sure?</AlertDialogTitle>
+                                                            <AlertDialogDescription>This will permanently delete this slide.</AlertDialogDescription>
+                                                        </AlertDialogHeader>
+                                                        <AlertDialogFooter>
+                                                            <AlertDialogCancel>Cancel</AlertDialogCancel>
+                                                            <AlertDialogAction onClick={() => handleArrayAction('welcomePopup.slides', 'remove', index)}>Continue</AlertDialogAction>
+                                                        </AlertDialogFooter>
+                                                    </AlertDialogContent>
+                                                </AlertDialog>
+                                            </div>
+                                            <div className="space-y-2">
+                                                <Label>Type</Label>
+                                                <Select
+                                                    value={slide.type}
+                                                    onValueChange={(value) => handleInputChange(`welcomePopup.slides.${index}.type`, value)}
+                                                >
+                                                    <SelectTrigger><SelectValue /></SelectTrigger>
+                                                    <SelectContent>
+                                                        <SelectItem value="image">Image Background</SelectItem>
+                                                        <SelectItem value="table">Fee Structure Table</SelectItem>
+                                                    </SelectContent>
+                                                </Select>
+                                            </div>
+                                            <div className="space-y-2">
+                                                <Label>Title</Label>
+                                                <Input value={slide.title} onChange={(e) => handleInputChange(`welcomePopup.slides.${index}.title`, e.target.value)} />
+                                            </div>
+                                            <div className="space-y-2">
+                                                <Label>Subtitle</Label>
+                                                <Input value={slide.subtitle} onChange={(e) => handleInputChange(`welcomePopup.slides.${index}.subtitle`, e.target.value)} />
+                                            </div>
+                                            <div className="space-y-2">
+                                                <Label>Description</Label>
+                                                <Textarea value={slide.description} onChange={(e) => handleInputChange(`welcomePopup.slides.${index}.description`, e.target.value)} rows={3} />
+                                            </div>
+                                            <div className="space-y-2">
+                                                <Label>Image URL</Label>
+                                                <Input value={slide.image.src} onChange={(e) => handleInputChange(`welcomePopup.slides.${index}.image.src`, e.target.value)} />
+                                            </div>
+                                             <div className="space-y-2">
+                                                <Label>Image Alt Text</Label>
+                                                <Input value={slide.image.alt} onChange={(e) => handleInputChange(`welcomePopup.slides.${index}.image.alt`, e.target.value)} />
+                                            </div>
+                                        </AccordionContent>
+                                    </AccordionItem>
+                                </Accordion>
+                            ))}
+
+                            <h3 className="font-semibold pt-4 text-lg">Fee Structure Table</h3>
+                            {content.welcomePopup.feeStructure.map((item, index) => (
+                                <div key={index} className="flex gap-4 items-center p-2 border rounded-md">
+                                    <Input className="flex-1" placeholder="Class" value={item.class} onChange={(e) => handleInputChange(`welcomePopup.feeStructure.${index}.class`, e.target.value)} />
+                                    <Input className="flex-1" placeholder="Fee" value={item.fee} onChange={(e) => handleInputChange(`welcomePopup.feeStructure.${index}.fee`, e.target.value)} />
+                                </div>
+                            ))}
+                        </CardContent>
+                    </Card>
+                </AccordionContent>
+            </AccordionItem>
           
           <AccordionItem value="item-about">
             <AccordionTrigger className="text-xl font-semibold">About Pages</AccordionTrigger>
