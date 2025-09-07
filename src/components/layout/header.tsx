@@ -171,15 +171,15 @@ export function Header() {
                   <span className="sr-only">Toggle navigation menu</span>
                 </Button>
               </SheetTrigger>
-              <SheetContent side="left" className="w-full max-w-xs p-0 bg-[#1e2235] text-white border-r-0">
+              <SheetContent side="left" className="w-full max-w-xs p-0 bg-primary text-primary-foreground border-r-0">
                  <SheetHeader className="sr-only">
                   <SheetTitle>Menu</SheetTitle>
                 </SheetHeader>
                 <div className="flex flex-col h-full">
-                  <div className="p-6 text-center border-b border-white/10">
-                    <Image src={branding.logoUrl} alt="User Profile" width={70} height={70} className="w-20 h-20 rounded-full mx-auto border-2 border-white/50" />
+                  <div className="p-6 text-center border-b border-primary-foreground/20">
+                    <Image src={branding.logoUrl} alt="User Profile" width={70} height={70} className="w-20 h-20 rounded-full mx-auto border-2 border-primary-foreground/50 bg-white/20 p-1" />
                     <h3 className="mt-3 text-lg font-semibold">{branding.logoText}</h3>
-                    <p className="text-sm text-white/70">{content.footer.slogan}</p>
+                    <p className="text-sm text-primary-foreground/80">{content.footer.slogan}</p>
                   </div>
                 
                   <nav className="flex-1 overflow-y-auto p-4 space-y-2">
@@ -189,16 +189,16 @@ export function Header() {
                             href={link.href}
                             onClick={() => setMenuOpen(false)}
                             className={cn(
-                            "text-base font-medium transition-colors hover:bg-white/10 rounded-md flex items-center py-2 px-3 gap-3",
-                            pathname === link.href && "bg-primary text-primary-foreground font-bold"
+                            "text-base font-medium transition-colors hover:bg-primary-foreground/10 rounded-md flex items-center py-2 px-3 gap-3",
+                            pathname === link.href && "bg-primary-foreground/20 font-bold"
                             )}
                         >
                              <link.icon className="h-5 w-5" /> <span>{link.label}</span>
                         </Link>
                     ))}
                   </nav>
-                   <div className="mt-auto p-4 border-t border-white/10">
-                        <Button asChild variant="ghost" className="w-full justify-center text-base font-medium hover:bg-white/10 !text-primary hover:!text-primary-foreground" onClick={() => setMenuOpen(false)}>
+                   <div className="mt-auto p-4 border-t border-primary-foreground/20">
+                        <Button asChild variant="ghost" className="w-full justify-center text-base font-medium bg-primary-foreground/10 text-white hover:bg-primary-foreground/20" onClick={() => setMenuOpen(false)}>
                             <Link href="/login">
                                 <LogIn className="mr-2 h-5 w-5" />
                                 Admin Login
