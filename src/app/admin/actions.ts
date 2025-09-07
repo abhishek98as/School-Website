@@ -18,9 +18,20 @@ async function saveContent(content: IContent) {
   try {
     console.log('saveContent: Starting save operation');
     console.log('Environment check - NETLIFY:', process.env.NETLIFY);
+    console.log('Environment check - NETLIFY_DEV:', process.env.NETLIFY_DEV);
+    console.log('Environment check - NODE_ENV:', process.env.NODE_ENV);
     
-    // If running on Netlify, persist to Netlify Blobs (durable storage)
-    if (process.env.NETLIFY === 'true') {
+    // Check if we're running on Netlify (either production or build context)
+    const isNetlify = process.env.NETLIFY === 'true' || 
+                     process.env.NETLIFY_DEV === 'true' || 
+                     process.env.CONTEXT === 'production' ||
+                     process.env.CONTEXT === 'deploy-preview' ||
+                     process.env.CONTEXT === 'branch-deploy' ||
+                     typeof process.env.NETLIFY_SITE_ID !== 'undefined';
+    
+    console.log('saveContent: Detected Netlify environment:', isNetlify);
+    
+    if (isNetlify) {
       console.log('saveContent: Using Netlify Blobs storage');
       try {
         const store = getStore({ name: 'content', consistency: 'strong' });

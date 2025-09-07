@@ -7,8 +7,16 @@ const contentPath = path.join(process.cwd(), 'src/lib/content.json');
 
 // This function is intended to be used in Server Components and Server Actions.
 export async function getContent(): Promise<IContent> {
+  // Check if we're running on Netlify (either production or build context)
+  const isNetlify = process.env.NETLIFY === 'true' || 
+                   process.env.NETLIFY_DEV === 'true' || 
+                   process.env.CONTEXT === 'production' ||
+                   process.env.CONTEXT === 'deploy-preview' ||
+                   process.env.CONTEXT === 'branch-deploy' ||
+                   typeof process.env.NETLIFY_SITE_ID !== 'undefined';
+
   // In Netlify, try durable storage first. If not available during build, fall back.
-  if (process.env.NETLIFY === 'true') {
+  if (isNetlify) {
     try {
       const store = getStore({ name: 'content', consistency: 'strong' });
       const json = await store.get('content.json', { type: 'json' });
