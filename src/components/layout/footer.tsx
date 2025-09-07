@@ -9,8 +9,8 @@ import { ParticleCanvas } from "../particle-canvas";
 
 const WhatsAppIcon = () => (
     <svg
-      width="16"
-      height="16"
+      width="14"
+      height="14"
       viewBox="0 0 24 24"
       fill="currentColor"
       xmlns="http://www.w3.org/2000/svg"
@@ -87,9 +87,9 @@ export async function Footer() {
         </div>
       </div>
        <Separator className="bg-white/10 relative z-10" />
-       <div className="container mx-auto px-4 md:px-6 py-2 relative z-10">
+       <div className="container mx-auto px-4 md:px-6 py-1 relative z-10">
            <div className="flex justify-center items-center">
-                <Link href={whatsappLink} target="_blank" rel="noopener noreferrer" aria-label="Contact Developer on WhatsApp" className="footer-link flex items-center gap-2 notranslate text-xs">
+                <Link href={whatsappLink} target="_blank" rel="noopener noreferrer" aria-label="Contact Developer on WhatsApp" className="footer-link flex items-center gap-1.5 notranslate text-xs">
                     <WhatsAppIcon />
                     <span>Contact Developer</span>
                 </Link>
