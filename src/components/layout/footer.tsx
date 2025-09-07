@@ -71,12 +71,13 @@ export async function Footer() {
              <TooltipProvider>
                 <Tooltip>
                     <TooltipTrigger asChild>
-                        <Link href={whatsappLink} target="_blank" rel="noopener noreferrer" aria-label="Contact Developer" className="footer-link">
+                        <Link href={whatsappLink} target="_blank" rel="noopener noreferrer" aria-label="Contact Developer" className="footer-link flex items-center gap-2">
                             <Code className="h-5 w-5" />
+                            <span className="notranslate">Contact Developer</span>
                         </Link>
                     </TooltipTrigger>
                     <TooltipContent>
-                        <p>Contact Developer</p>
+                        <p>Chat with the developer on WhatsApp</p>
                     </TooltipContent>
                 </Tooltip>
              </TooltipProvider>
