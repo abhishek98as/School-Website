@@ -3,7 +3,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Menu, University, LogIn, ChevronDown } from "lucide-react";
+import { Menu, University, LogIn, ChevronDown, Home, Building, BookOpen, User, GraduationCap, School, Library, Campus, Camera, Newspaper, Star } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
 import {
@@ -23,12 +23,14 @@ import { ThemeToggle } from "../theme-toggle";
 import { cn } from "@/lib/utils";
 import type { IContent } from "@/lib/content";
 import Image from "next/image";
+import { Separator } from "../ui/separator";
 
 const navLinks = [
-  { href: "/", label: "Home" },
+  { href: "/", label: "Home", icon: Home },
   { 
     href: "/about", 
     label: "About Us",
+    icon: Building,
     subLinks: [
       { href: "/about/our-aspiration", label: "Our Aspiration" },
       { href: "/about/about-us", label: "About The School" },
@@ -36,13 +38,14 @@ const navLinks = [
       { href: "/about/our-motto", label: "Our Motto" },
     ]
   },
-  { href: "/academics", label: "Academics" },
-  { href: "/admission", label: "Admission" },
-  { href: "/faculty", label: "Our Faculty" },
-  { href: "/infrastructure", label: "Infrastructure" },
+  { href: "/academics", label: "Academics", icon: BookOpen },
+  { href: "/admission", label: "Admission", icon: GraduationCap },
+  { href: "/faculty", label: "Our Faculty", icon: User },
+  { href: "/infrastructure", label: "Infrastructure", icon: School },
   {
     href: "#",
     label: "More",
+    icon: Star,
     subLinks: [
       { href: "/student-life", label: "Student Life" },
       { href: "/library", label: "Library" },
@@ -163,40 +166,34 @@ export function Header() {
                   <span className="sr-only">Toggle navigation menu</span>
                 </Button>
               </SheetTrigger>
-              <SheetContent side="right" className="w-full max-w-sm">
-                 <SheetHeader>
-                  <SheetTitle className="sr-only">Navigation Menu</SheetTitle>
+              <SheetContent side="left" className="w-full max-w-xs p-0 bg-[#1e2235] text-white border-r-0">
+                 <SheetHeader className="sr-only">
+                  <SheetTitle>Menu</SheetTitle>
                 </SheetHeader>
-                <div className="grid gap-4 p-6">
-                  <Link href="/" className="flex items-center gap-2 notranslate" onClick={() => setMenuOpen(false)}>
-                    <Image src={branding.logoUrl} alt={branding.logoText} width={120} height={30} className="h-8 w-auto" />
-                    <span className="font-bold">{branding.logoText}</span>
-                  </Link>
-
-                  <Button asChild variant="ghost" className="w-full justify-start text-lg font-medium hover:bg-primary/10 hover:text-primary" onClick={() => setMenuOpen(false)}>
-                     <Link href="/login">
-                        <LogIn className="mr-2 h-5 w-5" />
-                        Login
-                      </Link>
-                  </Button>
-                  
-                  <nav className="grid gap-2">
+                <div className="flex flex-col h-full">
+                  <div className="p-6 text-center border-b border-white/10">
+                    <Image src={branding.logoUrl} alt="User Profile" width={70} height={70} className="w-20 h-20 rounded-full mx-auto border-2 border-white/50" />
+                    <h3 className="mt-3 text-lg font-semibold">{branding.logoText}</h3>
+                    <p className="text-sm text-white/70">{content.footer.slogan}</p>
+                  </div>
+                
+                  <nav className="flex-1 overflow-y-auto p-4">
                      <Accordion type="single" collapsible className="w-full">
                         {navLinks.map((link) => (
                         link.subLinks ? (
                             <AccordionItem value={link.label} key={link.label} className="border-b-0">
-                                <AccordionTrigger className="text-lg font-medium hover:no-underline hover:text-primary transition-colors py-2">
-                                    {link.label}
+                                <AccordionTrigger className="text-base font-medium hover:no-underline hover:bg-white/10 hover:text-white rounded-md transition-colors py-2 px-3 flex items-center gap-3">
+                                   <link.icon className="h-5 w-5 text-primary"/> <span>{link.label}</span>
                                 </AccordionTrigger>
-                                <AccordionContent className="pb-0">
-                                <div className="grid gap-2 pl-7 mt-1">
+                                <AccordionContent className="pb-0 pl-8">
+                                <div className="grid gap-1 mt-1">
                                     {link.subLinks.map(subLink => (
                                         <Link
                                             key={subLink.href}
                                             href={subLink.href}
                                             onClick={() => setMenuOpen(false)}
                                             className={cn(
-                                                "text-base font-medium transition-colors hover:text-primary notranslate",
+                                                "text-sm font-medium transition-colors hover:text-primary py-1.5 rounded-md block",
                                                 pathname === subLink.href && "text-primary font-bold"
                                             )}
                                         >
@@ -212,16 +209,24 @@ export function Header() {
                             href={link.href}
                             onClick={() => setMenuOpen(false)}
                             className={cn(
-                            "text-lg font-medium transition-colors hover:text-primary notranslate flex items-center py-2",
-                            pathname === link.href && "text-primary font-bold"
+                            "text-base font-medium transition-colors hover:bg-white/10 rounded-md flex items-center py-2 px-3 gap-3",
+                            pathname === link.href && "bg-primary text-primary-foreground font-bold"
                             )}
                         >
-                            {link.label}
+                             <link.icon className="h-5 w-5" /> <span>{link.label}</span>
                         </Link>
                         )
                         ))}
                      </Accordion>
                   </nav>
+                   <div className="mt-auto p-4 border-t border-white/10">
+                        <Button asChild variant="ghost" className="w-full justify-center text-base font-medium hover:bg-white/10 hover:text-white" onClick={() => setMenuOpen(false)}>
+                            <Link href="/login">
+                                <LogIn className="mr-2 h-5 w-5" />
+                                Admin Login
+                            </Link>
+                        </Button>
+                   </div>
                 </div>
               </SheetContent>
             </Sheet>
