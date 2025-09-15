@@ -1,5 +1,5 @@
 import { Card, CardContent } from "@/components/ui/card";
-import { Library, FlaskConical, Computer, Building } from "lucide-react";
+import { Library, FlaskConical, Computer, Building, Trophy, Theater, UtensilsCrossed, HeartPulse } from "lucide-react";
 import Image from "next/image";
 import { getContent } from "@/lib/content-loader";
 import { ParticleCanvas } from "@/components/particle-canvas";
@@ -10,6 +10,10 @@ const getIcon = (iconName: string) => {
         case 'Computer': return <Computer className="h-10 w-10 text-primary" />;
         case 'Library': return <Library className="h-10 w-10 text-primary" />;
         case 'Building': return <Building className="h-10 w-10 text-primary" />;
+        case 'Trophy': return <Trophy className="h-10 w-10 text-primary" />;
+        case 'Theater': return <Theater className="h-10 w-10 text-primary" />;
+        case 'UtensilsCrossed': return <UtensilsCrossed className="h-10 w-10 text-primary" />;
+        case 'HeartPulse': return <HeartPulse className="h-10 w-10 text-primary" />;
         default: return null;
     }
 }

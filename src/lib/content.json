@@ -827,6 +827,42 @@
           "src": "https://picsum.photos/600/400?random=64",
           "hint": "college campus"
         }
+      },
+      {
+        "name": "Sports Complex",
+        "description": "Multi-purpose sports complex with indoor and outdoor facilities.",
+        "icon": "Trophy",
+        "image": {
+          "src": "https://picsum.photos/600/400?random=65",
+          "hint": "sports complex gymnasium"
+        }
+      },
+      {
+        "name": "Auditorium",
+        "description": "Modern auditorium for events, seminars, and cultural programs.",
+        "icon": "Theater",
+        "image": {
+          "src": "https://picsum.photos/600/400?random=66",
+          "hint": "school auditorium"
+        }
+      },
+      {
+        "name": "Cafeteria",
+        "description": "Spacious cafeteria serving nutritious and delicious meals.",
+        "icon": "UtensilsCrossed",
+        "image": {
+          "src": "https://picsum.photos/600/400?random=67",
+          "hint": "school cafeteria dining"
+        }
+      },
+      {
+        "name": "Medical Center",
+        "description": "Well-equipped medical facility with qualified healthcare staff.",
+        "icon": "HeartPulse",
+        "image": {
+          "src": "https://picsum.photos/600/400?random=68",
+          "hint": "medical center clinic"
+        }
       }
     ]
   },

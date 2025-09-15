@@ -786,23 +786,118 @@ export default function AdminPage() {
             <AccordionTrigger className="text-xl font-semibold">Infrastructure Page</AccordionTrigger>
             <AccordionContent>
                 <Card>
-                  <CardHeader><CardTitle>Infrastructure Page</CardTitle></CardHeader>
+                  <CardHeader>
+                    <CardTitle>Infrastructure Page</CardTitle>
+                    <CardDescription>Manage infrastructure facilities and their details</CardDescription>
+                  </CardHeader>
                   <CardContent className="space-y-4">
                     <Label>Title</Label>
                     <Input value={content.infrastructure.title} onChange={(e) => handleInputChange('infrastructure.title', e.target.value)} />
                     <Label>Subtitle</Label>
                     <Textarea value={content.infrastructure.subtitle} onChange={(e) => handleInputChange('infrastructure.subtitle', e.target.value)} />
-                     {content.infrastructure.facilities.map((facility, index) => (
-                        <div key={index} className="p-4 border rounded-md space-y-2">
-                            <h3 className="font-semibold">Facility {index + 1}</h3>
-                            <Label>Name</Label>
-                            <Input value={facility.name} onChange={(e) => handleInputChange(`infrastructure.facilities.${index}.name`, e.target.value)} />
+                    
+                    <div className="space-y-4">
+                      <div className="flex items-center justify-between">
+                        <h3 className="text-lg font-semibold">Facilities ({content.infrastructure.facilities.length})</h3>
+                        <Button 
+                          variant="outline" 
+                          onClick={() => {
+                            const newFacility = {
+                              name: "New Facility",
+                              description: "Enter facility description",
+                              icon: "Building",
+                              image: {
+                                src: "https://picsum.photos/600/400?random=99",
+                                hint: "facility image"
+                              }
+                            };
+                            const updatedFacilities = [...content.infrastructure.facilities, newFacility];
+                            handleInputChange('infrastructure.facilities', updatedFacilities);
+                          }}
+                        >
+                          Add Facility
+                        </Button>
+                      </div>
+                      
+                      {content.infrastructure.facilities.map((facility, index) => (
+                        <div key={index} className="p-4 border rounded-md space-y-3 bg-gray-50">
+                          <div className="flex items-center justify-between">
+                            <h4 className="font-semibold text-primary">Facility {index + 1}</h4>
+                            {content.infrastructure.facilities.length > 1 && (
+                              <AlertDialog>
+                                <AlertDialogTrigger asChild>
+                                  <Button variant="destructive" size="sm">
+                                    <Trash2 className="h-4 w-4" />
+                                  </Button>
+                                </AlertDialogTrigger>
+                                <AlertDialogContent>
+                                  <AlertDialogHeader>
+                                    <AlertDialogTitle>Delete Facility</AlertDialogTitle>
+                                    <AlertDialogDescription>
+                                      Are you sure you want to delete "{facility.name}"? This action cannot be undone.
+                                    </AlertDialogDescription>
+                                  </AlertDialogHeader>
+                                  <AlertDialogFooter>
+                                    <AlertDialogCancel>Cancel</AlertDialogCancel>
+                                    <AlertDialogAction 
+                                      onClick={() => {
+                                        const updatedFacilities = content.infrastructure.facilities.filter((_, i) => i !== index);
+                                        handleInputChange('infrastructure.facilities', updatedFacilities);
+                                      }}
+                                    >
+                                      Delete
+                                    </AlertDialogAction>
+                                  </AlertDialogFooter>
+                                </AlertDialogContent>
+                              </AlertDialog>
+                            )}
+                          </div>
+                          
+                          <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                            <div>
+                              <Label>Facility Name</Label>
+                              <Input value={facility.name} onChange={(e) => handleInputChange(`infrastructure.facilities.${index}.name`, e.target.value)} />
+                            </div>
+                            
+                            <div>
+                              <Label>Icon</Label>
+                              <Select value={facility.icon} onValueChange={(value) => handleInputChange(`infrastructure.facilities.${index}.icon`, value)}>
+                                <SelectTrigger>
+                                  <SelectValue placeholder="Select an icon" />
+                                </SelectTrigger>
+                                <SelectContent>
+                                  <SelectItem value="FlaskConical">🧪 Lab (FlaskConical)</SelectItem>
+                                  <SelectItem value="Computer">💻 Computer (Computer)</SelectItem>
+                                  <SelectItem value="Library">📚 Library (Library)</SelectItem>
+                                  <SelectItem value="Building">🏢 Building (Building)</SelectItem>
+                                  <SelectItem value="Trophy">🏆 Sports (Trophy)</SelectItem>
+                                  <SelectItem value="Theater">🎭 Theater (Theater)</SelectItem>
+                                  <SelectItem value="UtensilsCrossed">🍽️ Cafeteria (UtensilsCrossed)</SelectItem>
+                                  <SelectItem value="HeartPulse">💓 Medical (HeartPulse)</SelectItem>
+                                </SelectContent>
+                              </Select>
+                            </div>
+                          </div>
+                          
+                          <div>
                             <Label>Description</Label>
                             <Textarea value={facility.description} onChange={(e) => handleInputChange(`infrastructure.facilities.${index}.description`, e.target.value)} />
-                             <Label>Image URL</Label>
-                            <Input value={facility.image.src} onChange={(e) => handleInputChange(`infrastructure.facilities.${index}.image.src`, e.target.value)} />
+                          </div>
+                          
+                          <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                            <div>
+                              <Label>Image URL</Label>
+                              <Input value={facility.image.src} onChange={(e) => handleInputChange(`infrastructure.facilities.${index}.image.src`, e.target.value)} />
+                            </div>
+                            
+                            <div>
+                              <Label>Image Description (for AI generation)</Label>
+                              <Input value={facility.image.hint} onChange={(e) => handleInputChange(`infrastructure.facilities.${index}.image.hint`, e.target.value)} />
+                            </div>
+                          </div>
                         </div>
-                     ))}
+                      ))}
+                    </div>
                   </CardContent>
                 </Card>
             </AccordionContent>
