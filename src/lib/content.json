@@ -1046,7 +1046,7 @@
         "type": "iframe",
         "title": "Campus Location & Directions",
         "icon": "Building",
-        "embedUrl": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3502.5391158658797!2d77.36583827549533!3d28.614305000000003!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390ce63b8f0d3e29%3A0x5f3e4c3c4c4c4c4c!2sPolice%20Modern%20School!5e0!3m2!1sen!2sin!4v1694774400000!5m2!1sen!2sin"
+        "embedUrl": "https://maps.google.com/maps?q=28.614305,77.372559&hl=en&z=15&output=embed"
       }
     ]
   },
