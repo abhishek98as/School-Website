@@ -77,8 +77,18 @@ export default function VirtualTourPage() {
                         allowFullScreen={true}
                         loading="lazy"
                         referrerPolicy="no-referrer-when-downgrade"
-                        title={`360 View of ${view.title}`}
+                        title={`Google Maps view of ${view.title}`}
                     ></iframe>
+                  </div>
+                  <div className="mt-4 text-center">
+                    <a
+                      href="https://maps.app.goo.gl/y7GEcpwLcAP2nYKR9"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center text-primary hover:text-primary/80 transition-colors"
+                    >
+                      Open in Google Maps →
+                    </a>
                   </div>
                 </CardContent>
               </Card>

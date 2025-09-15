@@ -1038,15 +1038,15 @@
     ]
   },
   "virtualTourPage": {
-    "title": "Virtual Tour",
-    "subtitle": "Explore our campus from anywhere in the world. Click on a location to begin your tour.",
+    "title": "Campus Location",
+    "subtitle": "Find us on the map and get directions to our campus. Explore the surrounding area and plan your visit.",
     "views": [
       {
         "id": "1",
         "type": "iframe",
-        "title": "Main Campus Building",
+        "title": "Campus Location & Directions",
         "icon": "Building",
-        "embedUrl": "https://www.google.com/maps/embed?pb=!4v1617265939882!6m8!1m7!1sCAoSLEFGMVFpcE5YcTdfYlZEX2wzX1lYc3dfX0tDX2lfU3N3Z05pX2lFX01fSWs!2m2!1d28.614305!2d77.372559!3f324.99!4f0!5f0.78"
+        "embedUrl": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3502.5391158658797!2d77.36583827549533!3d28.614305000000003!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390ce63b8f0d3e29%3A0x5f3e4c3c4c4c4c4c!2sPolice%20Modern%20School!5e0!3m2!1sen!2sin!4v1694774400000!5m2!1sen!2sin"
       }
     ]
   },
