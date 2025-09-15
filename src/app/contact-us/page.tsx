@@ -80,15 +80,6 @@ export default function ContactUsPage() {
   const contactUsContent = content.contactUs;
 
   if (!contactUsContent) {
-    return <div className="p-8">Contact Us content not available.</div>;
-  }
-
-  // Process the Google Form URL to make it embeddable
-  const embeddableFormUrl = getEmbeddableFormUrl(contactUsContent.googleFormUrl);
-
-  // If contactUs content is not available, show error page
-  if (!contactUsContent) {
-  if (!contactUsContent) {
     return (
       <div className="bg-background">
         <section className="relative py-20 md:py-32 bg-primary/10 overflow-hidden">
@@ -104,6 +95,9 @@ export default function ContactUsPage() {
       </div>
     );
   }
+
+  // Process the Google Form URL to make it embeddable
+  const embeddableFormUrl = getEmbeddableFormUrl(contactUsContent.googleFormUrl);
 
   return (
     <div className="bg-background">
@@ -151,7 +145,7 @@ export default function ContactUsPage() {
                         <h3 className="text-lg font-semibold mb-2">Contact Form</h3>
                         <p className="text-gray-600 mb-4">Click below to open our contact form</p>
                         <a 
-                          href={contactUsContent?.googleFormUrl || ''} 
+                          href={contactUsContent.googleFormUrl} 
                           target="_blank" 
                           rel="noopener noreferrer" 
                           className="inline-flex items-center px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors"
@@ -170,6 +164,7 @@ export default function ContactUsPage() {
                       marginWidth={0}
                       className="w-full rounded-md"
                       title="Contact Us Form"
+                      onError={() => setIframeError(true)}
                     >
                       Loading contact form...
                     </iframe>
