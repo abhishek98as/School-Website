@@ -1,5 +1,5 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { BookOpen, BrainCircuit, Rocket } from "lucide-react";
+import { BookOpen, BrainCircuit, Rocket, Palette, Microscope, Activity, Calculator, Languages } from "lucide-react";
 import Image from "next/image";
 import { getContent } from "@/lib/content-loader";
 import { ParticleCanvas } from "@/components/particle-canvas";
@@ -14,6 +14,11 @@ export default async function AcademicsPage() {
       case "BookOpen": return <BookOpen className="h-12 w-12 text-primary" />;
       case "BrainCircuit": return <BrainCircuit className="h-12 w-12 text-primary" />;
       case "Rocket": return <Rocket className="h-12 w-12 text-primary" />;
+      case "Palette": return <Palette className="h-12 w-12 text-primary" />;
+      case "Microscope": return <Microscope className="h-12 w-12 text-primary" />;
+      case "Activity": return <Activity className="h-12 w-12 text-primary" />;
+      case "Calculator": return <Calculator className="h-12 w-12 text-primary" />;
+      case "Languages": return <Languages className="h-12 w-12 text-primary" />;
       default: return null;
     }
   };
@@ -34,7 +39,7 @@ export default async function AcademicsPage() {
 
       <section className="py-12 lg:py-24">
         <div className="container mx-auto px-4 md:px-6">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
             {academicsContent.programs.map((program, index) => (
               <Card key={index} className="flex flex-col overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
                  <div className="relative h-56 w-full">

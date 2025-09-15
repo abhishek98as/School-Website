@@ -358,6 +358,51 @@
           "src": "https://picsum.photos/600/400?random=53",
           "hint": "technology innovation"
         }
+      },
+      {
+        "title": "Arts & Humanities",
+        "description": "Explore creative expression through literature, history, philosophy, and fine arts programs.",
+        "icon": "Palette",
+        "image": {
+          "src": "https://picsum.photos/600/400?random=54",
+          "hint": "art studio students"
+        }
+      },
+      {
+        "title": "Science & Technology",
+        "description": "Discover the wonders of science through hands-on experiments and modern technology.",
+        "icon": "Microscope",
+        "image": {
+          "src": "https://picsum.photos/600/400?random=55",
+          "hint": "science laboratory"
+        }
+      },
+      {
+        "title": "Sports & Physical Education",
+        "description": "Develop physical fitness and sportsmanship through comprehensive athletic programs.",
+        "icon": "Activity",
+        "image": {
+          "src": "https://picsum.photos/600/400?random=56",
+          "hint": "students playing sports"
+        }
+      },
+      {
+        "title": "Mathematics & Logic",
+        "description": "Build analytical thinking and problem-solving skills through advanced mathematical concepts.",
+        "icon": "Calculator",
+        "image": {
+          "src": "https://picsum.photos/600/400?random=57",
+          "hint": "mathematics classroom"
+        }
+      },
+      {
+        "title": "Languages & Communication",
+        "description": "Master multiple languages and develop excellent communication skills for global opportunities.",
+        "icon": "Languages",
+        "image": {
+          "src": "https://picsum.photos/600/400?random=58",
+          "hint": "language learning classroom"
+        }
       }
     ]
   },

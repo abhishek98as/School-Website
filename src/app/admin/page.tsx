@@ -635,23 +635,118 @@ export default function AdminPage() {
             <AccordionTrigger className="text-xl font-semibold">Academics Page</AccordionTrigger>
             <AccordionContent>
               <Card>
-                <CardHeader><CardTitle>Academics Page</CardTitle></CardHeader>
+                <CardHeader>
+                  <CardTitle>Academics Page</CardTitle>
+                  <CardDescription>Manage academic programs and their details</CardDescription>
+                </CardHeader>
                 <CardContent className="space-y-4">
                   <Label>Title</Label>
                   <Input value={content.academics.title} onChange={(e) => handleInputChange('academics.title', e.target.value)} />
                   <Label>Subtitle</Label>
                   <Textarea value={content.academics.subtitle} onChange={(e) => handleInputChange('academics.subtitle', e.target.value)} />
-                  {content.academics.programs.map((program, index) => (
-                    <div key={index} className="p-4 border rounded-md space-y-2">
-                        <h3 className="font-semibold">Program {index + 1}</h3>
-                        <Label>Title</Label>
-                        <Input value={program.title} onChange={(e) => handleInputChange(`academics.programs.${index}.title`, e.target.value)} />
-                        <Label>Description</Label>
-                        <Textarea value={program.description} onChange={(e) => handleInputChange(`academics.programs.${index}.description`, e.target.value)} />
-                        <Label>Image URL</Label>
-                        <Input value={program.image.src} onChange={(e) => handleInputChange(`academics.programs.${index}.image.src`, e.target.value)} />
+                  
+                  <div className="space-y-4">
+                    <div className="flex items-center justify-between">
+                      <h3 className="text-lg font-semibold">Academic Programs ({content.academics.programs.length})</h3>
+                      <Button 
+                        variant="outline" 
+                        onClick={() => {
+                          const newProgram = {
+                            title: "New Program",
+                            description: "Enter program description",
+                            icon: "BookOpen",
+                            image: {
+                              src: "https://picsum.photos/600/400?random=99",
+                              hint: "academic program"
+                            }
+                          };
+                          const updatedPrograms = [...content.academics.programs, newProgram];
+                          handleInputChange('academics.programs', updatedPrograms);
+                        }}
+                      >
+                        Add Program
+                      </Button>
                     </div>
-                  ))}
+                    
+                    {content.academics.programs.map((program, index) => (
+                      <div key={index} className="p-4 border rounded-md space-y-3 bg-gray-50">
+                        <div className="flex items-center justify-between">
+                          <h4 className="font-semibold text-primary">Program {index + 1}</h4>
+                          {content.academics.programs.length > 1 && (
+                            <AlertDialog>
+                              <AlertDialogTrigger asChild>
+                                <Button variant="destructive" size="sm">
+                                  <Trash2 className="h-4 w-4" />
+                                </Button>
+                              </AlertDialogTrigger>
+                              <AlertDialogContent>
+                                <AlertDialogHeader>
+                                  <AlertDialogTitle>Delete Program</AlertDialogTitle>
+                                  <AlertDialogDescription>
+                                    Are you sure you want to delete "{program.title}"? This action cannot be undone.
+                                  </AlertDialogDescription>
+                                </AlertDialogHeader>
+                                <AlertDialogFooter>
+                                  <AlertDialogCancel>Cancel</AlertDialogCancel>
+                                  <AlertDialogAction 
+                                    onClick={() => {
+                                      const updatedPrograms = content.academics.programs.filter((_, i) => i !== index);
+                                      handleInputChange('academics.programs', updatedPrograms);
+                                    }}
+                                  >
+                                    Delete
+                                  </AlertDialogAction>
+                                </AlertDialogFooter>
+                              </AlertDialogContent>
+                            </AlertDialog>
+                          )}
+                        </div>
+                        
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                          <div>
+                            <Label>Program Title</Label>
+                            <Input value={program.title} onChange={(e) => handleInputChange(`academics.programs.${index}.title`, e.target.value)} />
+                          </div>
+                          
+                          <div>
+                            <Label>Icon</Label>
+                            <Select value={program.icon} onValueChange={(value) => handleInputChange(`academics.programs.${index}.icon`, value)}>
+                              <SelectTrigger>
+                                <SelectValue placeholder="Select an icon" />
+                              </SelectTrigger>
+                              <SelectContent>
+                                <SelectItem value="BookOpen">📚 Books (BookOpen)</SelectItem>
+                                <SelectItem value="BrainCircuit">🧠 Brain (BrainCircuit)</SelectItem>
+                                <SelectItem value="Rocket">🚀 Innovation (Rocket)</SelectItem>
+                                <SelectItem value="Palette">🎨 Arts (Palette)</SelectItem>
+                                <SelectItem value="Microscope">🔬 Science (Microscope)</SelectItem>
+                                <SelectItem value="Activity">⚡ Sports (Activity)</SelectItem>
+                                <SelectItem value="Calculator">🔢 Math (Calculator)</SelectItem>
+                                <SelectItem value="Languages">🌐 Languages (Languages)</SelectItem>
+                              </SelectContent>
+                            </Select>
+                          </div>
+                        </div>
+                        
+                        <div>
+                          <Label>Description</Label>
+                          <Textarea value={program.description} onChange={(e) => handleInputChange(`academics.programs.${index}.description`, e.target.value)} />
+                        </div>
+                        
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                          <div>
+                            <Label>Image URL</Label>
+                            <Input value={program.image.src} onChange={(e) => handleInputChange(`academics.programs.${index}.image.src`, e.target.value)} />
+                          </div>
+                          
+                          <div>
+                            <Label>Image Description (for AI generation)</Label>
+                            <Input value={program.image.hint} onChange={(e) => handleInputChange(`academics.programs.${index}.image.hint`, e.target.value)} />
+                          </div>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
                 </CardContent>
               </Card>
             </AccordionContent>
