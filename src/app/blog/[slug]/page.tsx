@@ -7,6 +7,51 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Calendar, MapPin, Newspaper } from 'lucide-react';
 import { Separator } from '@/components/ui/separator';
 
+// Utility function to convert Google Forms URL to embeddable format
+function getEmbeddableFormUrl(url: string): string {
+  try {
+    // Handle different Google Forms URL formats
+    if (url.includes('docs.google.com/forms')) {
+      // Extract the form ID from the URL
+      const formIdMatch = url.match(/\/forms\/d\/e\/([^\/]+)/);
+      if (formIdMatch) {
+        const formId = formIdMatch[1];
+        return `https://docs.google.com/forms/d/e/${formId}/viewform?embedded=true`;
+      }
+      
+      // If it's already an embedded URL, return as is
+      if (url.includes('embedded=true')) {
+        return url;
+      }
+      
+      // If it's a viewform URL, convert to embedded
+      if (url.includes('viewform')) {
+        const baseUrl = url.split('?')[0];
+        return `${baseUrl}?embedded=true`;
+      }
+    }
+    
+    // Handle shortened URLs (forms.gle)
+    if (url.includes('forms.gle/')) {
+      // For shortened URLs, we'll use them as-is for the iframe
+      // Google will handle the redirect and embedding
+      return url;
+    }
+    
+    // Handle other shortened URLs (goo.gl, etc.)
+    if (url.includes('goo.gl/') || url.includes('bit.ly/') || url.includes('tinyurl.com/')) {
+      // For these, we'll use them as-is and let the iframe handle it
+      return url;
+    }
+    
+    // Default: return the URL as-is
+    return url;
+  } catch (error) {
+    console.error('Error processing form URL:', error);
+    return url;
+  }
+}
+
 export async function generateStaticParams() {
   const content = await getContent();
   return content.home.newsAndEvents.items.map((post) => ({
@@ -22,6 +67,9 @@ export default async function BlogPostPage({ params }: { params: { slug: string 
   if (!post) {
     notFound();
   }
+
+  // Process the Google Form URL to make it embeddable if it exists
+  const embeddableFormUrl = post.googleFormUrl ? getEmbeddableFormUrl(post.googleFormUrl) : null;
 
   return (
     <div className="bg-background py-12 lg:py-24">
@@ -75,16 +123,27 @@ export default async function BlogPostPage({ params }: { params: { slug: string 
                          <h2 className="text-2xl font-bold text-center mb-6">Register for this Event</h2>
                          <div className="aspect-w-16 aspect-h-9 min-h-[500px] border rounded-lg overflow-hidden">
                             <iframe
-                                src={post.googleFormUrl}
+                                src={embeddableFormUrl!}
                                 width="100%"
                                 height="100%"
                                 frameBorder="0"
                                 marginHeight={0}
                                 marginWidth={0}
                                 className="w-full h-full"
+                                title="Event Registration Form"
                             >
                                 Loading…
                             </iframe>
+                        </div>
+                        <div className="mt-4 text-center">
+                          <a
+                            href={post.googleFormUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex items-center text-primary hover:text-primary/80 transition-colors"
+                          >
+                            Open form in new tab →
+                          </a>
                         </div>
                       </div>
                     </div>
