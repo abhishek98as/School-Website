@@ -1134,6 +1134,14 @@ export default function AdminPage() {
                           onChange={(e) => handleInputChange('contactUs.googleFormUrl', e.target.value)} 
                           placeholder="https://docs.google.com/forms/d/e/..."
                         />
+                        <div className="text-sm text-muted-foreground mt-1">
+                          <p className="mb-1">Supports both URL formats:</p>
+                          <ul className="list-disc list-inside space-y-1">
+                            <li>Full URL: <code className="text-xs">https://docs.google.com/forms/d/e/.../viewform?usp=sharing</code></li>
+                            <li>Shortened: <code className="text-xs">https://forms.gle/...</code></li>
+                          </ul>
+                          <p className="mt-2 text-xs">The system will automatically convert to embeddable format.</p>
+                        </div>
                         <Label>Hero Image URL</Label>
                         <Input value={content.contactUs?.hero?.image?.src || ''} onChange={(e) => handleInputChange('contactUs.hero.image.src', e.target.value)} />
                         <Label>Hero Image Alt Text</Label>

@@ -1,13 +1,93 @@
+'use client';
+
 import { getContent } from "@/lib/content-loader";
 import { ParticleCanvas } from "@/components/particle-canvas";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import Image from "next/image";
+import { useEffect, useState } from "react";
+import type { IContent } from "@/lib/content";
 
-export default async function ContactUsPage() {
-  const content = await getContent();
+// Utility function to convert Google Forms URL to embeddable format
+function getEmbeddableFormUrl(url: string): string {
+  try {
+    // Handle different Google Forms URL formats
+    if (url.includes('docs.google.com/forms')) {
+      // Extract the form ID from the URL
+      const formIdMatch = url.match(/\/forms\/d\/e\/([^\/]+)/);
+      if (formIdMatch) {
+        const formId = formIdMatch[1];
+        return `https://docs.google.com/forms/d/e/${formId}/viewform?embedded=true`;
+      }
+      
+      // If it's already an embedded URL, return as is
+      if (url.includes('embedded=true')) {
+        return url;
+      }
+      
+      // If it's a viewform URL, convert to embedded
+      if (url.includes('viewform')) {
+        const baseUrl = url.split('?')[0];
+        return `${baseUrl}?embedded=true`;
+      }
+    }
+    
+    // Handle shortened URLs (forms.gle)
+    if (url.includes('forms.gle/')) {
+      // For shortened URLs, we'll use them as-is for the iframe
+      // Google will handle the redirect and embedding
+      return url;
+    }
+    
+    // Handle other shortened URLs (goo.gl, etc.)
+    if (url.includes('goo.gl/') || url.includes('bit.ly/') || url.includes('tinyurl.com/')) {
+      // For these, we'll use them as-is and let the iframe handle it
+      return url;
+    }
+    
+    // Default: return the URL as-is
+    return url;
+  } catch (error) {
+    console.error('Error processing form URL:', error);
+    return url;
+  }
+}
+
+export default function ContactUsPage() {
+  const [content, setContent] = useState<IContent | null>(null);
+  const [iframeError, setIframeError] = useState(false);
+
+  useEffect(() => {
+    const fetchContent = async () => {
+      try {
+        const response = await fetch('/api/content');
+        if (!response.ok) {
+          throw new Error('Failed to fetch content');
+        }
+        const fetchedContent = await response.json();
+        setContent(fetchedContent);
+      } catch (error) {
+        console.error("Failed to load content:", error);
+      }
+    };
+    
+    fetchContent();
+  }, []);
+
+  if (!content) {
+    return <div className="p-8">Loading...</div>;
+  }
+
   const contactUsContent = content.contactUs;
 
+  if (!contactUsContent) {
+    return <div className="p-8">Contact Us content not available.</div>;
+  }
+
+  // Process the Google Form URL to make it embeddable
+  const embeddableFormUrl = getEmbeddableFormUrl(contactUsContent.googleFormUrl);
+
   // If contactUs content is not available, show error page
+  if (!contactUsContent) {
   if (!contactUsContent) {
     return (
       <div className="bg-background">
@@ -65,18 +145,45 @@ export default async function ContactUsPage() {
               </CardHeader>
               <CardContent>
                 <div className="w-full min-h-[600px]">
-                  <iframe 
-                    src={contactUsContent.googleFormUrl}
-                    width="100%" 
-                    height="600" 
-                    frameBorder="0" 
-                    marginHeight={0} 
-                    marginWidth={0}
-                    className="w-full rounded-md"
-                    title="Contact Us Form"
+                  {iframeError ? (
+                    <div className="flex items-center justify-center h-full bg-gray-100 rounded-md">
+                      <div className="text-center p-8">
+                        <h3 className="text-lg font-semibold mb-2">Contact Form</h3>
+                        <p className="text-gray-600 mb-4">Click below to open our contact form</p>
+                        <a 
+                          href={contactUsContent?.googleFormUrl || ''} 
+                          target="_blank" 
+                          rel="noopener noreferrer" 
+                          className="inline-flex items-center px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors"
+                        >
+                          Open Contact Form
+                        </a>
+                      </div>
+                    </div>
+                  ) : (
+                    <iframe 
+                      src={embeddableFormUrl}
+                      width="100%" 
+                      height="600" 
+                      frameBorder="0" 
+                      marginHeight={0} 
+                      marginWidth={0}
+                      className="w-full rounded-md"
+                      title="Contact Us Form"
+                    >
+                      Loading contact form...
+                    </iframe>
+                  )}
+                </div>
+                <div className="mt-4 text-center">
+                  <a
+                    href={contactUsContent.googleFormUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center text-primary hover:text-primary/80 transition-colors"
                   >
-                    Loading contact form...
-                  </iframe>
+                    Open form in new tab →
+                  </a>
                 </div>
               </CardContent>
             </Card>
