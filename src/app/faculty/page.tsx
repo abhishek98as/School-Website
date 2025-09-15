@@ -2,7 +2,7 @@
 'use client';
 
 import Image from 'next/image';
-import { Mail, Phone, Briefcase, User, MapPin } from 'lucide-react';
+import { Phone, Briefcase, User, MapPin } from 'lucide-react';
 import React, { useState, useEffect } from 'react';
 import { cn } from '@/lib/utils';
 import type { IContent } from '@/lib/content';
@@ -11,14 +11,6 @@ import { ParticleCanvas } from '@/components/particle-canvas';
 
 // New FacultyCard component
 const FacultyCard = ({ faculty }: { faculty: any }) => {
-  const [activeSection, setActiveSection] = useState('about');
-
-  const handleSectionChange = (section: string) => {
-    setActiveSection(section);
-  };
-
-  const isActive = activeSection !== 'about';
-
   return (
     <div
       className={cn(
@@ -27,8 +19,7 @@ const FacultyCard = ({ faculty }: { faculty: any }) => {
     >
       <div
         className={cn(
-          'card-header relative flex shrink-0 w-full transition-all duration-300 ease-in-out',
-          isActive ? 'h-20' : 'h-56'
+          'card-header relative flex shrink-0 w-full transition-all duration-300 ease-in-out h-56'
         )}
       >
         <div
@@ -36,15 +27,11 @@ const FacultyCard = ({ faculty }: { faculty: any }) => {
           style={{ backgroundImage: `url(${faculty.image.src})` }}
         />
         <div className={cn(
-          'absolute transition-all duration-300 ease-in-out',
-           isActive ? 'bottom-2.5 left-5' : 'bottom-0 left-1/2 transform -translate-x-1/2 -translate-y-[70px]'
+          'absolute transition-all duration-300 ease-in-out bottom-0 left-1/2 transform -translate-x-1/2 -translate-y-[70px]'
         )}>
             <Image
               className={cn(
-                'card-avatar object-cover object-top shadow-lg rounded-full transition-all duration-300 ease-in-out',
-                isActive
-                  ? 'w-[50px] h-[50px]'
-                  : 'w-40 h-40'
+                'card-avatar object-cover object-top shadow-lg rounded-full transition-all duration-300 ease-in-out w-40 h-40'
               )}
               src={faculty.image.src}
               alt={`Photo of ${faculty.name}`}
@@ -55,22 +42,14 @@ const FacultyCard = ({ faculty }: { faculty: any }) => {
         </div>
         <h1
           className={cn(
-            'card-fullname absolute font-bold text-white whitespace-nowrap transition-all duration-300 ease-in-out',
-            isActive
-              ? 'bottom-[34px] left-[86px] text-lg transform-none'
-              : 'bottom-0 left-1/2 text-2xl transform -translate-x-1/2 -translate-y-2.5'
+            'card-fullname absolute font-bold text-white whitespace-nowrap transition-all duration-300 ease-in-out bottom-0 left-1/2 text-2xl transform -translate-x-1/2 -translate-y-2.5'
           )}
         >
           {faculty.name}
         </h1>
       </div>
       <div className="card-main relative flex-1 flex flex-col pt-2.5">
-        <div
-          className={cn(
-            'card-section p-5',
-            activeSection === 'about' ? 'block animate-fadeIn' : 'hidden'
-          )}
-        >
+        <div className="card-section p-5 animate-fadeIn">
           <div className="card-subtitle font-bold text-sm mb-2 text-card-foreground">ABOUT</div>
            <p className="card-jobtitle text-sm text-muted-foreground uppercase tracking-wider font-semibold">
             {faculty.title}
@@ -80,33 +59,10 @@ const FacultyCard = ({ faculty }: { faculty: any }) => {
           </p>
           <div className="mt-5 space-y-4">
              <div className="card-contact flex items-center text-sm text-muted-foreground">
-                <Mail className="shrink-0 w-7 h-7 mr-3 pr-3 border-r border-border" />
-                 <a href={`mailto:${faculty.email}`} className="hover:text-primary break-all">{faculty.email}</a>
-             </div>
-             <div className="card-contact flex items-center text-sm text-muted-foreground">
                 <Phone className="shrink-0 w-7 h-7 mr-3 pr-3 border-r border-border" />
                 <a href={`tel:${faculty.phone.replace(/\s/g, '')}`} className="hover:text-primary">{faculty.phone}</a>
              </div>
           </div>
-        </div>
-
-        <div
-          className={cn(
-            'card-section p-5',
-            activeSection === 'experience' ? 'block animate-fadeIn' : 'hidden'
-          )}
-        >
-          <div className="card-subtitle font-bold text-sm mb-2 text-card-foreground">WORK EXPERIENCE</div>
-           <div className="card-timeline mt-7 relative">
-             <div className="absolute top-0 w-0.5 h-full bg-gradient-to-t from-transparent via-primary/50 to-primary" style={{left: '2.625rem'}}></div>
-             {faculty.experience.map((item: any, index: number) => (
-                <div key={index} className="card-item relative pl-16 pb-7 z-10" data-year={item.year}>
-                   <div className="absolute top-[3px] left-[37px] w-4 h-4 rounded-full border-2 border-card bg-primary z-10"></div>
-                   <div className="font-medium text-sm mb-1">{item.title} at <span className="font-bold">{item.company}</span></div>
-                   <div className="text-xs text-muted-foreground">{item.description}</div>
-                </div>
-             ))}
-           </div>
         </div>
         
         <div className="card-buttons flex bg-card mt-auto sticky bottom-0 left-0">
@@ -126,22 +82,11 @@ const FacultyCard = ({ faculty }: { faculty: any }) => {
               }
             `}</style>
           <button
-            onClick={() => handleSectionChange('about')}
             className={cn(
-              'flex-1 text-sm py-4 px-1.5 cursor-pointer text-muted-foreground transition-all duration-300 font-medium border-b-2 border-transparent focus:outline-none',
-              activeSection === 'about' && 'text-primary font-semibold border-primary bg-primary/10'
+              'w-full text-sm py-4 px-1.5 cursor-pointer text-primary font-semibold border-b-2 border-primary bg-primary/10 transition-all duration-300 focus:outline-none'
             )}
           >
             ABOUT
-          </button>
-          <button
-            onClick={() => handleSectionChange('experience')}
-            className={cn(
-              'flex-1 text-sm py-4 px-1.5 cursor-pointer text-muted-foreground transition-all duration-300 font-medium border-b-2 border-transparent focus:outline-none',
-              activeSection === 'experience' && 'text-primary font-semibold border-primary bg-primary/10'
-            )}
-          >
-            EXPERIENCE
           </button>
         </div>
       </div>
