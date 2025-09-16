@@ -123,6 +123,9 @@ export default function FacultyPage() {
           <p className="mt-4 text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto">
             {content.subtitle}
           </p>
+          <p className="mt-2 text-sm text-muted-foreground">
+            Meet our {content.members.length} distinguished faculty members
+          </p>
         </div>
       </section>
 
