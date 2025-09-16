@@ -37,6 +37,17 @@ export async function getContent(): Promise<IContent> {
   const fileContent = await fs.readFile(contentPath, 'utf8');
   const content = JSON.parse(fileContent);
   
+  // In production, also update the blob store with latest content for future requests
+  if (isNetlify) {
+    try {
+      const store = getStore({ name: 'content', consistency: 'strong' });
+      await store.set('content.json', content);
+      console.log('getContent: Updated Netlify Blobs with latest content');
+    } catch (err) {
+      console.log('getContent: Failed to update Netlify Blobs:', err);
+    }
+  }
+  
   // Ensure required sections exist with default values
   if (!content.contactUs) {
     content.contactUs = {
