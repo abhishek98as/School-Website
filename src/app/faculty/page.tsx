@@ -128,7 +128,7 @@ export default function FacultyPage() {
 
       <section className="py-12 lg:py-24">
         <div className="container mx-auto px-4 md:px-6">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
             {content.members.map((member, index) => (
               <FacultyCard key={index} faculty={member} />
             ))}

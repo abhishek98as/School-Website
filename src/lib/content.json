@@ -830,6 +830,254 @@
             "description": "Specialized in semiconductor physics."
           }
         ]
+      },
+      {
+        "name": "Dr. Priya Patel",
+        "title": "Associate Professor, Chemistry",
+        "image": {
+          "src": "https://picsum.photos/seed/p5/400/500",
+          "hint": "female professor"
+        },
+        "email": "p.patel@galgotiacollege.edu",
+        "phone": "+91 98765 43220",
+        "about": "Dr. Patel specializes in organic chemistry and green synthesis. Her research focuses on developing eco-friendly chemical processes for pharmaceutical applications.",
+        "experience": [
+          {
+            "year": "2020",
+            "title": "Associate Professor",
+            "company": "Galgametrics College",
+            "description": "Leading green chemistry research initiatives."
+          },
+          {
+            "year": "2015",
+            "title": "Research Scientist",
+            "company": "Pharma Innovations Ltd",
+            "description": "Developed sustainable drug synthesis methods."
+          },
+          {
+            "year": "2012",
+            "title": "PhD in Organic Chemistry",
+            "company": "Indian Institute of Science",
+            "description": "Specialized in catalytic processes."
+          }
+        ]
+      },
+      {
+        "name": "Dr. Ahmed Hassan",
+        "title": "Professor, Mathematics",
+        "image": {
+          "src": "https://picsum.photos/seed/p6/400/500",
+          "hint": "male professor"
+        },
+        "email": "a.hassan@galgotiacollege.edu",
+        "phone": "+91 98765 43221",
+        "about": "Dr. Hassan is a renowned mathematician specializing in number theory and cryptography. He has contributed to several breakthrough algorithms in cybersecurity.",
+        "experience": [
+          {
+            "year": "2018",
+            "title": "Professor",
+            "company": "Galgametrics College",
+            "description": "Teaching advanced mathematics and cryptography."
+          },
+          {
+            "year": "2013",
+            "title": "Senior Cryptographer",
+            "company": "CyberSecure Inc",
+            "description": "Developed encryption algorithms for banking systems."
+          },
+          {
+            "year": "2009",
+            "title": "PhD in Mathematics",
+            "company": "University of Cambridge",
+            "description": "Focused on computational number theory."
+          }
+        ]
+      },
+      {
+        "name": "Dr. Rachel Thompson",
+        "title": "Head of English Literature",
+        "image": {
+          "src": "https://picsum.photos/seed/p7/400/500",
+          "hint": "female professor"
+        },
+        "email": "r.thompson@galgotiacollege.edu",
+        "phone": "+91 98765 43222",
+        "about": "Dr. Thompson is a distinguished scholar of Victorian literature and contemporary poetry. She has published extensively on gender studies in literature.",
+        "experience": [
+          {
+            "year": "2019",
+            "title": "Head of Department",
+            "company": "Galgametrics College",
+            "description": "Overseeing curriculum development in literature studies."
+          },
+          {
+            "year": "2014",
+            "title": "Associate Professor",
+            "company": "Oxford University",
+            "description": "Taught courses on 19th-century literature."
+          },
+          {
+            "year": "2011",
+            "title": "PhD in English Literature",
+            "company": "Yale University",
+            "description": "Specialized in feminist literary criticism."
+          }
+        ]
+      },
+      {
+        "name": "Dr. Carlos Rodriguez",
+        "title": "Professor, Environmental Science",
+        "image": {
+          "src": "https://picsum.photos/seed/p8/400/500",
+          "hint": "male professor"
+        },
+        "email": "c.rodriguez@galgotiacollege.edu",
+        "phone": "+91 98765 43223",
+        "about": "Dr. Rodriguez is an environmental scientist focused on climate change mitigation and sustainable development. His work has influenced policy at national levels.",
+        "experience": [
+          {
+            "year": "2017",
+            "title": "Professor",
+            "company": "Galgametrics College",
+            "description": "Leading climate research and sustainability programs."
+          },
+          {
+            "year": "2012",
+            "title": "Environmental Consultant",
+            "company": "EcoSolutions Global",
+            "description": "Advised governments on environmental policies."
+          },
+          {
+            "year": "2008",
+            "title": "PhD in Environmental Science",
+            "company": "University of California Berkeley",
+            "description": "Specialized in atmospheric chemistry."
+          }
+        ]
+      },
+      {
+        "name": "Dr. Mei Zhang",
+        "title": "Associate Professor, Psychology",
+        "image": {
+          "src": "https://picsum.photos/seed/p9/400/500",
+          "hint": "female professor"
+        },
+        "email": "m.zhang@galgotiacollege.edu",
+        "phone": "+91 98765 43224",
+        "about": "Dr. Zhang specializes in cognitive psychology and behavioral neuroscience. Her research on memory and learning has practical applications in educational settings.",
+        "experience": [
+          {
+            "year": "2021",
+            "title": "Associate Professor",
+            "company": "Galgametrics College",
+            "description": "Conducting research on learning optimization."
+          },
+          {
+            "year": "2016",
+            "title": "Research Psychologist",
+            "company": "Mental Health Research Center",
+            "description": "Studied cognitive behavioral interventions."
+          },
+          {
+            "year": "2013",
+            "title": "PhD in Psychology",
+            "company": "Harvard University",
+            "description": "Specialized in cognitive neuroscience."
+          }
+        ]
+      },
+      {
+        "name": "Dr. James Mitchell",
+        "title": "Professor, Information Technology",
+        "image": {
+          "src": "https://picsum.photos/seed/p10/400/500",
+          "hint": "male professor"
+        },
+        "email": "j.mitchell@galgotiacollege.edu",
+        "phone": "+91 98765 43225",
+        "about": "Dr. Mitchell is an expert in cybersecurity and network architecture. He has consulted for major tech companies on security protocol design and implementation.",
+        "experience": [
+          {
+            "year": "2019",
+            "title": "Professor",
+            "company": "Galgametrics College",
+            "description": "Teaching cybersecurity and network management."
+          },
+          {
+            "year": "2014",
+            "title": "Chief Security Officer",
+            "company": "TechGuard Solutions",
+            "description": "Oversaw security infrastructure for enterprise clients."
+          },
+          {
+            "year": "2010",
+            "title": "MS in Information Technology",
+            "company": "MIT",
+            "description": "Specialized in network security protocols."
+          }
+        ]
+      },
+      {
+        "name": "Dr. Fatima Al-Zahra",
+        "title": "Associate Professor, Philosophy",
+        "image": {
+          "src": "https://picsum.photos/seed/p11/400/500",
+          "hint": "female professor"
+        },
+        "email": "f.alzahra@galgotiacollege.edu",
+        "phone": "+91 98765 43226",
+        "about": "Dr. Al-Zahra is a philosopher specializing in ethics and political philosophy. Her work on social justice and human rights has been internationally recognized.",
+        "experience": [
+          {
+            "year": "2020",
+            "title": "Associate Professor",
+            "company": "Galgametrics College",
+            "description": "Teaching courses on ethics and political theory."
+          },
+          {
+            "year": "2015",
+            "title": "Research Fellow",
+            "company": "Institute for Advanced Study",
+            "description": "Conducted research on contemporary moral philosophy."
+          },
+          {
+            "year": "2012",
+            "title": "PhD in Philosophy",
+            "company": "University of Edinburgh",
+            "description": "Specialized in moral and political philosophy."
+          }
+        ]
+      },
+      {
+        "name": "Dr. David Kim",
+        "title": "Professor, Data Science",
+        "image": {
+          "src": "https://picsum.photos/seed/p12/400/500",
+          "hint": "male professor"
+        },
+        "email": "d.kim@galgotiacollege.edu",
+        "phone": "+91 98765 43227",
+        "about": "Dr. Kim is a leading expert in machine learning and big data analytics. His algorithms are used by major corporations for predictive modeling and business intelligence.",
+        "experience": [
+          {
+            "year": "2018",
+            "title": "Professor",
+            "company": "Galgametrics College",
+            "description": "Leading the data science program and AI research lab."
+          },
+          {
+            "year": "2013",
+            "title": "Principal Data Scientist",
+            "company": "DataTech Analytics",
+            "description": "Developed machine learning models for Fortune 500 companies."
+          },
+          {
+            "year": "2009",
+            "title": "PhD in Computer Science",
+            "company": "Stanford University",
+            "description": "Specialized in machine learning and statistical modeling."
+          }
+        ]
       }
     ]
   },
