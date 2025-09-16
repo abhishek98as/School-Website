@@ -59,11 +59,11 @@ export function HeroSlider({ content }: HeroSliderProps) {
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/30 to-transparent" />
                 <div className="absolute inset-0 flex flex-col items-center justify-center text-center text-white p-4">
-                   <div className={index === 2 ? "p-6 md:p-10" : "bg-black/40 p-6 md:p-10 rounded-lg shadow-2xl backdrop-blur-sm"}>
-                    <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold leading-tight drop-shadow-lg animate-fade-in-down">
+                   <div className="p-6 md:p-10">
+                    <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold leading-tight animate-fade-in-down">
                         {slide.title}
                     </h1>
-                    <p className="mt-4 text-md md:text-xl lg:text-2xl max-w-3xl mx-auto drop-shadow-md animate-fade-in-up">
+                    <p className="mt-4 text-md md:text-xl lg:text-2xl max-w-3xl mx-auto animate-fade-in-up">
                         {slide.subtitle}
                     </p>
                     <Button asChild size="lg" className="mt-8 animate-fade-in-up">
