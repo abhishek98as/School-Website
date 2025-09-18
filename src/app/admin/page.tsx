@@ -560,6 +560,85 @@ export default function AdminPage() {
                        </CardContent>
                     </Card>
 
+                    <Card>
+                        <CardHeader><CardTitle>CEO Leadership Section</CardTitle></CardHeader>
+                        <CardContent className="space-y-4">
+                            <Label>Section Title</Label>
+                            <Input 
+                                value={content.home.ceoSection.title} 
+                                onChange={(e) => handleInputChange('home.ceoSection.title', e.target.value)}
+                                className="text-lg font-bold"
+                                placeholder="Leadership Excellence"
+                            />
+                            <Label>Section Subtitle (Italic)</Label>
+                            <Textarea 
+                                value={content.home.ceoSection.subtitle} 
+                                onChange={(e) => handleInputChange('home.ceoSection.subtitle', e.target.value)}
+                                className="italic"
+                                placeholder="Meet the visionary leaders..."
+                                rows={2}
+                            />
+                            
+                            {content.home.ceoSection.cards.map((card, index) => (
+                                <div key={index} className="p-4 border rounded-md space-y-3 bg-muted/30">
+                                    <h3 className="font-semibold text-primary">CEO Card {index + 1}</h3>
+                                    <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                                        <div>
+                                            <Label>Name</Label>
+                                            <Input 
+                                                value={card.name} 
+                                                onChange={(e) => handleInputChange(`home.ceoSection.cards.${index}.name`, e.target.value)}
+                                                placeholder="Dr. Name Surname"
+                                            />
+                                        </div>
+                                        <div>
+                                            <Label>Position</Label>
+                                            <Input 
+                                                value={card.position} 
+                                                onChange={(e) => handleInputChange(`home.ceoSection.cards.${index}.position`, e.target.value)}
+                                                placeholder="Chief Executive Officer"
+                                            />
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <Label>Description/Quote</Label>
+                                        <Textarea 
+                                            value={card.description} 
+                                            onChange={(e) => handleInputChange(`home.ceoSection.cards.${index}.description`, e.target.value)}
+                                            placeholder="A brief inspiring quote or description..."
+                                            rows={2}
+                                        />
+                                    </div>
+                                    <div>
+                                        <Label>Image URL</Label>
+                                        <Input 
+                                            value={card.image.src} 
+                                            onChange={(e) => handleInputChange(`home.ceoSection.cards.${index}.image.src`, e.target.value)}
+                                            placeholder="https://example.com/image.jpg"
+                                        />
+                                    </div>
+                                    <div>
+                                        <Label>Image Alt Text</Label>
+                                        <Input 
+                                            value={card.image.alt} 
+                                            onChange={(e) => handleInputChange(`home.ceoSection.cards.${index}.image.alt`, e.target.value)}
+                                            placeholder="Professional portrait of..."
+                                        />
+                                    </div>
+                                    <div>
+                                        <Label>Key Achievements (one per line)</Label>
+                                        <Textarea 
+                                            value={card.highlights.join('\n')} 
+                                            onChange={(e) => handleInputChange(`home.ceoSection.cards.${index}.highlights`, e.target.value.split('\n').filter(h => h.trim()))}
+                                            placeholder="Led digital transformation initiatives&#10;Established industry partnerships&#10;Pioneered innovative programs"
+                                            rows={4}
+                                        />
+                                    </div>
+                                </div>
+                            ))}
+                        </CardContent>
+                    </Card>
+
                      <Card>
                         <CardHeader><CardTitle>Virtual Tour Section</CardTitle></CardHeader>
                         <CardContent className="space-y-2">

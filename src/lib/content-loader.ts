@@ -53,6 +53,61 @@ export async function getContent(): Promise<IContent> {
   const content = JSON.parse(fileContent);
   
   // Ensure required sections exist with default values
+  if (!content.home?.ceoSection) {
+    if (!content.home) content.home = {};
+    content.home.ceoSection = {
+      title: "Leadership Excellence",
+      subtitle: "Meet the visionary leaders who drive our institution towards unprecedented heights of academic and administrative excellence.",
+      cards: [
+        {
+          name: "Chief Executive Officer",
+          position: "CEO & Director",
+          description: "Leading with vision and innovation.",
+          image: {
+            src: "https://picsum.photos/400/500?random=ceo1",
+            alt: "CEO Portrait",
+            hint: "professional executive portrait"
+          },
+          highlights: [
+            "Visionary leadership in education",
+            "Strategic innovation initiatives",
+            "Award-winning management"
+          ]
+        },
+        {
+          name: "Chief Academic Officer",
+          position: "CAO",
+          description: "Championing academic excellence.",
+          image: {
+            src: "https://picsum.photos/400/500?random=ceo2",
+            alt: "CAO Portrait", 
+            hint: "professional academic portrait"
+          },
+          highlights: [
+            "Educational innovation expert",
+            "Research leadership",
+            "Curriculum development"
+          ]
+        },
+        {
+          name: "Chief Technology Officer",
+          position: "CTO",
+          description: "Driving technological advancement.",
+          image: {
+            src: "https://picsum.photos/400/500?random=ceo3",
+            alt: "CTO Portrait",
+            hint: "professional tech executive portrait"
+          },
+          highlights: [
+            "Technology infrastructure leader",
+            "Digital transformation expert",
+            "Innovation catalyst"
+          ]
+        }
+      ]
+    };
+  }
+
   if (!content.contactUs) {
     content.contactUs = {
       title: "Contact Us",

@@ -95,6 +95,21 @@ export interface IContent {
         title: string;
       }[];
     };
+    ceoSection: {
+      title: string;
+      subtitle: string;
+      cards: {
+        name: string;
+        position: string;
+        description: string;
+        image: {
+          src: string;
+          alt: string;
+          hint: string;
+        };
+        highlights: string[];
+      }[];
+    };
     risingStars: {
       title: string;
       description: string;

@@ -3,6 +3,7 @@ import { ScrollingText } from '@/components/scrolling-text';
 import { Highlights } from '@/components/highlights';
 import { VirtualTour } from '@/components/virtual-tour';
 import { Achievements } from '@/components/achievements';
+import { CeoSection } from '@/components/ceo-section';
 import { RisingStars } from '@/components/rising-stars';
 import { NewsAndEvents } from '@/components/news-and-events';
 import { WelcomePopup } from '@/components/welcome-popup';
@@ -21,6 +22,7 @@ export default async function Home() {
       <VirtualTour content={content.home.virtualTour} />
       <Facilities />
       <Achievements content={content.home.achievements} />
+      <CeoSection content={content.home.ceoSection} />
       <RisingStars content={content.home.risingStars} />
       <NewsAndEvents content={content.home.newsAndEvents} />
     </>

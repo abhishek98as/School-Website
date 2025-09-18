@@ -62,7 +62,6 @@ export function Achievements({ content }: AchievementsProps) {
                       allowFullScreen
                       className="absolute top-0 left-0 w-full h-full"
                       loading="lazy"
-                      onError={(e) => console.error('YouTube iframe error:', e)}
                     ></iframe>
                   </div>
                   <CardContent className="p-4">
