@@ -17,6 +17,20 @@ async function saveContentToFile(content: IContent): Promise<void> {
 async function saveContent(content: IContent) {
   try {
     console.log('saveContent: Starting save operation');
+    
+    // Add version tracking for admin updates
+    const currentTime = new Date().toISOString();
+    if (!content._version) {
+      content._version = "1.0.0";
+    } else {
+      // Increment version for admin updates
+      const versionParts = content._version.split('.').map(Number);
+      versionParts[2]++; // Increment patch version
+      content._version = versionParts.join('.');
+    }
+    content._lastUpdated = currentTime;
+    
+    console.log(`saveContent: Updated version to ${content._version} at ${currentTime}`);
     console.log('Environment check - NETLIFY:', process.env.NETLIFY);
     console.log('Environment check - NETLIFY_DEV:', process.env.NETLIFY_DEV);
     console.log('Environment check - CONTEXT:', process.env.CONTEXT);

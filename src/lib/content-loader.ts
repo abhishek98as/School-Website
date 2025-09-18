@@ -23,30 +23,34 @@ export async function getContent(): Promise<IContent> {
       const store = getStore({ name: 'content', consistency: 'strong' });
       const json = await store.get('content.json', { type: 'json' });
       if (json) {
-        console.log('getContent: Successfully loaded from Netlify Blobs');
+        console.log('getContent: Successfully loaded from Netlify Blobs (source of truth for admin updates)');
         return json as IContent;
       }
-      console.log('getContent: No content found in Netlify Blobs, falling back to file');
+      console.log('getContent: No content found in Netlify Blobs, initializing from file');
+      
+      // Only initialize Blobs if it doesn't exist - never overwrite existing Blobs
+      const fileContent = await fs.readFile(contentPath, 'utf8');
+      const content = JSON.parse(fileContent);
+      
+      // Initialize Blobs with file content only if Blobs is empty
+      try {
+        await store.set('content.json', content);
+        console.log('getContent: Initialized Netlify Blobs with file content (first time setup)');
+      } catch (initErr) {
+        console.log('getContent: Failed to initialize Netlify Blobs:', initErr);
+      }
+      
+      return content;
     } catch (err) {
       // MissingBlobsEnvironmentError during build -> fall back to file
       console.log('getContent: Blobs unavailable in this environment, falling back to file:', err);
     }
   }
-  // Fallback to repo file (dev/local or if no blob yet)
-  console.log('getContent: Reading from local file system');
+  
+  // Fallback to repo file (dev/local environment only)
+  console.log('getContent: Reading from local file system (development/local only)');
   const fileContent = await fs.readFile(contentPath, 'utf8');
   const content = JSON.parse(fileContent);
-  
-  // In production, also update the blob store with latest content for future requests
-  if (isNetlify) {
-    try {
-      const store = getStore({ name: 'content', consistency: 'strong' });
-      await store.set('content.json', content);
-      console.log('getContent: Updated Netlify Blobs with latest content');
-    } catch (err) {
-      console.log('getContent: Failed to update Netlify Blobs:', err);
-    }
-  }
   
   // Ensure required sections exist with default values
   if (!content.contactUs) {

@@ -1,5 +1,7 @@
 
 export interface IContent {
+  _version?: string;
+  _lastUpdated?: string;
   global: {
     whatsappNumber: string;
   };
