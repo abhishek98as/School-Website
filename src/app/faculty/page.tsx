@@ -103,7 +103,15 @@ export default function FacultyPage() {
     fetch('/api/content')
       .then(res => res.json())
       .then(data => {
+        console.log('Faculty data loaded:', {
+          totalMembers: data.faculty.members.length,
+          memberNames: data.faculty.members.map((m: any) => m.name)
+        });
         setContent(data.faculty);
+        setIsLoading(false);
+      })
+      .catch(error => {
+        console.error('Error loading faculty data:', error);
         setIsLoading(false);
       });
   }, []);
@@ -132,9 +140,13 @@ export default function FacultyPage() {
       <section className="py-12 lg:py-24">
         <div className="container mx-auto px-4 md:px-6">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
-            {content.members.map((member, index) => (
-              <FacultyCard key={index} faculty={member} />
-            ))}
+            {content.members.map((member, index) => {
+              console.log(`Rendering faculty member ${index + 1}: ${member.name}`);
+              return <FacultyCard key={index} faculty={member} />;
+            })}
+          </div>
+          <div className="mt-8 text-center text-sm text-muted-foreground">
+            Showing {content.members.length} out of {content.members.length} faculty members
           </div>
         </div>
       </section>
