@@ -18,11 +18,11 @@ export default async function Home() {
       <WelcomePopup content={content.welcomePopup} />
       <HeroSlider content={content.home.heroSlider} />
       <ScrollingText content={content.home.scrollingText} />
+      <CeoSection content={content.home.ceoSection} />
       <Highlights content={content.home.highlights} />
       <VirtualTour content={content.home.virtualTour} />
       <Facilities />
       <Achievements content={content.home.achievements} />
-      <CeoSection content={content.home.ceoSection} />
       <RisingStars content={content.home.risingStars} />
       <NewsAndEvents content={content.home.newsAndEvents} />
     </>
