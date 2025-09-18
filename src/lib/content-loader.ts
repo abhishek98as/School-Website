@@ -5,53 +5,8 @@ import { getStore } from '@netlify/blobs';
 
 const contentPath = path.join(process.cwd(), 'src/lib/content.json');
 
-// This function is intended to be used in Server Components and Server Actions.
-export async function getContent(): Promise<IContent> {
-  // Check if we're running on Netlify Functions (AWS Lambda environment)
-  // Netlify Functions run on AWS Lambda, so AWS_LAMBDA_FUNCTION_NAME will be present
-  const isNetlify = process.env.NETLIFY === 'true' || 
-                   process.env.NETLIFY_DEV === 'true' || 
-                   process.env.CONTEXT === 'production' ||
-                   process.env.CONTEXT === 'deploy-preview' ||
-                   process.env.CONTEXT === 'branch-deploy' ||
-                   typeof process.env.NETLIFY_SITE_ID !== 'undefined' ||
-                   typeof process.env.AWS_LAMBDA_FUNCTION_NAME !== 'undefined';
-
-  // In Netlify, try durable storage first. If not available during build, fall back.
-  if (isNetlify) {
-    try {
-      const store = getStore({ name: 'content', consistency: 'strong' });
-      const json = await store.get('content.json', { type: 'json' });
-      if (json) {
-        console.log('getContent: Successfully loaded from Netlify Blobs (source of truth for admin updates)');
-        return json as IContent;
-      }
-      console.log('getContent: No content found in Netlify Blobs, initializing from file');
-      
-      // Only initialize Blobs if it doesn't exist - never overwrite existing Blobs
-      const fileContent = await fs.readFile(contentPath, 'utf8');
-      const content = JSON.parse(fileContent);
-      
-      // Initialize Blobs with file content only if Blobs is empty
-      try {
-        await store.set('content.json', content);
-        console.log('getContent: Initialized Netlify Blobs with file content (first time setup)');
-      } catch (initErr) {
-        console.log('getContent: Failed to initialize Netlify Blobs:', initErr);
-      }
-      
-      return content;
-    } catch (err) {
-      // MissingBlobsEnvironmentError during build -> fall back to file
-      console.log('getContent: Blobs unavailable in this environment, falling back to file:', err);
-    }
-  }
-  
-  // Fallback to repo file (dev/local environment only)
-  console.log('getContent: Reading from local file system (development/local only)');
-  const fileContent = await fs.readFile(contentPath, 'utf8');
-  const content = JSON.parse(fileContent);
-  
+// Function to add default content for missing sections
+function addDefaultContent(content: any): IContent {
   // Ensure required sections exist with default values
   if (!content.home?.ceoSection) {
     if (!content.home) content.home = {};
@@ -141,5 +96,58 @@ export async function getContent(): Promise<IContent> {
     };
   }
   
-  return content;
+  return content as IContent;
+}
+
+// This function is intended to be used in Server Components and Server Actions.
+export async function getContent(): Promise<IContent> {
+  // Check if we're running on Netlify Functions (AWS Lambda environment)
+  // Netlify Functions run on AWS Lambda, so AWS_LAMBDA_FUNCTION_NAME will be present
+  const isNetlify = process.env.NETLIFY === 'true' || 
+                   process.env.NETLIFY_DEV === 'true' || 
+                   process.env.CONTEXT === 'production' ||
+                   process.env.CONTEXT === 'deploy-preview' ||
+                   process.env.CONTEXT === 'branch-deploy' ||
+                   typeof process.env.NETLIFY_SITE_ID !== 'undefined' ||
+                   typeof process.env.AWS_LAMBDA_FUNCTION_NAME !== 'undefined';
+
+  // In Netlify, try durable storage first. If not available during build, fall back.
+  if (isNetlify) {
+    try {
+      const store = getStore({ name: 'content', consistency: 'strong' });
+      const json = await store.get('content.json', { type: 'json' });
+      if (json) {
+        console.log('getContent: Successfully loaded from Netlify Blobs (source of truth for admin updates)');
+        const content = json as IContent;
+        // Ensure all required sections exist even when loaded from Netlify Blobs
+        return addDefaultContent(content);
+      }
+      console.log('getContent: No content found in Netlify Blobs, initializing from file');
+      
+      // Only initialize Blobs if it doesn't exist - never overwrite existing Blobs
+      const fileContent = await fs.readFile(contentPath, 'utf8');
+      const content = JSON.parse(fileContent);
+      
+      // Initialize Blobs with file content only if Blobs is empty
+      try {
+        await store.set('content.json', content);
+        console.log('getContent: Initialized Netlify Blobs with file content (first time setup)');
+      } catch (initErr) {
+        console.log('getContent: Failed to initialize Netlify Blobs:', initErr);
+      }
+      
+      return content;
+    } catch (err) {
+      // MissingBlobsEnvironmentError during build -> fall back to file
+      console.log('getContent: Blobs unavailable in this environment, falling back to file:', err);
+    }
+  }
+  
+  // Fallback to repo file (dev/local environment only)
+  console.log('getContent: Reading from local file system (development/local only)');
+  const fileContent = await fs.readFile(contentPath, 'utf8');
+  const content = JSON.parse(fileContent);
+  
+  // Ensure all required sections exist with default values
+  return addDefaultContent(content);
 }

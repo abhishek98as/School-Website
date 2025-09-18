@@ -8,9 +8,6 @@ type AchievementsProps = {
 };
 
 export function Achievements({ content }: AchievementsProps) {
-  // Debug: Log the content to see what we're working with
-  console.log('Achievements content:', content);
-
   return (
     <section className="py-12 lg:py-24 bg-card">
       <div className="container mx-auto px-4 md:px-6">
@@ -26,7 +23,6 @@ export function Achievements({ content }: AchievementsProps) {
           {content.videos && content.videos.length > 0 ? (
             content.videos.map((video, index) => {
               const videoId = getYouTubeId(video.id);
-              console.log(`Processing video ${index}:`, { originalId: video.id, extractedId: videoId, title: video.title });
               
               if (!videoId) {
                 console.warn('No valid video ID found for:', video.id);
