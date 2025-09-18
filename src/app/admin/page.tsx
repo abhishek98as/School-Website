@@ -13,6 +13,7 @@ import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
 import { useToast } from '@/hooks/use-toast';
 import { ScrollArea } from '@/components/ui/scroll-area';
+import { isValidYouTubeUrl, getYouTubeThumbnail } from '@/lib/youtube-utils';
 import {
   Accordion,
   AccordionContent,
@@ -513,15 +514,49 @@ export default function AdminPage() {
                             <Input value={content.home.achievements.title} onChange={(e) => handleInputChange('home.achievements.title', e.target.value)} />
                             <Label>Description</Label>
                              <Textarea value={content.home.achievements.description} onChange={(e) => handleInputChange('home.achievements.description', e.target.value)} />
-                           {content.home.achievements.videos.map((video, index) => (
-                               <div key={index} className="p-4 border rounded-md space-y-2">
-                                   <h3 className="font-semibold">Video {index + 1}</h3>
-                                   <Label>Title</Label>
-                                   <Input value={video.title} onChange={(e) => handleInputChange(`home.achievements.videos.${index}.title`, e.target.value)} />
-                                   <Label>YouTube Video URL</Label>
-                                   <Input type="url" value={video.id} onChange={(e) => handleInputChange(`home.achievements.videos.${index}.id`, e.target.value)} />
-                               </div>
-                           ))}
+                           {content.home.achievements.videos.map((video, index) => {
+                               const isValidUrl = isValidYouTubeUrl(video.id);
+                               const thumbnailUrl = isValidUrl ? getYouTubeThumbnail(video.id, 'medium') : '';
+                               
+                               return (
+                                   <div key={index} className="p-4 border rounded-md space-y-2">
+                                       <h3 className="font-semibold">Video {index + 1}</h3>
+                                       <Label>Title</Label>
+                                       <Input value={video.title} onChange={(e) => handleInputChange(`home.achievements.videos.${index}.title`, e.target.value)} />
+                                       <Label>YouTube Video URL</Label>
+                                       <div className="space-y-2">
+                                           <Input 
+                                               type="url" 
+                                               value={video.id} 
+                                               onChange={(e) => handleInputChange(`home.achievements.videos.${index}.id`, e.target.value)}
+                                               className={!video.id ? '' : isValidUrl ? 'border-green-500' : 'border-red-500'}
+                                               placeholder="https://youtu.be/VIDEO_ID or https://www.youtube.com/watch?v=VIDEO_ID"
+                                           />
+                                           {video.id && (
+                                               <div className="flex items-center gap-2 text-sm">
+                                                   {isValidUrl ? (
+                                                       <>
+                                                           <span className="text-green-600">✓ Valid YouTube URL</span>
+                                                           {thumbnailUrl && (
+                                                               <img 
+                                                                   src={thumbnailUrl} 
+                                                                   alt="Video thumbnail" 
+                                                                   className="w-16 h-12 object-cover rounded border"
+                                                               />
+                                                           )}
+                                                       </>
+                                                   ) : (
+                                                       <span className="text-red-600">✗ Invalid YouTube URL</span>
+                                                   )}
+                                               </div>
+                                           )}
+                                           <p className="text-xs text-muted-foreground">
+                                               Supported formats: youtube.com/watch?v=ID, youtu.be/ID, youtube.com/embed/ID
+                                           </p>
+                                       </div>
+                                   </div>
+                               );
+                           })}
                        </CardContent>
                     </Card>
 
