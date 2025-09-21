@@ -145,6 +145,39 @@ function addDefaultContent(content: any): IContent {
     };
   }
 
+  if (!content.about) {
+    content.about = {
+      ourAspiration: {
+        title: "Our Aspiration",
+        content: [
+          "To be a leading educational institution recognized for our commitment to excellence, innovation, and holistic development.",
+          "We aspire to create a vibrant learning community where students are inspired to achieve their full potential, become lifelong learners, and contribute meaningfully to society. Our goal is to foster an environment of intellectual curiosity, critical thinking, and ethical leadership."
+        ]
+      },
+      aboutUs: {
+        title: "About The School",
+        content: [
+          "Founded in 2004, our institution has a rich history of academic excellence and a deep-seated commitment to student success. Our sprawling campus provides a serene and stimulating environment for learning and growth.",
+          "We offer a wide range of programs, state-of-the-art facilities, and a dedicated faculty of scholars and mentors. Our curriculum is designed to be both rigorous and relevant, preparing students for the challenges and opportunities of the 21st century."
+        ]
+      },
+      philosophy: {
+        title: "Our Philosophy",
+        content: [
+          "Our educational philosophy is centered on the belief that every student has unique talents and potential. We are committed to providing a personalized and supportive learning experience that nurtures individual strengths and fosters a passion for inquiry.",
+          "We believe in a holistic approach to education that integrates academic rigor with co-curricular activities, community engagement, and character development. Our aim is to cultivate well-rounded individuals who are not only knowledgeable but also compassionate, resilient, and socially responsible."
+        ]
+      },
+      ourMotto: {
+        title: "Our Motto",
+        content: [
+          "'Excellence, Innovation, Integrity'.",
+          "This motto encapsulates our core values and guides everything we do. We strive for excellence in all our endeavors, embrace innovation to stay at the forefront of education, and uphold the highest standards of integrity in our community."
+        ]
+      }
+    };
+  }
+
   if (!content.contactUs) {
     content.contactUs = {
       title: "Contact Us",
