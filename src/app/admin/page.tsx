@@ -639,6 +639,87 @@ export default function AdminPage() {
                         </CardContent>
                     </Card>
 
+                    <Card>
+                        <CardHeader><CardTitle>Our Excellence - Feature Cards Section</CardTitle></CardHeader>
+                        <CardContent className="space-y-4">
+                            <Label>Section Title</Label>
+                            <Input 
+                                value={content.home.featureCards.title} 
+                                onChange={(e) => handleInputChange('home.featureCards.title', e.target.value)}
+                                className="text-lg font-bold"
+                                placeholder="Our Excellence"
+                            />
+                            <Label>Section Subtitle (Italic)</Label>
+                            <Textarea 
+                                value={content.home.featureCards.subtitle} 
+                                onChange={(e) => handleInputChange('home.featureCards.subtitle', e.target.value)}
+                                className="italic"
+                                placeholder="Discover the exceptional features and opportunities..."
+                                rows={2}
+                            />
+                            
+                            <div className="space-y-4">
+                                <h3 className="text-lg font-semibold text-primary">Feature Cards ({content.home.featureCards.cards.length} cards)</h3>
+                                {content.home.featureCards.cards.map((card, index) => (
+                                    <div key={index} className="p-4 border rounded-md space-y-3 bg-muted/30">
+                                        <h4 className="font-semibold text-primary">Card {index + 1}</h4>
+                                        <div>
+                                            <Label>Title</Label>
+                                            <Input 
+                                                value={card.title} 
+                                                onChange={(e) => handleInputChange(`home.featureCards.cards.${index}.title`, e.target.value)}
+                                                placeholder="State-of-the-Art Laboratories"
+                                            />
+                                        </div>
+                                        <div>
+                                            <Label>Description</Label>
+                                            <Textarea 
+                                                value={card.description} 
+                                                onChange={(e) => handleInputChange(`home.featureCards.cards.${index}.description`, e.target.value)}
+                                                placeholder="Advanced science and computer labs equipped with cutting-edge technology..."
+                                                rows={3}
+                                            />
+                                        </div>
+                                        <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                                            <div>
+                                                <Label>Image URL</Label>
+                                                <Input 
+                                                    value={card.image.src} 
+                                                    onChange={(e) => handleInputChange(`home.featureCards.cards.${index}.image.src`, e.target.value)}
+                                                    placeholder="https://example.com/image.jpg"
+                                                />
+                                            </div>
+                                            <div>
+                                                <Label>Image Alt Text</Label>
+                                                <Input 
+                                                    value={card.image.alt} 
+                                                    onChange={(e) => handleInputChange(`home.featureCards.cards.${index}.image.alt`, e.target.value)}
+                                                    placeholder="Modern Science Laboratory"
+                                                />
+                                            </div>
+                                        </div>
+                                        {/* Image Preview */}
+                                        {card.image.src && (
+                                            <div className="mt-2">
+                                                <Label>Preview</Label>
+                                                <div className="mt-1 w-32 h-24 border rounded overflow-hidden">
+                                                    <img 
+                                                        src={card.image.src} 
+                                                        alt={card.image.alt}
+                                                        className="w-full h-full object-cover"
+                                                        onError={(e) => {
+                                                            e.currentTarget.style.display = 'none';
+                                                        }}
+                                                    />
+                                                </div>
+                                            </div>
+                                        )}
+                                    </div>
+                                ))}
+                            </div>
+                        </CardContent>
+                    </Card>
+
                      <Card>
                         <CardHeader><CardTitle>Virtual Tour Section</CardTitle></CardHeader>
                         <CardContent className="space-y-2">

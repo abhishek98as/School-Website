@@ -4,6 +4,7 @@ import { Highlights } from '@/components/highlights';
 import { VirtualTour } from '@/components/virtual-tour';
 import { Achievements } from '@/components/achievements';
 import { CeoSection } from '@/components/ceo-section';
+import { FeatureCards } from '@/components/feature-cards';
 import { RisingStars } from '@/components/rising-stars';
 import { NewsAndEvents } from '@/components/news-and-events';
 import { WelcomePopup } from '@/components/welcome-popup';
@@ -19,6 +20,7 @@ export default async function Home() {
       <HeroSlider content={content.home.heroSlider} />
       <ScrollingText content={content.home.scrollingText} />
       <CeoSection content={content.home.ceoSection} />
+      <FeatureCards content={content.home.featureCards} />
       <Highlights content={content.home.highlights} />
       <VirtualTour content={content.home.virtualTour} />
       <Facilities />

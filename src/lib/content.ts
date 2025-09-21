@@ -110,6 +110,19 @@ export interface IContent {
         highlights: string[];
       }[];
     };
+    featureCards: {
+      title: string;
+      subtitle: string;
+      cards: {
+        title: string;
+        description: string;
+        image: {
+          src: string;
+          alt: string;
+          hint: string;
+        };
+      }[];
+    };
     risingStars: {
       title: string;
       description: string;

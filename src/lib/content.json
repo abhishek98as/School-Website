@@ -280,6 +280,84 @@
         }
       ]
     },
+    "featureCards": {
+      "title": "Our Excellence",
+      "subtitle": "Discover the exceptional features and opportunities that make our institution a beacon of educational excellence and innovation.",
+      "cards": [
+        {
+          "title": "State-of-the-Art Laboratories",
+          "description": "Advanced science and computer labs equipped with cutting-edge technology to foster hands-on learning and innovation.",
+          "image": {
+            "src": "https://picsum.photos/400/300?random=501",
+            "alt": "Modern Science Laboratory",
+            "hint": "school laboratory equipment"
+          }
+        },
+        {
+          "title": "Smart Classrooms",
+          "description": "Interactive digital learning environments with smart boards and multimedia tools for enhanced educational experiences.",
+          "image": {
+            "src": "https://picsum.photos/400/300?random=502",
+            "alt": "Smart Classroom Technology",
+            "hint": "digital classroom interactive"
+          }
+        },
+        {
+          "title": "Sports & Recreation",
+          "description": "Comprehensive sports facilities including basketball, football, cricket grounds, and indoor games for holistic development.",
+          "image": {
+            "src": "https://picsum.photos/400/300?random=503",
+            "alt": "Sports Complex",
+            "hint": "school sports facilities"
+          }
+        },
+        {
+          "title": "Arts & Culture Hub",
+          "description": "Dedicated spaces for music, dance, drama, and visual arts to nurture creativity and cultural appreciation.",
+          "image": {
+            "src": "https://picsum.photos/400/300?random=504",
+            "alt": "Arts and Culture Center",
+            "hint": "school arts music theater"
+          }
+        },
+        {
+          "title": "Digital Library",
+          "description": "Modern library with extensive collection of books, digital resources, and quiet study spaces for research and learning.",
+          "image": {
+            "src": "https://picsum.photos/400/300?random=505",
+            "alt": "Digital Library",
+            "hint": "modern school library"
+          }
+        },
+        {
+          "title": "Career Guidance Center",
+          "description": "Professional counseling and career guidance services to help students make informed decisions about their future.",
+          "image": {
+            "src": "https://picsum.photos/400/300?random=506",
+            "alt": "Career Counseling",
+            "hint": "student career guidance"
+          }
+        },
+        {
+          "title": "Innovation Lab",
+          "description": "Maker space for robotics, 3D printing, and STEM projects encouraging creativity and problem-solving skills.",
+          "image": {
+            "src": "https://picsum.photos/400/300?random=507",
+            "alt": "Innovation and Robotics Lab",
+            "hint": "school innovation robotics"
+          }
+        },
+        {
+          "title": "Health & Wellness",
+          "description": "Comprehensive health services including medical facility, counseling, and wellness programs for student well-being.",
+          "image": {
+            "src": "https://picsum.photos/400/300?random=508",
+            "alt": "Health and Wellness Center",
+            "hint": "school health medical"
+          }
+        }
+      ]
+    },
     "risingStars": {
       "title": "Our Rising Stars",
       "description": "Meet the brilliant minds shaping the future.",
